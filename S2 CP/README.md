@@ -195,7 +195,7 @@ Evaluate the knee extension pROM post surgery in CE_CP_T1  and change S.subject.
 2. Line 21 - add    	S = update_settings_pre(S); OR S = update_settings_post(S);
 3. line 25 - change to 	S.subject.name = 'gait1018';  
 
-### Step 3: Click the green :arrow_forward: button at the top of your screen to run the simulation :smiley:
+### Step 3: Click the green :arrow_forward: button at the top of your screen to start the simulation :smiley:
 
 ##  Visualizing and plotting the results
 Once your simulations are done, the results are stored in PredSimResults\gait1018 as gait1018_vx. Every time you run a simulation, the results are saved with an incremental version number: v1, v2, v3, v4, … The most recently run simulation always has the highest version number.
