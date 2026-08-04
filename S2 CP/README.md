@@ -29,7 +29,9 @@ The strength is evaluated for the full active range of motion by manual muscle t
 **Additional information:** The protocol of the clinical exam, and normative values for all tests are provided in [Documentation](../Documentation)   
 
 ### Step 2. Scaling muscle strength
-In this step you will scale muscle strength for the **muscles around the knee**. The scaling factors represent the remaining percentage of maximal muscle force (FMo) in the model.
+In this step you will scale muscle strength for the **muscles around the knee**. The scaling factors represent the remaining percentage of maximal muscle force (FMo) in the model as illustrated in the figure below. A reduction in maximal muscle force represents muscle weakness and decreases the maximum force-generating capacity of the muscle.
+
+![Effect of muscle strength scaling](https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png)
 
 Copy the setting S.settings.muscle_strength below, and add to your update_settings_pre file. 
 
@@ -73,7 +75,10 @@ The model is positioned according to the clinical pROM assessment, after which o
 **Code:**  [main_scale_lMo_sol_gas_hams.m](Code/main_scale_lMo_sol_gas_hams.m) and [main_scale_lMo_iliopsoas.m](Code/main_scale_lMo_iliopsoas.m) provided in the folder [Code](Code).    
 
 ### Step 3. Scaling muscle fiber length of the hamstrings
-In this step you will scale the optimal muscle fiber length of the hamstrings.
+In this step you will scale the optimal muscle fiber length of the hamstrings. 
+The effect of scaling muscle-tendon parameters on the normalized muscle-tendon properties is illustrated below. Changing the optimal muscle fiber length affects the passive and active force–length relationship of the muscle. A lower optimal fiber length increases passive forces at the same muscle-tendon length, representing a contracted muscle.
+
+<img src="https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png" width="800">
 
 Open the clinical exam file and evaluate the passive range of motion scores against normative values.  
 
