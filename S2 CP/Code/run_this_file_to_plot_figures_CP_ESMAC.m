@@ -1,4 +1,3 @@
-
 clear
 close all
 clc
@@ -37,7 +36,7 @@ figure_savename = 'ComparisonSimulations_CP_SMALLL';
 
 % -------    stop edit  -------
 
-[pathRepo,~,~] = fileparts(mfilename('fullpath'));
+[pathRepo,~,~] = fileparts(mfilename('fullpath')); addpath(genpath(pathRepo));
 IKResultsFolder = fullfile(fileparts(pathRepo), 'IK');
 %% Settings for each figure to be made
 % "figure_settings" is a cell array where each cell contains a struct with
@@ -152,10 +151,10 @@ plot_figures(result_paths,legend_names,figure_settings);
 if experimental_kinematics
     if isfield(results_path, 'pre_surgery')
         idx_pre = find(strcmp(result_fieldnames,'pre_surgery'));
-        plot_pre_surgery(result_paths{idx_pre},IKResultsFolder)
+        plot_pre_surgery_v2(result_paths{idx_pre},IKResultsFolder)
     end
     if isfield(results_path, 'post_surgery') 
         idx_post = find(strcmp(result_fieldnames,'post_surgery'));
-        plot_post_surgery(result_paths{idx_post},IKResultsFolder)
+        plot_post_surgery_v2(result_paths{idx_post},IKResultsFolder)
     end
 end
