@@ -11,9 +11,11 @@ If you have not already done so, you need to run a reference simulation of healt
 
 # I. Personalizing the musculoskeletal model
 ### **Background:**   
-In this part you will personalize a model for a child with CP based on a clinical exam. The clinical exam is part of children's usual clinical care and is a comprehensive assessment of musculoskeletal functioning. 
+In this part you will personalize a model for a child with CP based on a clinical exam. The clinical exam is part of children's usual clinical care and is a comprehensive assessment of musculoskeletal functioning. The personalization process modifies different muscle-tendon properties to represent patient-specific impairments. These modifications affect the active and passive force–length relationships of the muscles, as illustrated below.
 
-In example 1. you will use (I.1) manual muscle testing strength scores to personalize optimal muscle force and (I.2) passive Range of Motion (ROM) scores  to personalize optimal muscle force and optimal muscle fiber length and coordinate limit torques.
+<img src="https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png" width="800">
+
+In example 1. you will use (I.1) manual muscle testing strength scores to personalize optimal muscle force (FMo) and (I.2) passive Range of Motion (ROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
 
 To this end, you will create a settings file that can later be used in PredSim. In this tutorial you will change the model inputs in a default settings file. This file can later be used to run personalized simulations in PredSim.
 
@@ -29,9 +31,7 @@ The strength is evaluated for the full active range of motion by manual muscle t
 **Additional information:** The protocol of the clinical exam, and normative values for all tests are provided in [Documentation](../Documentation)   
 
 ### Step 2. Scaling muscle strength
-In this step you will scale muscle strength for the **muscles around the knee**. The scaling factors represent the remaining percentage of maximal muscle force (FMo) in the model as illustrated in the figure below. A reduction in maximal muscle force represents muscle weakness and decreases the maximum force-generating capacity of the muscle.
-
-![Effect of muscle strength scaling](https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png)
+In this step you will scale muscle strength for the **muscles around the knee**. The scaling factors represent the remaining percentage of maximal muscle force (FMo) in the model. As shown in the "Scaling muscle strength" panel of the figure above, reducing this parameter decreases the maximum force-generating capacity of the muscle and represents muscle weakness.
 
 Copy the setting S.settings.muscle_strength below, and add to your update_settings_pre file. 
 
@@ -75,10 +75,7 @@ The model is positioned according to the clinical pROM assessment, after which o
 **Code:**  [main_scale_lMo_sol_gas_hams.m](Code/main_scale_lMo_sol_gas_hams.m) and [main_scale_lMo_iliopsoas.m](Code/main_scale_lMo_iliopsoas.m) provided in the folder [Code](Code).    
 
 ### Step 3. Scaling muscle fiber length of the hamstrings
-In this step you will scale the optimal muscle fiber length of the hamstrings. 
-The effect of scaling muscle-tendon parameters on the normalized muscle-tendon properties is illustrated below. Changing the optimal muscle fiber length affects the passive and active force–length relationship of the muscle. A lower optimal fiber length increases passive forces at the same muscle-tendon length, representing a contracted muscle.
-
-<img src="https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png" width="800">
+In this step you will scale the optimal muscle fiber length of the hamstrings. Scaling the optimal muscle fiber length modifies the muscle force–length relationship. As shown in the "Scaling passive muscle stiffness" panel of the figure above, reducing optimal fiber length increases passive forces at the same muscle-tendon length, representing a contracted muscle.
 
 Open the clinical exam file and evaluate the passive range of motion scores against normative values.  
 
