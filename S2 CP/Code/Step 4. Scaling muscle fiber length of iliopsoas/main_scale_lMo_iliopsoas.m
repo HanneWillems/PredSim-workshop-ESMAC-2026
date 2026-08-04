@@ -16,7 +16,7 @@ casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to Casadi
 addpath(genpath(PredSim_path));
 addpath(genpath(casadi_path));
 %% 2. Intialize settings
-subject_name = 'CP_SMALLL'; 
+subject_name = 'CP_ESMAC'; 
 
 osim_path = fullfile(PredSim_path,'Subjects','gait1018','gait1018.osim');
 
@@ -42,7 +42,7 @@ end
 [sf_lMo_prev] = get_sf_lMo(muscle_toScale,CE_side,sf_lMo_prev);
 
 %% 4. get model info
-[f_lMT_vMT_dM, model_info,coordinates] = generatePolynomials(osim_path, PredSim_path);
+[f_lMT_vMT_dM, model_info,coordinates] = generatePolynomials_ESMAC(osim_path, PredSim_path);
 
 %% 5. get delta hip
 hip_name_side = ['hip_flexion_',CE_side];

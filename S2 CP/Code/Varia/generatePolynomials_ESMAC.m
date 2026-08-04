@@ -1,4 +1,4 @@
-function [f_lMT_vMT_dM, model_info,coordinates] = generatePolynomials(osim_path, pathPredSim)
+function [f_lMT_vMT_dM, model_info,coordinates] = generatePolynomials_ESMAC(osim_path, pathPredSim)
 % --------------------------------------------------------------------------
 % generatePolynomials
 %   Generate polynomials to describe musculoskeletal geometry of a model.
@@ -32,7 +32,7 @@ function [f_lMT_vMT_dM, model_info,coordinates] = generatePolynomials(osim_path,
 addpath(pathPredSim)
 addpath(fullfile(pathPredSim,'DefaultSettings'))
 
-[S] = initializeSettings('DHondt_et_al_2024_3seg');
+[S] = initializeSettings('gait1018');
 
 % pass something to required settings, doesn't really matter what
 S.misc.save_folder = pwd;
