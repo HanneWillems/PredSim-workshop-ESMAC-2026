@@ -27,7 +27,7 @@ Before going to the hands-on tutorials, the user should run a reference 2D simul
 4. During this workshop the user will run predictive simulations with the 2D model instead of the default 3D model. Therefore, adjust the following lines in `main.m`:
    - Line 20:
       ```matlab
-      -   `[S] = initializeSettings('gait1018');
+         [S] = initializeSettings('gait1018');
       ```
    - Line 25:
       ```matlab
