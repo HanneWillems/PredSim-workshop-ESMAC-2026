@@ -100,7 +100,7 @@ To plot the kinematics of your simulations and compare them to the Experimental 
    - Line 13 - replace `gait1018_v2.mat` with the `.mat` file containing your **DMD simulation** *(If the DMD simulation was the second simulation you ran with this 2D model, the results are stored in v2)*
 4. Click on the green 'Run' button
 
-You should see the figure below: 
+The second figure should look like this:  
 ![Figure results_DMD_plot](https://github.com/user-attachments/assets/cea3ea64-e184-4616-aabd-718eab426919)
 
 The gray band is the patient's experimental data measured using standard 3D gait analysis (mean ± 2 standard deviations). For the ankle, the blue curve (simulation with DMD impairments) is closer to the gray band than the red curve (reference simulation on healthy model). This means that incorporating the DMD-specific impairments into the model already brings the simulation closer to the experimental data (for the ankle). The simulation results predict a tiptoeing gait pattern, which is also observed experimentally. However, the simulated gait still does not fully match the experimental data. This may be due to the use of a 2D model instead of a more accurate 3D model, and because not all mechanisms are yet captured in the simulations. We are currently working on further improving the models so that the simulation results better match the experimental data across all conditions. 
