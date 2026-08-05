@@ -27,6 +27,8 @@ Before going to the hands-on tutorials, the user should run a reference 2D simul
 4. During this workshop the user will run predictive simulations with the 2D model instead of the default 3D model. Therefore, adjust the following lines in `main.m`:
    - Line 20 - `[S] = initializeSettings('gait1018');`
    - Line 25 - `S.subject.name = 'gait1018';`
+   - Line 51-52     `result_paths{1} = fullfile(pathRepo,'Tests','ReferenceResults',...
+        'gait1018','gait1018.mat');`
 5. Click on the green 'Run' button
 
 Congratulations your first simulation with the 2D model is running! Running this type of simulation typically takes about 1-5 minutes, depending on your specific hardware.
