@@ -25,8 +25,14 @@ Before going to the hands-on tutorials, the user should run a reference 2D simul
 2. Navigate to your `PredSim` folder in Matlab
 3. Open the script `main.m` in Matlab by clicking on it
 4. During this workshop the user will run predictive simulations with the 2D model instead of the default 3D model. Therefore, adjust the following lines in `main.m`:
-   - Line 20 - `[S] = initializeSettings('gait1018');`
-   - Line 25 - `S.subject.name = 'gait1018';`
+   - Line 20 -
+   ```matlab
+   -   `[S] = initializeSettings('gait1018');
+   ```
+   - Line 25:
+   ```matlab
+      `S.subject.name = 'gait1018';
+   ```
    - Line 51-52
      ```matlab
      result_paths{1} = fullfile(pathRepo,'Tests','ReferenceResults',...
