@@ -22,7 +22,7 @@ osim_path = fullfile(PredSim_path,'Subjects','gait1018','gait1018.osim');
 
 %% 3 Get the passive range of motion (pROM) scores from the clinical exam
 % -------   start edit   -------
-muscle_toScale = 'iliopsoas'; 
+muscle_toScale = 'soleus'; 
 
 CE_side = 'r'; % side on which the Clinical Exam is performed; options: 'l', 'r' 
 CE_angle_uni = -80 ; 
@@ -54,17 +54,17 @@ idx_knee = find(strcmp(coordinates,knee_name_side));
 [MA] = calculate_MA_iliopsoas(CE_side,model_info,sf_lMo_prev,coordinates,f_lMT_vMT_dM,CE_angle_bi);
 
 idx_biarticulair = find(all(MA(:, [idx_hip idx_knee]) ~= 0, 2));
-i_hamsting = 1;
+i_hamstring = 1;
 for i = 1:length(idx_biarticulair)
     if contains(model_info.muscle_info.muscle_names(i),'hamstrings') % only the case for 2D models
         idx_m_biart = idx_biarticulair(i);
         ratio(i) = MA(idx_m_biart, idx_knee)/MA(idx_m_biart, idx_hip);
-        i_hamstring = i_hamsting+1;
+        i_hamstring = i_hamstring+1;
     else
         ratio(i) = 0;
     end
 end
-delta_hip = (CE_angle_bi-CE_angle_uni) * (sum(ratio)/i_hamsting);
+delta_hip = (CE_angle_bi-CE_angle_uni) * (sum(ratio)/i_hamstring);
 
 %% 5. put the model in position of delta hip
 [Qs,Qdots,idx_joint,coord_name] = get_CE_position_iliopsoas(delta_hip,CE_side,coordinates);

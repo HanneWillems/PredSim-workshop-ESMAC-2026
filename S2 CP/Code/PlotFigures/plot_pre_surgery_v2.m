@@ -51,7 +51,7 @@ clear figure_settings
 % These settings will apply to all figures
 % Construct a cell array with full paths to files with saved results for
 % which you want to appear on the plotted figures.
-legend_names = {'Experimental Kinematics pre surgery','Simulation results pre surgery'};
+legend_names = {'experimental kinematics - pre surgery','simulation results - pre surgery'};
 IK_names =  {'pelvis_tilt',  'pelvis_tx', 'pelvis_ty',...
     'hip_flexion_r',  'knee_angle_r', 'ankle_angle_r',...
     'hip_flexion_l',...
@@ -154,14 +154,13 @@ for idx_AngleIK = 1:length(IK_names)
     subplot(n_rows, n_cols, idx_AngleIK)
     hold on
     if idx_AngleIK == 1
-    hsimline = plot(x_i,y_i,'r','LineWidth',2);
+    hsimline = plot(x_i,y_i,'g','LineWidth',2);
     else
-        plot(x_i,y_i,'r','LineWidth',2);
+        plot(x_i,y_i,'g','LineWidth',2);
     end
     
 end
 
-% lay out
 sgtitle('Pre surgery: simulation results vs. experimental kinematics')
 han = axes(fig3,'visible','off');
 

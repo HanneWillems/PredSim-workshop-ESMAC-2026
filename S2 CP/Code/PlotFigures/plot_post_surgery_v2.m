@@ -1,8 +1,8 @@
-% function [] = plot_pre_surgery(result_paths,IKResultsFolder)
-% plot_pre_surgery
-%   Plots and compares pre-surgery simulation results with experimental
+function [] = plot_post_surgery_v2(result_paths,IKResultsFolder)
+% plot_post_surgery
+%   Plots and compares post-surgery simulation results with experimental
 %   inverse kinematics (IK) for subject CP_SMALLL. The function loads IK
-%   data from predefined .mot files, extracts multiple gait cycles
+%   data from postdefined .mot files, extracts multiple gait cycles
 %   (right foot strike to right foot strike), time-normalises them to
 %   0–100% gait, and computes mean ± standard deviation envelopes for a
 %   selected set of joint angles. These IK envelopes are plotted together
@@ -33,7 +33,7 @@
 % OUTPUT:
 %   - (none)
 %   * Creates a multi-subplot figure showing mean ± SD experimental IK
-%     envelopes with overlaid pre-surgery simulated kinematics for the
+%     envelopes with overlaid post-surgery simulated kinematics for the
 %     selected joint angles, and adds a legend distinguishing IK and
 %     simulation curves. Left-side coordinates are taken from a
 %     GRF-derived left gait cycle (R_left); right-side and axial
@@ -51,17 +51,19 @@ clear figure_settings
 % These settings will apply to all figures
 % Construct a cell array with full paths to files with saved results for
 % which you want to appear on the plotted figures.
-legend_names = {'Inverse Kinematics','Post surgery'};
-
+legend_names = {'experimental kinematics - post surgery','simulation results - post surgery'};
+IK_names =  {'pelvis_tilt',  'pelvis_tx', 'pelvis_ty',...
+    'hip_flexion_r',  'knee_angle_r', 'ankle_angle_r',...
+    'hip_flexion_l',...
+    'knee_angle_l', 'ankle_angle_l', 'lumbar_extension'};
 %% IK files
 % paths with the IK data
-data_paths = {fullfile(IKResultsFolder,'CP_SMALLL_IK_post_1.mot'),...
+IKdata_paths = {fullfile(IKResultsFolder,'CP_SMALLL_IK_post_1.mot'),...
                 fullfile(IKResultsFolder,'CP_SMALLL_IK_post_2.mot'),...
                 fullfile(IKResultsFolder,'CP_SMALLL_IK_post_2.mot')};
-
 % GC's
 load(fullfile(IKResultsFolder,'GC.mat'))
-[avg,sd,~,~,data,~] = getIK_SD_and_mean(data_paths,GC.pre);
+[avg,sd,~,~,data,~] = getIK_SD_and_mean(IKdata_paths,GC.post);
 
 
 %% IK
@@ -71,19 +73,19 @@ for idx_AngleIK = 1:length(IK_names)
     AngleName = IK_names{idx_AngleIK};
 
     idx_col = find(strcmp(data.colheaders, AngleName));
-
-    % knee: OpenSim -> klinische conventie
+    
+    % Convert OpenSim convention to clinical convention (flip sign where needed)   
     if contains(AngleName, {'knee','pelvis_list','lumbar_bending','lumbar_extension'})
         flip_data = -1;
     else
         flip_data = 1;
     end
 
-    % left -> avg.L/sd.L
+    % Left side -> use left mean and standard deviation
     if contains(AngleName, '_l')
         avg_col = avg.L(:,idx_col) * flip_data;
         sd_col  = sd.L(:,idx_col)  * flip_data;
-    else % , right/axial -> avg.R/sd.R
+    else % Right side and axial coordinates -> use right mean and standard deviation
         avg_col = avg.R(:,idx_col) * flip_data;
         sd_col  = sd.R(:,idx_col)  * flip_data;
     end
@@ -96,15 +98,20 @@ for idx_AngleIK = 1:length(IK_names)
     fill([1:length(avg_col), fliplr(1:length(avg_col))], ...
         [min_stdev', fliplr(plus_stdev')], ...
         [140, 128, 128]/255,'FaceAlpha',0.5,'EdgeAlpha',0.75,'EdgeColor',[140, 128, 128]/255)
-
+    if idx_AngleIK == 1
+    hIKline = plot(1:length(avg_col), avg_col, ...
+        'k','LineWidth',2);
+    else
+        plot(1:length(avg_col), avg_col, ...
+            'k','LineWidth',2);
+    end
+   
     title(IK_names(idx_AngleIK),interpreter="none")
 end
 
 
 
-
-%% plot results in it
-% fig4 = figure;
+%% Plot simulation results
 hold on
 colororder({'k','k'});
 
@@ -119,46 +126,22 @@ figure_settings.variables = {'Qs'};
 
 load(result_paths,'R','model_info');
 
-%% Bereken linker gait cycle (GRF-based, analoog aan rechter simulatie-GC)
-dist_trav_opt = R.spatiotemp.dist_trav;
-GRF_right = R.ground_reaction.GRF_r;
-GRF_left  = R.ground_reaction.GRF_l;
-GRFk_opt  = [GRF_left, GRF_right];
-
-[idx_GC, idx_GC_base_forward_offset, ~, threshold] = getStancePhaseSimulation(GRFk_opt, model_info.mass/3);
-
-R_left = struct();
-R_left.colheaders = R.colheaders;   % zelfde model -> zelfde kolomvolgorde, alleen rijen herschikt
-R_left.kinematics.Qs         = R.kinematics.Qs(idx_GC, :);
-R_left.kinematics.Qdots      = R.kinematics.Qdots(idx_GC, :);
-R_left.kinematics.Qddots     = R.kinematics.Qddots(idx_GC, :);
-R_left.kinematics.Qs_rad     = R.kinematics.Qs_rad(idx_GC, :);
-R_left.kinematics.Qdots_rad  = R.kinematics.Qdots_rad(idx_GC, :);
-R_left.kinematics.Qddots_rad = R.kinematics.Qddots_rad(idx_GC, :);
-
-% forward positie continu maken en op 0 laten starten
-R_left.kinematics.Qs(idx_GC_base_forward_offset, model_info.ExtFunIO.jointi.base_forward) = ...
-    R_left.kinematics.Qs(idx_GC_base_forward_offset, model_info.ExtFunIO.jointi.base_forward) + dist_trav_opt;
-R_left.kinematics.Qs(:, model_info.ExtFunIO.jointi.base_forward) = ...
-    R_left.kinematics.Qs(:, model_info.ExtFunIO.jointi.base_forward) - R_left.kinematics.Qs(1, model_info.ExtFunIO.jointi.base_forward);
-
-R_left.ground_reaction.GRF_r = R.ground_reaction.GRF_r(idx_GC, :);
-R_left.ground_reaction.GRF_l = R.ground_reaction.GRF_l(idx_GC, :);
-R_left.spatiotemp = R.spatiotemp;
-
+% Determine left gait cycle based on GRF (analogous to right gait cycle)
+R_left = get_left_gait_cycle(R, model_info);
 % kinematics/kinetics
-for idx_AngleIK = 1:length(IK_raw.names)
-    AngleName = IK_raw.names{idx_AngleIK};
+for idx_AngleIK = 1:length(IK_names)
 
-    % kies rechter (R) of linker (GRF-based R_left) resultaatstruct
+    AngleName = IK_names{idx_AngleIK};
+
+    % pick right (R) or lef (GRF-based R_left) results struct
     if contains(AngleName, '_l')
         R_plot = R_left;
     else
         R_plot = R;
     end
 
-    % OpenSim -> klinische conventie: knie-hoek omdraaien
-    if contains(AngleName, 'knee')
+    % Convert OpenSim convention to clinical convention (flip sign where needed)   
+    if contains(AngleName, {'knee','pelvis_list','lumbar_bending','lumbar_extension'})
         flip_data = -1;
     else
         flip_data = 1;
@@ -171,10 +154,25 @@ for idx_AngleIK = 1:length(IK_raw.names)
 
     subplot(n_rows, n_cols, idx_AngleIK)
     hold on
-    plot(x_i, y_i, '-', LineWidth=2)
+    if idx_AngleIK == 1
+    hsimline = plot(x_i,y_i,'b','LineWidth',2);
+    else
+        plot(x_i,y_i,'b','LineWidth',2);
+    end
+    
 end
-legend1 = legend(legend_names);
+
+% lay out
+sgtitle('Post surgery: simulation results vs. experimental kinematics')
+han = axes(fig3,'visible','off');
+
+han.XLabel.Visible = 'on';
+han.YLabel.Visible = 'on';
+
+xlabel(han,'Gait cycle (%)','FontSize',12)
+ylabel(han,'Angle (°)','FontSize',12)
+
+legend1 = legend([hIKline hsimline],legend_names);
+legend1.ItemTokenSize = [30,18];
 set(legend1,...
     'Position',[0.677123632983556 0.103763141299236 0.236785717759814 0.118925488587332]);
-sgtitle('Pre-surgery: simulation results vs. experimental kinematics')
-% end
