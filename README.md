@@ -1,10 +1,10 @@
-# Workshop Digital Twins - SMALLL 2025
+# Workshop Predictive simulations of pathological gait: from clinical data to digital twins - ESMAC 2026
 
-Welcome to the SMALLL 2025 Workshop on Digital Twins repository!
+Welcome to the ESMAC 2026 Workshop on Predictive simulations of pathological gait: from clinical data to digital twins!
 
-This workshop is organized by Tom Buurke (UMCG), Friedl De Groote, Tim van der Zee, Ines Vandekerckhove and Ellis Van Can (KU Leuven).
+This workshop is organized by Tom Buurke (UMCG), Friedl De Groote (KU Leuven), Tim van der Zee (KU Leuven), Ines Vandekerckhove (KU Leuven), Ellis Van Can (KU Leuven), Míriam Febrer (Universitat Politècnica de Catalunya), Lars D’Hondt (KU Leuven) and Stefanie de Jager (KU Leuven).
 
-You can find the workshop program [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/blob/main/SMALLL%20PredSim%20Workshop%20Program.pdf) and the slide hand-outs [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/blob/main/SMALLL%20PredSim%20Workshop%20Handouts.pdf).
+You can find the workshop program [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/SMALLL%20PredSim%20Workshop%20Program.pdf) and the slide hand-outs [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/SMALLL%20PredSim%20Workshop%20Handouts.pdf).
 
 This repo contains the resources used during the workshop. Below is a list of the 3 hands-on tutorials:
 - S1 DMD
@@ -14,6 +14,7 @@ This repo contains the resources used during the workshop. Below is a list of th
 Tutorial specific information can be found in the respective folders.
 
 **Dependencies**: This workshop requires [PredSim](https://github.com/KULeuvenNeuromechanics/PredSim) and [its dependencies](https://github.com/KULeuvenNeuromechanics/PredSim?tab=readme-ov-file#running-predsim-on-a-local-machine).
+⚠️ Note: plug in your computer for better speed! 
 
 ## Running a reference 2D simulation with PredSim
 
@@ -52,13 +53,13 @@ The video should look similar to the one shown below:
 ## Getting started with one of the cases
 Before starting one of the three cases, make sure that this repository is added to your Matlab path.
 
-1. Either download or clone [the current repository](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025)
+1. Either download or clone [the current repository](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026) 
 2. Open Matlab
 3. Navigate to the `PredSim-workshop-smalll-2025` folder
 4. Open the script called `set_up_paths.m`
 5. Click on the green 'Run' button
 
 Now you're ready to start with one the three cases!
-- [S1 DMD](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main/S1%20DMD)
-- [S2 CP](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main/S2%20CP)
-- [S3 Dropfoot](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main/S3%20Dropfoot)
+- [S1 DMD](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S1%20DMD)
+- [S2 CP](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S2%20CP)
+- [S3 Dropfoot](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S3%20Dropfoot)
