@@ -9,7 +9,7 @@ If you have not already done so, you need to run a reference simulation of healt
 
 ## Personalize muscle parameters based on instrumented assessment and clinical exam
 
-In this section the user will use instrumented strength scores (step 1), and passive Range of Motion (ROM) scores and clinical stiffness scale scores (step 2) to personalize active muscle force and passive muscle stiffness in the Hill-type muscle model, respectively. To save time, the user will only need to personalize the ankle muscles. We provide the hip and knee muscle personalizations.
+In this section the user will use instrumented strength scores (step 1), and passive Range of Motion (ROM) scores and clinical stiffness scale scores (step 2) to personalize active muscle force and passive muscle stiffness in the Hill-type muscle model, respectively. In this tutorial, you will create a symmetrical model, so the clinical examination scores will be used for both the left and right sides. For future reference, you can also use this code to create asymmetrical models if you record left-right differences during the clinical examination. To save time, the user will only need to personalize the ankle muscles. We provide the hip and knee muscle personalizations.
 
 To this end, you will edit the function [PredSim-workshop-ESMAC-2026/code/update_settings.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/code/update_settings.m). This function can later be used to run personalized simulations in PredSim.
 
