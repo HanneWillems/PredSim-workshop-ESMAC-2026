@@ -14,6 +14,7 @@ This repo contains the resources used during the workshop. Below is a list of th
 Tutorial specific information can be found in the respective folders.
 
 **Dependencies**: This workshop requires [PredSim](https://github.com/KULeuvenNeuromechanics/PredSim) and [its dependencies](https://github.com/KULeuvenNeuromechanics/PredSim?tab=readme-ov-file#running-predsim-on-a-local-machine).
+
 ⚠️ Note: plug in your computer for better speed! 
 
 ## Running a reference 2D simulation with PredSim
