@@ -56,7 +56,7 @@ Before starting one of the three cases, make sure that this repository is added 
 
 1. Either download or clone [the current repository](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026) 
 2. Open Matlab
-3. Navigate to the `PredSim-workshop-smalll-2025` folder
+3. Navigate to the `PredSim-workshop-ESMAC-2026` folder
 4. Open the script called `set_up_paths.m`
 5. Click on the green 'Run' button
 
