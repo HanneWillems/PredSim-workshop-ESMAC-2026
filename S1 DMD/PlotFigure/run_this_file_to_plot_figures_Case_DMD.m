@@ -14,7 +14,7 @@ result_paths{2} = fullfile(results_folder,'gait1018','gait1018_v2.mat');
 
 
 % Cell array with legend name for each result
-legend_names = {'Reference simulation', 'DMD simulation'};
+legend_names = {'Reference simulation', 'DMD simulation', 'Experimental Data'};
 
 % Path to the folder where figures are saved
 figure_folder = results_folder;
@@ -143,6 +143,8 @@ joints_ref_DMD = {'pelvis_tilt',...
     };
 hold on 
 figure(2);
+subplot(2,2,4);
+legend off;
 hold on
 
 number_subplot =[4 2 3 1 ];
@@ -156,13 +158,14 @@ idx_jref_DMD = strcmp(ExpData.kinematics.colheaders,joints_ref_DMD{i});
         subplot(2,2,number_subplot(i));
         z=[1:1:100];
         fill([z fliplr(z)],[meanPlusSTD_DMD' fliplr(meanMinusSTD_DMD')], [0 0 0], 'EdgeColor', 'none' );
-        alpha(.20);   
+        alpha(.20); 
 
         % Set ylabel and y-limits for specific subplots 
         switch number_subplot(i)
             case 1  % subplot 1: ankle
                 ylabel('Ankle dorsiflexion angle (°)', 'FontSize', 14);
                 ylim([-60 20]);
+                legend(legend_names, 'Location', 'best');
             case 2  % subplot 2: hip
                 ylabel('Hip flexion angle (°)', 'FontSize', 14);
             case 3  % subplot 3: knee
