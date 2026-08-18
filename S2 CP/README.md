@@ -19,7 +19,7 @@ In example 1. you will use (I.1) manual muscle testing strength scores to person
 
 To this end, you will create a settings file that can later be used in PredSim. In this tutorial you will change the model inputs in a default settings file. This file can later be used to run personalized simulations in PredSim.
 
-### Step 1. Open [update_settings_pre.m](Code/update_settings_pre.m) in your Code folder
+### Step 1. Open [update_settings_pre.m](Code/update_settings_pre.m) in your Code folder (e.g. PredSim-workshop-ESMAC-2026\S2 CP\Code)
 This file is a copy of the [default settings file](../code/update_settings.m) that is used to define custom user settings.
 
 ## I.1 Personalizing muscle strength
@@ -72,7 +72,7 @@ The model is positioned according to the clinical pROM assessment, after which o
 **Requirements:** Matlab, OpenSim, CasADi.   
 **Data:** pROM scores, provided in the folder [Clinical Exam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)      
-**Code:**  [main_scale_lMo_sol_gas_hams.m](Code/main_scale_lMo_sol_gas_hams.m) and [main_scale_lMo_iliopsoas.m](Code/main_scale_lMo_iliopsoas.m) provided in the folder [Code](Code).    
+**Code:**  [main_scale_lMo.m](Code/main_scale_lMo.m) and [main_scale_lMo.m](Code/main_scale_lMo.m) provided in the folder [Code](Code).    
 
 ### Step 3. Scaling muscle fiber length of the hamstrings
 In this step you will scale the optimal muscle fiber length of the hamstrings. Scaling the optimal muscle fiber length modifies the muscle force–length relationship. As shown in the "Scaling passive muscle stiffness" panel of the figure above, reducing optimal fiber length increases passive forces at the same muscle-tendon length, representing a contracted muscle.
@@ -98,7 +98,7 @@ Add a setting S.settings.scale_MT_params to your update_settings_pre file all mu
 									{'soleus_l'},'lMo',1};			% pROM_Ankledf90_L
 
 	  
-Open [main_scale_lMo_sol_gas_hams](/Code/main_scale_lMo_sol_gas_hams.m) and calculate scaling factors for the hamstrings. The code guides you through the estimation process and you only have to edit the lines of code that are inbetween:   
+Open [main_scale_lMo](/Code/main_scale_lMo.m) and calculate scaling factors for the hamstrings. The code guides you through the estimation process and you only have to edit the lines of code that are inbetween:   
 % ------ start edit -----    
             and   
 % -----  end edit 	-----   
@@ -128,7 +128,7 @@ $$
 with _n_ the number of bi-articular hamstrings, $ma_{\text{hip}, i}$ and $ma_{\text{knee}, i}$ the moment arm of muscle _i_ around knee and hip when in the position of the bilateral popliteal angle. The contracture of the contralateral iliopsoas is determined by solving for the scaling factor that led to passive torque when the contralateral hip is extended beyond $\Delta \theta_{\text{hip}}$.
 
 ### **Instructions:**   
-Open [main_scale_lMo_iliopsoas.m](Code/main_scale_lMo_iliopsoas.m) and calculate scaling factors for the iliopsoas. Again, the code guides you through the estimation process and you only have to edit the lines of code that are inbetween:  
+Open [main_scale_lMo.m](Code/main_scale_lMo.m) and calculate scaling factors for the iliopsoas. Again, the code guides you through the estimation process and you only have to edit the lines of code that are inbetween:  
 % ------ start edit -----    
             and   
 % -----  end edit 	-----   
