@@ -141,7 +141,7 @@ In this case, select the scaling factor at which the CE angle intersects the −
 
 <img width="482" height="269" alt="example_hamstrings_scaling" src="https://github.com/user-attachments/assets/26d71a1e-9c93-4be5-a91f-97c1b950baa6" />
 
-**⚠️ Note:** Run the file for both hamstrings separately
+**⚠️ Note:** Run the file for both hamstrings separately.
 Add the computed scaling factors to S.subject.scale_MT_params. 
 
 ### Step 4. Scaling muscle fiber length of iliopsoas
