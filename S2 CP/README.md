@@ -98,16 +98,49 @@ Add a setting S.settings.scale_MT_params to your update_settings_pre file all mu
 									{'soleus_l'},'lMo',1};			% pROM_Ankledf90_L
 
 	  
-Open [main_scale_lMo](/Code/main_scale_lMo.m) and calculate scaling factors for the hamstrings. The code guides you through the estimation process and you only have to edit the lines of code that are inbetween:   
-% ------ start edit -----    
-            and   
-% -----  end edit 	-----   
+Open [main_scale_lMo](/Code/main_scale_lMo.m) and calculate scaling factors for the hamstrings. The code guides you through the estimation process and you only have to  
+You only need to edit the lines of code between the following markers:
+% ------ start edit -----
+and
+% ----- end edit -----
+
+There are three sections in the code that need to be edited:
+
+1. Lines 27–28: Specify the paths to PredSim and CasADi:
+```matlab
+	PredSim_path = 'C:\GBW_MyPrograms\PredSim'; % path to PredSim
+	casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to CasADi
+```
+2. **Lines 40, 42, and 47:** Specify the muscle to scale, the side evaluated in the clinical exam, and the corresponding CE angle:
+```matlab
+muscle_toScale = 'gastrocnemii'; % Options: 'soleus', 'gastrocnemii', 'hamstrings', 'iliopsoas'
+
+side = 'l'; % side evaluated in clinical exam
+
+% Step 3. scaling muscle fiber length of the hamstrings
+if ismember(muscle_toScale, {'soleus','gastrocnemii','hamstrings'})
+
+    CE_angle = 20;
+
+end
+```
+3. **Line 151:** Define the range of scaling factors to be explored.
+```matlab
+%% -------    start edit  -------
+
+% Define scaling factor range
+% (sf_lMo = flip([start range : step size : end range]));
+
+sf_lMo = flip([0.7:0.1:1]);
+
+%% -------    stop edit   -------
+```
 
 **EXAMPLE:**   
-In this case you want to pick the scaling factor that gives the red line. A scaling factor of 60% would be 0.6 in the code.   
-<img width="369" height="297" alt="lmo scale example" src="https://github.com/user-attachments/assets/2d02ad5f-13ed-464c-884b-abd892525ea2" />   
-**⚠️ Note:** Run the file for both hamstrings separately
+In this case, select the scaling factor at which the CE angle intersects the −15 Nm torque applied by the experimenter. A scaling factor of 60% is entered as 0.6 in the code.
+<img width="963" height="538" alt="example_hamstrings_scaling" src="https://github.com/user-attachments/assets/0093415e-4dd1-48eb-9171-13446a552860" />
 
+**⚠️ Note:** Run the file for both hamstrings separately
 Add the computed scaling factors to S.subject.scale_MT_params. 
 
 ### Step 4. Scaling muscle fiber length of iliopsoas
@@ -187,7 +220,7 @@ The post-intervention model starts from the personalized pre-intervention model,
 ### Step 2: Evaluate the clinical exam and change the knee extension deficit setting
 Open the clinical exam post surgery ([CE_CP_T1](ClinicalExam)) in your ClinicalExam folder. (T0 refers to pre intervention and T1 to post intervention) 
 
-Evaluate the knee extension pROM post surgery in CE_CP_T1  and change S.subject.set_limit_torque_coefficients_selected_dofs = ...{'knee_angle_r','knee_angle_l'}, accordingly, as you did in step 5.
+Evaluate the knee extension pROM post surgery in CE_CP_T1 and change S.subject.set_limit_torque_coefficients_selected_dofs = ...{'knee_angle_r','knee_angle_l'}, accordingly, as you did in step 5.
 
 # III. Running PredSim with personalized settings
 ### Step 1: open [main.m](https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/main.m) in your ⚠️PredSim folder
