@@ -164,29 +164,29 @@ You only need to edit the lines between the following markers:
 
 There are three sections to edit:
 
-1. **Lines 27–28:** Specify the paths to PredSim and CasADi.
+**1. Lines 27–28:** Specify the paths to PredSim and CasADi.
 
 ```matlab
 PredSim_path = 'C:\GBW_MyPrograms\PredSim'; % path to PredSim
 casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to CasADi
 ```
 
-2. **Lines 40, 42, and 47:** Specify the muscle, side, and corresponding clinical exam angle.
+**2. Lines 40, 42 and 47:** Specify the muscle, side, and corresponding clinical exam angle.
 
 ```matlab
-muscle_toScale = 'gastrocnemii'; % Options: 'soleus', 'gastrocnemii', 'hamstrings', 'iliopsoas'
+muscle_toScale = 'gastroc'; % Options: 'soleus', 'gastroc', 'hamstrings', 'iliopsoas'
 
 side = 'l'; % side evaluated in clinical exam
 
 % Step 3. scaling muscle fiber length of the hamstrings
-if ismember(muscle_toScale, {'soleus','gastrocnemii','hamstrings'})
+if ismember(muscle_toScale, {'soleus','gastroc','hamstrings'})
 
     CE_angle = 20;
 
 end
 ```
 
-3. **Line 151:** Define the range of scaling factors to be explored.
+**3. Line 151:** Define the range of scaling factors to be explored.
 
 ```matlab
 %% -------    start edit  -------
@@ -214,12 +214,13 @@ Select the scaling factor at which the CE angle intersects the **−15 Nm torque
 
 ### Step 4. Scaling muscle fiber length of iliopsoas
 
-**Summary: **
+**Summary:**
+
 Iliopsoas contractures cannot be directly estimated from the popliteal angle, as hip position affects hamstring length. Therefore, we first estimate the difference in hip angle between the unilateral and bilateral popliteal angle tests, using the hamstring moment-arm ratio. This hip angle difference is then used to estimate the iliopsoas contracture.
 
 #### Background
 
-Iliopsoas contractures cannot be directly estimated from the popliteal angle because hip position influences hamstring length. The popliteal angle is assessed twice: unilaterally and bilaterally.
+The popliteal angle is assessed twice: unilaterally and bilaterally.
 
 - **Unilateral test:** the patient lies supine, the evaluated limb is flexed at the hip with the knee flexed, while the contralateral limb remains extended on the table. The knee of the evaluated limb is then moved into maximum extension, and the deficit until full extension is noted (as a negative angle). If the contralateral hip flexors (iliopsoas) are tight, the extended contralateral leg pulls the pelvis into anterior tilt, increasing lumbar lordosis. This shortens the hamstrings, because part of the measured deficit is actually caused by pelvic tilt rather than true hamstring length.
 - **Bilateral test:** the same test is repeated with the contralateral limb held in flexion, which flattens the lumbar lordosis and keeps the pelvis in a neutral position. The bilateral popliteal angle therefore represents the *real* hamstring length, undistorted by pelvic tilt.
@@ -263,12 +264,51 @@ The contracture of the contralateral iliopsoas is determined by finding the scal
 % ----- end edit -----
 ```
 
+There are three sections to edit:
+
+**1. Lines 27–28:** Specify the paths to PredSim and CasADi.
+
+```matlab
+PredSim_path = 'C:\GBW_MyPrograms\PredSim'; % path to PredSim
+casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to CasADi
+```
+
+**2. Lines 40, 42 and 52–53:** Specify the muscle, side, and the unilateral and bilateral clinical exam angles.
+
+```matlab
+muscle_toScale = 'iliopsoas'; % Options: 'soleus', 'gastroc', 'hamstrings', 'iliopsoas'
+
+side = 'l'; % side evaluated in clinical exam
+
+% Step 4. Scaling optimal muscle fiber length of iliopsoas
+elseif strcmp(muscle_toScale, 'iliopsoas')
+
+    CE_angle_uni = -80;
+    CE_angle_bi  = -70;
+
+end
+```
+
+> **⚠️ Note:** For `iliopsoas`, fill in **both** `CE_angle_uni` and `CE_angle_bi` — the unilateral and bilateral popliteal angles from the Clinical Exam (see Background above). Unlike `soleus`, `gastroc`, and `hamstrings`, a single `CE_angle` is not used here.
+
+**3. Line 151:** Define the range of scaling factors to be explored.
+
+```matlab
+%% -------    start edit  -------
+
+% Define scaling factor range
+% (sf_lMo = flip([start range : step size : end range]));
+
+sf_lMo = flip([0.7:0.1:1]);
+
+%% -------    stop edit   -------
+```
+
 * Use the **unilateral and bilateral popliteal angles of the right leg** to calculate the scaling factor for the **left iliopsoas**.
 * If applicable, repeat the procedure for the other side.
 * Add the computed scaling factors to `S.subject.scale_MT_params`.
 
 > **⚠️ Note:** A difference between the unilateral and bilateral popliteal angles indicates a contracture in the **contralateral iliopsoas**. For example, use the unilateral and bilateral popliteal angles of the **right leg** to calculate the scaling factor of the **left iliopsoas**.
-
 ---
 
 ### Step 5. Adjusting coordinate limit torques
