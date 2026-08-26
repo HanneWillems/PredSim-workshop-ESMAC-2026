@@ -202,7 +202,7 @@ sf_lMo = flip([0.7:0.1:1]);
 **Example:**
 Select the scaling factor at which the CE angle intersects the **−15 Nm torque** applied by the experimenter, red line in figure. A scaling factor of 60% is entered as `0.6` in the code.
 
-<img width="963" height="538" alt="example_hamstrings_scaling" src="https://github.com/user-attachments/assets/72040245-ecc4-4f6a-bf4d-b6560126a415" />
+<img alt="example_hamstrings_scaling" src="https://github.com/user-attachments/assets/72040245-ecc4-4f6a-bf4d-b6560126a415" width="600" />
 
 > **⚠️ Note:** A pop-up will appear to remind you that contractures in distal muscles can also affect joint posture during the clinical exam and, consequently, the measured popliteal angle. Therefore, the `CE_angle` should represent the posture resulting from the (possibly scaled) muscle-tendon lengths of all relevant muscles in the model.
 
@@ -279,7 +279,8 @@ casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to CasADi
 muscle_toScale = 'iliopsoas'; % Options: 'soleus', 'gastroc', 'hamstrings', 'iliopsoas'
 
 side = 'l'; % side evaluated in clinical exam
-
+```
+```matlab
 % Step 4. Scaling optimal muscle fiber length of iliopsoas
 elseif strcmp(muscle_toScale, 'iliopsoas')
 
