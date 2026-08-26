@@ -37,7 +37,7 @@ To this end, you will create a settings file that can later be used in PredSim. 
 The strength is evaluated for the full active range of motion by manual muscle testing (MMT). You will scale the maximal (active) muscle force based on the strength scores in the Clinical Exam. A lower MMT score refers to decreased strength. To represent muscle weakness in the model, maximal active fiber force of the muscles has to be scaled. 
 
 **Requirements:** Matlab.   
-**Data:** MMT scores in the clinical exam (CE), provided in the folder [Clinical Exam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.       
+**Data:** MMT scores in the clinical exam (CE), provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.       
 **Additional information:** The protocol of the clinical exam, and normative values for all tests are provided in [Documentation](../Documentation)   
 
 ### Step 1. Open [update_settings_pre.m](Code/update_settings_pre.m) in your Code folder (e.g. PredSim-workshop-ESMAC-2026\S2 CP\Code)
@@ -112,9 +112,9 @@ During the standardized clinical examination, goniometry is used to measure the 
 The model is positioned according to the clinical pROM assessment, after which optimal fiber length is adjusted until the simulated passive joint torque matches the clinically applied resistance. The optimal fiber length will then be adjusted so that the modeled net joint torque reaches 15 Nm at the end of the range of motion, matching the clinician’s resistance.
 
 **Requirements:** Matlab, OpenSim, CasADi.   
-**Data:** pROM scores, provided in the folder [Clinical Exam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
+**Data:** pROM scores, provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)      
-**Code:**  [main_scale_lMo.m](Code/main_scale_lMo.m) and [main_scale_lMo.m](Code/main_scale_lMo.m) provided in the folder [Code](Code).  
+**Code:**  [main_scale_lMo.m](Code/main_scale_lMo.m)provided in the folder [Code](Code).  
 
 >💡 Optional: Now that you have updated the muscle strength (S.settings.muscle_strength), you can already start a simulation with these settings (see III. Running PredSim with personalized settings). Since a simulation can take several minutes to run, you can let it run in the background while you continue with I.2 Personalizing passive range of motion (pROM). Remember to re-run the simulation later once you have also added the pROM settings.
 
@@ -316,7 +316,7 @@ This patient underwent a bilateral distal femur extension osteotomy, a surgical 
 In the model, this surgical correction shifts the knee geometry, this means that passive extension torques will begin to act at a more extended (= less negative) knee angle.
 
 **Requirements:** Matlab.   
-**Data:** pROM scores in the clinical exam (CE), provided in the [Clinical Exam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
+**Data:** pROM scores in the clinical exam (CE), provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)   
 
 ### Step 6a. Copy the pre-intervention settings
