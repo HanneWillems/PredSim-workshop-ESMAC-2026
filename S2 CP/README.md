@@ -70,7 +70,7 @@ The setting already includes the scaling factors for muscles acting on joints ot
 **To do:**
 
 * Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
-> **Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
+> **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 * Find the strength scores for the **right and left knee flexors** and **right and left knee extensors**.
 * Use the reference table below to convert each CE strength score into a scaling factor.
 * Edit the four knee-related scaling factors in `S.settings.muscle_strength`:
@@ -121,7 +121,7 @@ The model is positioned according to the clinical pROM assessment, after which o
 In this step, you will scale the optimal muscle fiber length of the hamstrings. Scaling the optimal muscle fiber length modifies the muscle force–length relationship. As shown in the "Scaling passive muscle stiffness" panel of the figure above, reducing optimal fiber length increases passive forces at the same muscle-tendon length, representing a contracted muscle.
 
 * Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
-> **Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
+> **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 * Compare the passive range of motion scores with the normative values below.
 
 | Clinical exam measure | Normative value |
@@ -331,7 +331,7 @@ The post-intervention model starts from the personalized pre-intervention model.
 ### Step 2. Evaluate the post-intervention clinical exam
 
 * Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
-> **Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
+> **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 
 **To do:**
 
