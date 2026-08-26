@@ -114,7 +114,9 @@ The model is positioned according to the clinical pROM assessment, after which o
 **Requirements:** Matlab, OpenSim, CasADi.   
 **Data:** pROM scores, provided in the folder [Clinical Exam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)      
-**Code:**  [main_scale_lMo.m](Code/main_scale_lMo.m) and [main_scale_lMo.m](Code/main_scale_lMo.m) provided in the folder [Code](Code).    
+**Code:**  [main_scale_lMo.m](Code/main_scale_lMo.m) and [main_scale_lMo.m](Code/main_scale_lMo.m) provided in the folder [Code](Code).  
+
+>💡 Optional: Now that you have updated the muscle strength (S.settings.muscle_strength), you can already start a simulation with these settings (see III. Running PredSim with personalized settings). Since a simulation can take several minutes to run, you can let it run in the background while you continue with I.2 Personalizing passive range of motion (pROM). Remember to re-run the simulation later once you have also added the pROM settings.
 
 ### Step 3. Scaling muscle fiber length of the hamstrings
 
