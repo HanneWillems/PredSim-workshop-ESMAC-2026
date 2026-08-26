@@ -26,7 +26,7 @@ In this step, you will personalize the maximal active muscle force of the muscle
 ### **Background:**   
 In this part you will personalize a model for a child with CP based on a clinical exam. The clinical exam is part of children's usual clinical care and is a comprehensive assessment of musculoskeletal functioning. The personalization process modifies different muscle-tendon properties to represent patient-specific impairments. These modifications affect the active and passive force–length relationships of the muscles, as illustrated below.
 
-<img src="https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png" width="800">
+<img src="https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png" width="1200">
 
 In example 1. you will use (I.1) manual muscle testing strength scores to personalize optimal muscle force (FMo) and (I.2) passive Range of Motion (ROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
 
@@ -332,6 +332,7 @@ S.subject.set_limit_torque_coefficients_selected_dofs =...
          {'knee_angle_r','knee_angle_l'},[-6.09,33.94,11.03,-11.33],[-2.4,0.13],... %% to edit
          {'ankle_angle_r','ankle_angle_l'},[-2.03,38.11,0.18,-12.12],[-0.4363,0.6109]};
 ```
+The plantar flexion limits have already been adjusted. The onset of the coordinate limit torques is set to **25° plantar flexion** when the score is `discrete`, or **0°** when the score is `severe`.
 
 For the knee, the relevant line is:
 
@@ -340,16 +341,14 @@ For the knee, the relevant line is:
 ```
 
 * Shift the extension limit so that it represents the observed knee extension deficit from the Clinical Exam.
-* For example, if the clinical exam shows a **20° knee extension deficit**, shift the extension limit from 0° to approximately **−20° (−0.35 rad)**, depending on the coordinate convention used.
-* The plantar flexion limits have already been adjusted.
-* The onset of the coordinate limit torques is set to **25° plantar flexion** when the score is `discrete`, or **0°** when the score is `severe`.
+> **For example,** if the clinical exam shows a **20° knee extension deficit**, shift the extension limit from 7.44° (0.13 rad) to approximately **−20° (−0.35 rad)**, depending on the coordinate convention used.
 
 > **⚠️ Note:** All joint limit values below are reported in **radians**, not degrees.
-
 **Conversion between degrees and radians:**
 
-* `angle (rad) = angle (°) × π / 180`
-* `angle (°) = angle (rad) × 180 / π`
+`angle (rad) = angle (°) × π / 180`
+
+`angle (°) = angle (rad) × 180 / π`
 
 **Example:**
 
