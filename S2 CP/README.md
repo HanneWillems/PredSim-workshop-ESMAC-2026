@@ -20,27 +20,8 @@ In this tutorial you will (I.) personalize for a child with Cerebral Palsy(CP). 
 If you have not already done so, you need to run a reference simulation of healthy walking with the 2D model. Please follow the steps explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025?tab=readme-ov-file#running-a-reference-2d-simulation-with-predsim).
 
 # I. Personalizing the musculoskeletal model
-### Overview
-
+### Summary
 In this step, you will personalize the maximal active muscle force of the muscles based on the strength scores obtained during the Clinical Exam (CE).
-
-### Background
-
-Muscle strength is evaluated over the full active range of motion using manual muscle testing (MMT). A lower MMT score indicates decreased muscle strength. To represent this weakness in the model, the maximal active muscle force is scaled accordingly.
-
-### Requirements
-
-**MATLAB**
-
-### Data
-
-MMT scores from the Clinical Exam (CE), provided in the [Clinical Exam](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S2%20CP/ClinicalExam) folder. **T0** refers to pre-intervention and **T1** to post-intervention.
-
-### Additional information
-
-The clinical exam protocol and normative values for all tests are available in the [Documentation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/Documentation).
-
-
 
 ### **Background:**   
 In this part you will personalize a model for a child with CP based on a clinical exam. The clinical exam is part of children's usual clinical care and is a comprehensive assessment of musculoskeletal functioning. The personalization process modifies different muscle-tendon properties to represent patient-specific impairments. These modifications affect the active and passive force–length relationships of the muscles, as illustrated below.
@@ -88,7 +69,8 @@ The setting already includes the scaling factors for muscles acting on joints ot
 
 **To do:**
 
-* Open the **Clinical Exam Excel file** provided in the `Clinical Exam` folder.
+* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
+> **Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 * Find the strength scores for the **right and left knee flexors** and **right and left knee extensors**.
 * Use the reference table below to convert each CE strength score into a scaling factor.
 * Edit the four knee-related scaling factors in `S.settings.muscle_strength`:
@@ -138,7 +120,9 @@ The model is positioned according to the clinical pROM assessment, after which o
 
 In this step, you will scale the optimal muscle fiber length of the hamstrings. Scaling the optimal muscle fiber length modifies the muscle force–length relationship. As shown in the "Scaling passive muscle stiffness" panel of the figure above, reducing optimal fiber length increases passive forces at the same muscle-tendon length, representing a contracted muscle.
 
-Open the **Clinical Exam Excel file** and compare the passive range of motion scores with the normative values below.
+* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
+> **Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
+* Compare the passive range of motion scores with the normative values below.
 
 | Clinical exam measure | Normative value |
 | --------------------- | --------------: |
@@ -146,12 +130,12 @@ Open the **Clinical Exam Excel file** and compare the passive range of motion sc
 | `pROM_Ankledf0`       |      10° to 20° |
 | `pROM_Ankledf90`      |      20° to 30° |
 
-The scores indicate no contracture of the soleus or gastrocnemii. Therefore, their optimal fiber length scaling factors remain **1**. However, both the left and right popliteal angles deviate from the normative range, indicating a hamstring contracture on both sides.
+The scores indicate no contracture of the soleus or gastrocs. Therefore, their optimal fiber length scaling factors remain **1**. However, both the left and right popliteal angles deviate from the normative range, indicating a hamstring contracture on both sides.
 
 #### To do:
 
 * Add the following `S.subject.scale_MT_params` setting to your `update_settings_pre` file.
-* Keep the scaling factors at **1** for the soleus, gastrocnemii, and iliopsoas for now.
+* Keep the scaling factors at **1** for the soleus, gastrocs, and iliopsoas for now.
 * The hamstring scaling factors will be determined using `main_scale_lMo.m` below.
 
 ```matlab
@@ -214,7 +198,7 @@ sf_lMo = flip([0.7:0.1:1]);
 ```
 
 **Example:**
-Select the scaling factor at which the CE angle intersects the **−15 Nm torque** applied by the experimenter. A scaling factor of 60% is entered as `0.6` in the code.
+Select the scaling factor at which the CE angle intersects the **−15 Nm torque** applied by the experimenter, red line in figure. A scaling factor of 60% is entered as `0.6` in the code.
 
 ![Example of hamstring scaling](https://github.com/user-attachments/assets/26d71a1e-9c93-4be5-a91f-97c1b950baa6)
 
@@ -346,8 +330,7 @@ The post-intervention model starts from the personalized pre-intervention model.
 
 ### Step 2. Evaluate the post-intervention clinical exam
 
-Open the post-intervention Clinical Exam file [`CE_CP_T1`](ClinicalExam) in your **ClinicalExam** folder.
-
+* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
 > **Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 
 **To do:**
@@ -355,9 +338,6 @@ Open the post-intervention Clinical Exam file [`CE_CP_T1`](ClinicalExam) in your
 * Evaluate the **knee extension deficit** in the post-intervention Clinical Exam.
 * Compare it with the knee extension deficit used in your pre-intervention model.
 * Update the corresponding knee extension limit in `update_settings_post.m` to reflect the **post-intervention** clinical exam.
-
-
-Evaluate the knee extension pROM post surgery in CE_CP_T1 and change S.subject.set_limit_torque_coefficients_selected_dofs = ...{'knee_angle_r','knee_angle_l'}, accordingly, as you did in step 5.
 
 # III. Running PredSim with personalized settings
 ### Step 1. Open `main.m`
