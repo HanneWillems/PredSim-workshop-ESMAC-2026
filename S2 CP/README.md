@@ -229,12 +229,7 @@ The difference between the unilateral and bilateral popliteal angles is called t
 
 <img width="4287" height="1675" alt="Popliteal angle" src="https://github.com/user-attachments/assets/0e0eddc4-4619-4c63-93bf-7fd08452ff0c" />
 
-**Normative values:**
-
-| Test        | Normative value |
-| ----------- | ---------------: |
-| Unilateral  |     −35° to −20° |
-| Bilateral   |      −15° to 0°  |
+**Normative value:** no shift
 
 The increase in hip flexion angle is determined from the difference between the bilateral and unilateral popliteal angles and the ratio of the average moment arms of the bi-articular hamstrings around the knee and hip:
 
