@@ -202,7 +202,7 @@ sf_lMo = flip([0.7:0.1:1]);
 **Example:**
 Select the scaling factor at which the CE angle intersects the **−15 Nm torque** applied by the experimenter, red line in figure. A scaling factor of 60% is entered as `0.6` in the code.
 
-![Example of hamstring scaling](https://github.com/user-attachments/assets/26d71a1e-9c93-4be5-a91f-97c1b950baa6)
+<img width="963" height="538" alt="example_hamstrings_scaling" src="https://github.com/user-attachments/assets/72040245-ecc4-4f6a-bf4d-b6560126a415" />
 
 > **⚠️ Note:** A pop-up will appear to remind you that contractures in distal muscles can also affect joint posture during the clinical exam and, consequently, the measured popliteal angle. Therefore, the `CE_angle` should represent the posture resulting from the (possibly scaled) muscle-tendon lengths of all relevant muscles in the model.
 
@@ -214,11 +214,26 @@ Select the scaling factor at which the CE angle intersects the **−15 Nm torque
 
 ### Step 4. Scaling muscle fiber length of iliopsoas
 
+**Summary: **
+Iliopsoas contractures cannot be directly estimated from the popliteal angle, as hip position affects hamstring length. Therefore, we first estimate the difference in hip angle between the unilateral and bilateral popliteal angle tests, using the hamstring moment-arm ratio. This hip angle difference is then used to estimate the iliopsoas contracture.
+
 #### Background
 
-Iliopsoas contractures cannot be directly estimated from the popliteal angle because hip position influences hamstring length.
+Iliopsoas contractures cannot be directly estimated from the popliteal angle because hip position influences hamstring length. The popliteal angle is assessed twice: unilaterally and bilaterally.
 
-Iliopsoas contractures result in different unilateral (`θ_uni`) and bilateral (`θ_bi`) popliteal angles. When assessing the unilateral popliteal angle, the contralateral leg is lying down. An iliopsoas contracture causes flexion of the contralateral hip. This is compensated for by anterior pelvic tilt, which increases hip flexion of the evaluated leg. Increased hip flexion lengthens the bi-articular hamstrings and therefore increases the knee extension deficit.
+- **Unilateral test:** the patient lies supine, the evaluated limb is flexed at the hip with the knee flexed, while the contralateral limb remains extended on the table. The knee of the evaluated limb is then moved into maximum extension, and the deficit until full extension is noted (as a negative angle). If the contralateral hip flexors (iliopsoas) are tight, the extended contralateral leg pulls the pelvis into anterior tilt, increasing lumbar lordosis. This shortens the hamstrings, because part of the measured deficit is actually caused by pelvic tilt rather than true hamstring length.
+- **Bilateral test:** the same test is repeated with the contralateral limb held in flexion, which flattens the lumbar lordosis and keeps the pelvis in a neutral position. The bilateral popliteal angle therefore represents the *real* hamstring length, undistorted by pelvic tilt.
+
+The difference between the unilateral and bilateral popliteal angles is called the **shift**, and indicates the contribution of a hip flexor (iliopsoas) contracture.
+
+<img width="4287" height="1675" alt="Popliteal angle" src="https://github.com/user-attachments/assets/0e0eddc4-4619-4c63-93bf-7fd08452ff0c" />
+
+**Normative values:**
+
+| Test        | Normative value |
+| ----------- | ---------------: |
+| Unilateral  |     −35° to −20° |
+| Bilateral   |      −15° to 0°  |
 
 The increase in hip flexion angle is determined from the difference between the bilateral and unilateral popliteal angles and the ratio of the average moment arms of the bi-articular hamstrings around the knee and hip:
 
