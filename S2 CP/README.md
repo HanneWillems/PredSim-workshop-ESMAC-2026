@@ -317,7 +317,7 @@ In the model, this surgical correction shifts the knee geometry, this means that
 **Data:** pROM scores in the clinical exam (CE), provided in the [Clinical Exam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)   
 
-### Step 1. Copy the pre-intervention settings
+### Step 6a. Copy the pre-intervention settings
 
 Open [`update_settings_post.m`](Code/update_settings_post.m) in your **Code** folder.
 
@@ -328,7 +328,7 @@ The post-intervention model starts from the personalized pre-intervention model.
 * Paste them into `update_settings_post.m`.
 * Keep these settings unchanged; only the surgical modifications will be updated in the following steps.
 
-### Step 2. Evaluate the post-intervention clinical exam
+### Step 6b. Evaluate the post-intervention clinical exam
 
 * Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
 > **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
