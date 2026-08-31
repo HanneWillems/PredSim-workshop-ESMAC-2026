@@ -1,7 +1,7 @@
 function [Qs,Qdots,idx_joint,coord_name] = get_CE_position(CE_angle,muscle_toScale,side,coordinates)
 % get_CE_position
 %   Generates joint position and velocity vectors corresponding to a
-%   clinical exam (CE) posture for soleus, gastrocnemii or hamstrings
+%   clinical exam (CE) posture for soleus, gastroc or hamstrings
 %   length assessment. The function selects the relevant joint coordinate
 %   (ankle or knee) on the specified side, builds a small range of motion
 %   (±20°) around the clinical exam angle, and optionally fixes another
@@ -10,7 +10,7 @@ function [Qs,Qdots,idx_joint,coord_name] = get_CE_position(CE_angle,muscle_toSca
 %
 %   For:
 %   - soleus       : varies ankle_angle_side, fixes knee_angle_side at -90°
-%   - gastrocnemii : varies ankle_angle_side, no additional joint change
+%   - gastroc : varies ankle_angle_side, no additional joint change
 %   - hamstrings   : varies knee_angle_side, fixes hip_flexion_side at 90°
 %
 % INPUT:
@@ -21,7 +21,7 @@ function [Qs,Qdots,idx_joint,coord_name] = get_CE_position(CE_angle,muscle_toSca
 %   - muscle_toScale -
 %   * string/char specifying which muscle group is being scaled:
 %       > 'soleus'
-%       > 'gastrocnemii'
+%       > 'gastroc'
 %       > 'hamstrings'
 %     This determines which joint is varied and which, if any, is held at
 %     a fixed posture.
@@ -64,7 +64,7 @@ if strcmp(muscle_toScale,'soleus')
             model_toDiffPos = 1;
             model_changeAngle = ['knee_angle_',side];
             model_changeDeg = -90;
-elseif strcmp(muscle_toScale,'gastrocnemii')
+elseif strcmp(muscle_toScale,'gastroc')
             coord_name = ['ankle_angle'];
             model_toDiffPos = 0;
 elseif strcmp(muscle_toScale,'hamstrings')

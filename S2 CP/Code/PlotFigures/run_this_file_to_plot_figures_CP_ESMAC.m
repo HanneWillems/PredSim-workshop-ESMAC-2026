@@ -18,8 +18,8 @@ results_folder = 'C:\GBW_MyPrograms\PredSimResults';
 
 results_path = struct( ...
     'reference',   fullfile(results_folder,'gait1018','gait1018_v28.mat'), ...
-    'pre_surgery', fullfile(results_folder,'gait1018','gait1018_v26.mat')); %
- 'post_surgery',fullfile(results_folder,'gait1018','gait1018_v27.mat'));
+    'pre_surgery', fullfile(results_folder,'gait1018','gait1018_v26.mat'), ...
+    'post_surgery',fullfile(results_folder,'gait1018','gait1018_v27.mat'));
 
 % enable/disable the visualisation of experimental kinematics
 experimental_kinematics = 1; % options: 1 (yes) 0 (no)
@@ -36,7 +36,7 @@ figure_savename = 'ComparisonSimulations_CP_SMALLL';
 
 % -------    stop edit  -------
 
-[pathRepo,~,~] = fileparts(mfilename('fullpath'));
+[pathRepo,~,~] = fileparts(mfilename('fullpath')); addpath(genpath(pathRepo));
 IKResultsFolder = fullfile(fileparts(pathRepo), 'IK');
 %% Settings for each figure to be made
 % "figure_settings" is a cell array where each cell contains a struct with
@@ -155,6 +155,6 @@ if experimental_kinematics
     end
     if isfield(results_path, 'post_surgery') 
         idx_post = find(strcmp(result_fieldnames,'post_surgery'));
-        plot_post_surgery(result_paths{idx_post},IKResultsFolder)
+        plot_post_surgery_v2(result_paths{idx_post},IKResultsFolder)
     end
 end

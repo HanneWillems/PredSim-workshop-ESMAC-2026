@@ -1,32 +1,22 @@
-function calculate_sf_lMo_iliopsoas(sf_lMo,muscle_toScale,side,model_info,sf_lMo_prev,Qs,Qdots,coordinates,f_lMT_vMT_dM,idx_joint,coord_name,CE_angle)
-% calculate_sf_lMo_iliopsoas
-%   Evaluates the effect of different optimal fibre length scaling factors
-%   (lMo) for iliopsoas (and associated muscles) on the passive
-%   torque–angle relationship around a selected joint during a clinical
-%   exam–like posture. For each scaling factor in sf_lMo, the function:
-%   (1) updates muscle–tendon parameters via scale_MTparameters,
-%   (2) solves Hill-type muscle–tendon force equilibrium over a range of
-%   joint angles using fsolve and getHilldiffFun_usingCasadiFunction,
-%   (3) computes the resulting muscle moments and passive joint torque,
-%   and (4) plots the total passive torque versus joint angle. The figure
-%   can be used to visually select a scaling factor that best matches the
-%   clinically observed passive torque at the clinical exam angle.
+function [MA] = calculate_MA_iliopsoas(side,model_info,sf_lMo_prev,coordinates,f_lMT_vMT_dM,CE_angle)
+% calculate_MA_iliopsoas
+%   Computes muscle–tendon moment arms (MA) for a hamstrings-based clinical
+%   exam posture, to be used in the calibration of iliopsoas parameters.
+%   The function:
+%   (1) builds a quasi-static clinical exam configuration using
+%       get_CE_position with muscle_toScale = 'hamstrings',
+%   (2) applies previously chosen lMo scaling factors for soleus,
+%       gastroc and hamstrings on the selected side,
+%   (3) updates muscle–tendon parameters via scale_MTparameters, and
+%   (4) evaluates the CasADi function f_lMT_vMT_dM to obtain muscle–tendon
+%       lengths, velocities and moment arms over the defined range of
+%       joint angles.
+%   The computed moment arms are returned for further use (e.g. in
+%   passive torque calculations or iliopsoas calibration routines).
 %
 % INPUT:
-%   - sf_lMo -
-%   * vector with candidate scaling factors for the iliopsoas optimal
-%     fibre length (expressed as multiplicative factors, e.g. 0.9–1.1)
-%
-%   - muscle_toScale -
-%   * string/char specifying which muscle group is being scaled; expected
-%     to include 'iliopsoas' (other options are handled for completeness):
-%       > 'soleus'
-%       > 'gastrocnemii'
-%       > 'hamstrings'
-%       > 'iliopsoas'
-%
 %   - side -
-%   * string/char indicating the side of the muscle to scale:
+%   * string/char indicating the side of interest:
 %       > 'l' : left
 %       > 'r' : right
 %
@@ -36,88 +26,57 @@ function calculate_sf_lMo_iliopsoas(sf_lMo,muscle_toScale,side,model_info,sf_lMo
 %     lTs, alphao, vMmax, specific_tension, tendon_stiff, etc.
 %
 %   - sf_lMo_prev -
-%   * struct with previously defined lMo scaling factors for other
-%     muscles and/or sides, organised as:
+%   * struct with previously defined lMo scaling factors for distal and
+%     hamstring muscles on the selected side, organised as:
 %       sf_lMo_prev.(side).soleus
-%       sf_lMo_prev.(side).gastrocnemii
+%       sf_lMo_prev.(side).gastroc
 %       sf_lMo_prev.(side).hamstrings
-%       sf_lMo_prev.(other_side).hamstrings
-%     These are used to keep distal and contralateral muscles at their
-%     already-chosen scaling while varying iliopsoas.
-%
-%   - Qs -
-%   * matrix (n × nCoordinates) of joint angles (in radians) over the
-%     range of motion used to evaluate passive torque; typically generated
-%     by a get_CE_position* function
-%
-%   - Qdots -
-%   * matrix (n × nCoordinates) of joint angular velocities; usually zero
-%     for quasi-static passive analyses
+%     These are applied before computing moment arms.
 %
 %   - coordinates -
-%   * cell array of coordinate names from the model, consistent with the
-%     columns expected by f_lMT_vMT_dM
+%   * cell array of coordinate names from the model; passed to
+%     get_CE_position and used by f_lMT_vMT_dM
 %
 %   - f_lMT_vMT_dM -
-%   * CasADi function handle that returns muscle–tendon lengths,
-%     velocities and moment arms:
+%   * CasADi function handle returning muscle–tendon lengths, velocities
+%     and moment arms:
 %       [lMT, vMT, MA] = f_lMT_vMT_dM(Qs(i,:), Qdots(i,:))
 %
-%   - idx_joint -
-%   * index of the joint coordinate in 'coordinates' about which the
-%     passive torque–angle relationship is evaluated
-%
-%   - coord_name -
-%   * base name of the joint coordinate (e.g. 'hip_flexion'); used for
-%     passing to getLimitTorque and for labeling the plot
-%
 %   - CE_angle -
-%   * clinical exam angle (in degrees) at which the passive torque is
-%     typically compared; used only for plotting a vertical reference line
+%   * clinical exam knee angle (in degrees) around which a ±20° range of
+%     motion is constructed by get_CE_position for the hamstrings posture
 %
 % OUTPUT:
-%   - (none)
-%   * The function produces a figure with curves of total passive joint
-%     torque versus joint angle for each scaling factor in sf_lMo, and
-%     adds a legend indicating the percentage lMo scaling.
-
+%   - MA -
+%   * matrix of muscle–tendon moment arms (size: NMuscle × NCoordinates)
+%     evaluated over the clinical exam range of motion; as returned by
+%     f_lMT_vMT_dM (last evaluated step)
 % Original authors: Bram Van Den Bosch, Ellis Van Can
 % Original date: September 13, 2024
 
 % Last edit by: Ellis Van Can
 % Last edit date: November 19, 2025
 % --------------------------------------------------------------------------
-
-
-% Loop that evaluates the scaling factors
 close all % close previous figs
+sf_lMo = 1;
 
-n = length(Qs);
 S.subject.St = 1;
-
-
-if strcmp(side,'r')
-    other_side = 'l';
-elseif strcmp(side,'l')
-    other_side = 'r';
-end
-coord_name_side = [coord_name,'_',other_side];
+muscle_toScale = 'hamstrings';
+[Qs,Qdots,idx_joint,coord_name] = get_CE_position(CE_angle,muscle_toScale,side,coordinates);
+n = length(Qs);
+coord_name_side = [coord_name,'_',side];
 
 for j = 1:length(sf_lMo)
     if strcmp(muscle_toScale,'soleus')
         scale.subject.scale_MT_params = {{['soleus_',side]},'lMo',sf_lMo_prev(j)};
-    elseif strcmp(muscle_toScale,'gastrocnemii')
+    elseif strcmp(muscle_toScale,'gastroc')
         scale.subject.scale_MT_params = {{['soleus_',side]},'lMo',sf_lMo_prev.(side).soleus,...
             {['gastroc_',side]},'lMo',sf_lMo_prev(j)};
     elseif strcmp(muscle_toScale,'hamstrings')
-        scale.subject.scale_MT_params = {{['gastroc_',side]},'lMo',sf_lMo_prev.(side).gastrocnemii,...
-            {['hamstrings_',side]},'lMo',sf_lMo(j)};
-    elseif strcmp(muscle_toScale,'iliopsoas')
         scale.subject.scale_MT_params = {{['soleus_',side]},'lMo',sf_lMo_prev.(side).soleus,...
-            {['gastroc_',side]},'lMo',sf_lMo_prev.(side).gastrocnemii,...
-            {['hamstrings_',side]},'lMo',sf_lMo_prev.(side).hamstrings,...
-            {['hamstrings_',other_side]},'lMo',sf_lMo_prev.(other_side).hamstrings,...
-            {['iliopsoas_',other_side]},'lMo',sf_lMo(j)};
+            {['gastroc_',side]},'lMo',sf_lMo_prev.(side).gastroc,...
+            {['hamstrings_',side]},'lMo',sf_lMo(j)};
+
     end
 
 
@@ -210,18 +169,20 @@ for j = 1:length(sf_lMo)
     M_tot = sum(M_muscle)+Tau_pass;
     
     % plot
-    
-    f1 = gcf;
-    figure(f1)
-    plot(Qs(:,idx_joint)*180/pi,M_tot,'DisplayName',['sf lMo at ' num2str(sf_lMo(j)*100) '%']); 
-    hold on;
+    % 
+    % f1 = gcf;
+    % 
+    % figure(f1)
+    % plot(Qs(:,idx_joint)*180/pi,M_tot,'DisplayName',['sf lMo at ' num2str(sf_lMo(j)*100) '%']); 
+    % hold on;
+
 end
 
-title(['passive torque-angle relationship ',strrep(muscle_toScale, '_', ' '),' ', other_side]);
-xline(CE_angle, 'HandleVisibility','off');
-yline(0, 'HandleVisibility','off');
-ylabel('Torque (Nm)')
-xlabel([strrep(coord_name_side, '_', ' '),' (°)'])
-ylim([-10 10])
-
-legend
+% title(['passive torque-angle relationship ',strrep(muscle_toScale, '_', ' '),' ', side]);
+% xline(CE_angle, 'HandleVisibility','off');
+% yline(-15, 'HandleVisibility','off');
+% ylabel('Torque (Nm)')
+% xlabel([strrep(coord_name_side, '_', ' '),' (°)'])
+% ylim([-20 0])
+% 
+% legend

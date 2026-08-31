@@ -2,11 +2,11 @@
 %
 % Scales the optimal muscle fiber length (lMo) of selected muscles:
 %   - soleus
-%   - gastrocnemii
+%   - gastroc
 %   - hamstrings
 %   - iliopsoas
 %
-% For soleus, gastrocnemii and hamstrings, the scaling factor is estimated
+% For soleus, gastroc and hamstrings, the scaling factor is estimated
 % by matching passive joint torque at the clinically measured pROM angle.
 %
 % For iliopsoas, the contralateral contracture is estimated from unilateral
@@ -18,13 +18,13 @@
 % Original date: November 19, 2025
 %
 % Last edit by: Ellis Van Can
-% Last edit date: Augustus 4, 2026
+% Last edit date: August 26, 2026
 clc; clear; close all
 
-%% 1. Add paths 
+%% 1. Specify local paths 
 
 % -------   start edit   -------
-PredSim_path = 'C:\GBW_MyPrograms\PredSim'; % path to PredSim
+PredSim_path = 'C:\GBW_MyPrograms\PredSimSHARED'; % path to PredSim
 casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to Casadi
 % -------   stop edit    -------
 
@@ -33,31 +33,31 @@ addpath(genpath(casadi_path));
 %% 2. Intialize settings
 subject_name = 'CP_ESMAC'; 
 
-osim_path = fullfile(PredSim_path,'Subjects','gait1018','gait1018.osim');
+% osim_path = fullfile(PredSim_path,'Subjects','gait1018','gait1018.osim');
+osim_path = fullfile(PredSim_path,'Subjects','gait1018_v1',['gait1018_v1.osim']);
 
 %% 3 Get the passive range of motion (pROM) scores from the clinical exam
 %% -------    start edit  -------
-muscle_toScale = 'gastrocnemii'; % Options: 'soleus', 'gastrocnemii','hamstrings','iliopsoas'
+muscle_toScale = 'iliopsoas'; % Options: 'soleus', 'gastroc','hamstrings','iliopsoas'
 
-side = 'l'; % side evaluated in clinical exam
-
+side = 'r'; % side evaluated in clinical exam
 
 % Step 3. scaling muscle fiber length of the hamstrings
-if ismember(muscle_toScale, {'soleus','gastrocnemii','hamstrings'})
+if ismember(muscle_toScale, {'soleus','gastroc','hamstrings'})
 
     CE_angle = 20;
 
 % Step 4. Scaling optimal muscle fiber length of iliopsoas
 elseif strcmp(muscle_toScale, 'iliopsoas')
 
-    CE_angle_uni = -80;
     CE_angle_bi  = -70;
+    CE_angle_uni = -80;
 
 end
 
 %% -------    stop edit   -------
     % NOTE:
-    % The length (and thus scaling) of other muscles (e.g. soleus, gastrocnemii)
+    % The length (and thus scaling) of other muscles (e.g. soleus, gastroc)
     % also affects the joint posture during the clinical exam.
     % Therefore, CE_angle should represent the posture that results from the
     % (possibly scaled) distal muscle-tendon lengths used in this model.
@@ -73,7 +73,7 @@ end
 [f_lMT_vMT_dM, model_info,coordinates] = generatePolynomials_ESMAC(osim_path, PredSim_path);
 
 % Step 3. scaling muscle fiber length of the hamstrings
-if ismember(muscle_toScale, {'soleus','gastrocnemii','hamstrings'})
+if ismember(muscle_toScale, {'soleus','gastroc','hamstrings'})
 
     [Qs,Qdots,idx_joint,coord_name] = ...
         get_CE_position(CE_angle,muscle_toScale,side,coordinates);
@@ -149,12 +149,12 @@ end
 % Define scaling factor range 
 % (sf_lMo = flip([start range : step size : end range]);
 
-sf_lMo = flip([0.7:0.1:1]); 
+sf_lMo = flip([0.7:0.01:0.8]); 
 
 %% -------    stop edit   -------
 
 % Step 3. scaling muscle fiber length of the hamstrings
-if ismember(muscle_toScale, {'soleus','gastrocnemii','hamstrings'})
+if ismember(muscle_toScale, {'soleus','gastroc','hamstrings'})
 
 calculate_sf_lMo(sf_lMo, muscle_toScale, side, model_info, sf_lMo_prev,...
     Qs, Qdots, coordinates, f_lMT_vMT_dM, idx_joint, coord_name, CE_angle)

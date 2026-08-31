@@ -3,15 +3,15 @@ function [sf_lMo] = get_sf_lMo(muscle_toScale,side,sf_lMo)
 %   muscles that influence the clinical exam posture of the muscle
 %   currently being scaled. Depending on the selected muscle and side,
 %   this function opens an input dialog to enter or adjust scaling factors
-%   for soleus, gastrocnemii and/or hamstrings, using previously stored
+%   for soleus, gastroc and/or hamstrings, using previously stored
 %   values as defaults when available.
 %
 % INPUT:
 %   - muscle_toScale -
 %   * string/char specifying the muscle currently being scaled
-%     > 'gastrocnemii' : asks for soleus scaling on selected side
-%     > 'hamstrings'   : asks for soleus and gastrocnemii on selected side
-%     > 'iliopsoas'    : asks for soleus, gastrocnemii and hamstrings on
+%     > 'gastroc' : asks for soleus scaling on selected side
+%     > 'hamstrings'   : asks for soleus and gastroc on selected side
+%     > 'iliopsoas'    : asks for soleus, gastroc and hamstrings on
 %                        selected side, and hamstrings on contralateral side
 %
 %   - side -
@@ -44,7 +44,7 @@ elseif strcmp(side,'l')
 end
 sf_lMo.(other_side) = {};
 
-if strcmp(muscle_toScale, 'gastrocnemii')
+if strcmp(muscle_toScale, 'gastroc')
     prompt = { ...
     'NOTE: If these values have not been scaled , leave them at 1.',...
     ['Enter scaling factor for soleus ',side ' :']};
@@ -65,7 +65,7 @@ elseif strcmp(muscle_toScale, 'hamstrings')
         prompt = { ...
     'NOTE: If these values have not been scaled , leave them at 1.',...
     ['Enter scaling factor for soleus ',side ' :'],...
-    ['Enter scaling factor for gastrocnemii ',side ' :']};
+    ['Enter scaling factor for gastroc ',side ' :']};
     dlgtitle = 'Scaling factors for distal muscles';
     dims =  [0 70; 1 70; 1 70];
 
@@ -75,23 +75,23 @@ elseif strcmp(muscle_toScale, 'hamstrings')
             default_soleus = '1';
         end
 
-        if isfield(sf_lMo.(side), 'gastrocnemii') && ~isempty(sf_lMo.(side).gastrocnemii)
-            default_gastrocnemii = num2str(sf_lMo.(side).gastrocnemii);
+        if isfield(sf_lMo.(side), 'gastroc') && ~isempty(sf_lMo.(side).gastroc)
+            default_gastroc = num2str(sf_lMo.(side).gastroc);
         else
-            default_gastrocnemii = '1';
+            default_gastroc = '1';
         end
 
-    definput = {'', default_soleus, default_gastrocnemii}; 
+    definput = {'', default_soleus, default_gastroc}; 
 
     inputs = str2double(inputdlg(prompt, dlgtitle, dims, definput));
     sf_lMo.(side).soleus = inputs(2);
-    sf_lMo.(side).gastrocnemii = inputs(3);
+    sf_lMo.(side).gastroc = inputs(3);
 elseif  strcmp(muscle_toScale, 'iliopsoas')
 
         prompt = { ...
             'NOTE: If these values have not been scaled yet, leave them at 1.',...
             ['Enter scaling factor for soleus ',side ' :'],...
-            ['Enter scaling factor for gastrocnemii ',side ' :'],...
+            ['Enter scaling factor for gastroc ',side ' :'],...
             ['Enter scaling factor for hamstrings ',side ' :'],...
             ['Enter scaling factor for hamstrings ',other_side ' :']};
         dlgtitle = 'scaling factors other muscles';
@@ -103,10 +103,10 @@ elseif  strcmp(muscle_toScale, 'iliopsoas')
             default_soleus = '1';
         end
 
-        if isfield(sf_lMo.(side), 'gastrocnemii') && ~isempty(sf_lMo.(side).gastrocnemii)
-            default_gastrocnemii = num2str(sf_lMo.(side).gastrocnemii);
+        if isfield(sf_lMo.(side), 'gastroc') && ~isempty(sf_lMo.(side).gastroc)
+            default_gastroc = num2str(sf_lMo.(side).gastroc);
         else
-            default_gastrocnemii = '1';
+            default_gastroc = '1';
         end
 
         if isfield(sf_lMo.(side), 'hamstrings') && ~isempty(sf_lMo.(side).hamstrings)
@@ -122,11 +122,11 @@ elseif  strcmp(muscle_toScale, 'iliopsoas')
             default_hamstrings_otherside = '1';
         end
 
-    definput = {'', default_soleus, default_gastrocnemii,default_hamstrings_side,default_hamstrings_otherside};  
+    definput = {'', default_soleus, default_gastroc,default_hamstrings_side,default_hamstrings_otherside};  
     % 
     inputs = str2double(inputdlg(prompt, dlgtitle, dims, definput));
     sf_lMo.(side).soleus = inputs(2);
-    sf_lMo.(side).gastrocnemii = inputs(3);
+    sf_lMo.(side).gastroc = inputs(3);
     sf_lMo.(side).hamstrings = inputs(4);
     sf_lMo.(other_side).hamstrings = inputs(5);
 end
