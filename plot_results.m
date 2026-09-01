@@ -1,3 +1,65 @@
+clear all; close all; clc
+
+% path to the repository folder
+[pathRepo,~,~] = fileparts(mfilename('fullpath'));
+addpath(genpath(pathRepo))
+
+% change this to your own paths
+filename = which('initializeSettings.m');
+
+PredSimSettingsFolder = fileparts(filename);
+cd(PredSimSettingsFolder)
+cd ..
+PredSimRepo = cd;
+
+addpath(fullfile(cd,'PlotFigures'))
+
+cd(PredSimRepo)
+cd ..
+cd('PredSimResults')
+
+PredSimResultsRepo = cd;
+
+figure(1)
+plot_data();
+
+cd(fullfile(PredSimResultsRepo, 'gait1018'))
+
+files = dir('*.mat');
+
+% plot all versions
+for k = 1:length(files)
+    
+    load(files(k).name,'R','model_info');
+        
+    is = [8 6 4 9 7 5];
+    
+    figure(1)
+    ylabels = {'Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)','Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)'};
+    
+    for i = 1:6
+        subplot(2,3,i)
+        plot(R.kinematics.Qs(:,is(i)),'DisplayName',['Simulation ', files(k).name(10:end-4)], 'linewidth', 1.5); hold on
+        title(strrep(R.colheaders.coordinates{is(i)}, '_', '-')); hold on
+        ylim([-70 70])
+        box off
+        ylabel(ylabels{i})
+        xlabel('Gait cycle (%)')
+    end
+    
+    legend show
+    legend('location', 'best')
+    legend boxoff
+    
+end
+
+%%
+figure(1)
+set(gcf, 'units', 'centimeters', 'position', [10 10 20 15])
+cd(pathRepo);
+% exportgraphics(gcf,'Fig1.png')
+
+%% functions
 function [] = plot_data()
 
 %% Load and process data
