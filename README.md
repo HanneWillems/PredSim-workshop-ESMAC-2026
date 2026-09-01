@@ -4,7 +4,7 @@ Welcome to the ESMAC 2026 Workshop on Predictive simulations of pathological gai
 
 This workshop is organized by Tom Buurke (UMCG), Friedl De Groote (KU Leuven), Tim van der Zee (KU Leuven), Ines Vandekerckhove (KU Leuven), Ellis Van Can (KU Leuven), Míriam Febrer (Universitat Politècnica de Catalunya), Lars D’Hondt (KU Leuven) and Stefanie de Jager (KU Leuven).
 
-You can find the workshop program [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/SMALLL%20PredSim%20Workshop%20Program.pdf) and the slide hand-outs [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/SMALLL%20PredSim%20Workshop%20Handouts.pdf).
+You can find the workshop program [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/ESMAC%20PredSim%20Workshop%20Program.pdf) and the slide hand-outs [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/SMALLL%20PredSim%20Workshop%20Handouts.pdf).
 
 This repo contains the resources used during the workshop. Below is a list of the 3 hands-on tutorials:
 - S1 DMD
