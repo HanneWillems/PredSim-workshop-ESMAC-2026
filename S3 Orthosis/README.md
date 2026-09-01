@@ -30,11 +30,11 @@ S = update_settings(S);
 This is required to make sure that `Predsim` uses the updated settings.
 
 ## Step 1.2: simulate effect of tibialis anterior muscle weakness on walking
-You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). Add data on dropfoot to the figure by running the `Plotting/plot_dropfoot_data.m` script. You should see the figure below: 
+You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). Add data on dropfoot to the figure by running the `Plotting/plot_dropfoot_data.m` script. This data corresponds to the data shown in Fig. 1 of [Wiszomirska et al. (2017)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5405572/). You should see the figure below: 
 
 ![picture](Plotting/Fig1.png)
 
-Red line: healthy simulation.
+Red line: healthy simulation.<br>
 Yellow line: simulation with imposed weakness of the tibialis anterior. 
 
 **bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `set_up_paths.m`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#getting-started-with-one-of-the-cases) for more details.
@@ -57,8 +57,8 @@ You can now run a simulation by running the `Predsim/main.m` script. Once your s
 
 ![picture](Plotting/Fig2.png)
 
-Red line: healthy simulation.
-Yellow line: simulation with imposed weakness of the tibialis anterior. 
+Red line: healthy simulation.<br>
+Yellow line: simulation with imposed weakness of the tibialis anterior. <br>
 Purple line: simulation with imposed weakness of the tibialis anterior and assistance from an ankle-foot orthosis.
 
 ## Optional Step 2.3: test different stiffnesses and/or neutral angles of the ankle-foot orthosis
@@ -71,3 +71,15 @@ exo1.ankle_offset = 15; % neutral ankle angle in deg
 ```
 
 Replace (one of) the numbers `.05`, `2` and `15` with (a) number(s) of your choosing. Repeat **Step 2.2** to simulate the resulting gait pattern. 
+
+## Switching to another case
+Once you have completed this case, you may want to switch to another. In that case, please remove any edits you made to the update_settings.m file. Before starting a new case, it should look like this:
+
+```matlab
+function[S] = update_settings(S)
+
+% Full gait cycle simulations instead of Half gait cycle (default) simulations
+S.misc.gaitmotion_type = 'FullGaitCycle';
+
+end
+```
