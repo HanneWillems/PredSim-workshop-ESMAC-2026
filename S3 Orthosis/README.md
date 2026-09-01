@@ -30,11 +30,11 @@ S = update_settings(S);
 This is required to make sure that `Predsim` uses the updated settings.
 
 ## Step 1.2: simulate effect of tibialis anterior muscle weakness on walking
-You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). You should see the figure below: 
+You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). Add data on dropfoot to the figure by running the `Plotting/plot_dropfoot_data.m` script. You should see the figure below: 
 
 ![picture](Plotting/Fig1.png)
 
-The healthy simulation (red) generally matches data (grey) better than the simulation with imposed weakness of the tibialis anterior (yellow). This makes sense, because this data is from healthy participants. The most noticeable effects of weakness are:
+The healthy simulation (red) generally matches healthy data (grey) better than the simulation with imposed weakness of the tibialis anterior (yellow). The most noticeable effects of weakness are:
 -   Right ankle: weak (yellow) has smaller (i.e. more negative) ankle angles, which correspond to more plantar flexion. This is due to the tibialis anterior weakness.
 -   Right knee: weak (yellow) has smaller (i.e. more negative) knee angles, which correspond to more flexion. This may be a compensation to make sure the foot clears the ground during swing.
 -   Left knee: weak (yellow) has larger (i.e. more positive) knee angles, which correspond to more extension. This may be a compensation to help ground clearance of the right foot during swing.
@@ -55,7 +55,7 @@ S.orthosis.settings{1} = exo1;
 This adds an exoskeleton with a stiffness of 2 Nm/deg and a neutral ankle angle of 15 deg dorsiflexion to the right foot. The mass of the exoskeleton is ignored for simplicity. 
 
 ## Step 2.2: simulate the effects of an ankle-foot orthosis on gaits in individuals with tibialis anterior muscle weakness
-You can now run a simulation by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018`. If this is the third time you ran a simulation, the results are stored in files starting with `gait1018_v3`. If all went well, you can visualize the resulting gait pattern in MATLAB and/or OpenSim (see **Step 1.2** above). **Invisible ankle-foot orthosis**: at the moment, it is not possible yet to visualize the ankle-foot orthosis itself in OpenSim, only its effects on gait. You should see the figure below:
+You can now run a simulation by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018`. If this is the third time you ran a simulation, the results are stored in files starting with `gait1018_v3`. If all went well, you can visualize the resulting gait pattern in MATLAB and/or OpenSim (see **Step 1.2** above). Add data on dropfoot to the MATLAB figure by running the `Plotting/plot_dropfoot_data.m` script. **Invisible ankle-foot orthosis**: at the moment, it is not possible yet to visualize the ankle-foot orthosis itself in OpenSim, only its effects on gait. You should see the figure below:
 
 ![picture](Plotting/Fig2.png)
 
