@@ -34,10 +34,8 @@ You can now run a simulation with induced weakness of the tibialis anterior, sim
 
 ![picture](Plotting/Fig1.png)
 
-The healthy simulation (red) generally matches healthy data (grey) better than the simulation with imposed weakness of the tibialis anterior (yellow). The most noticeable effects of weakness are:
--   Right ankle: weak (yellow) has smaller (i.e. more negative) ankle angles, which correspond to more plantar flexion. This is due to the tibialis anterior weakness.
--   Right knee: weak (yellow) has smaller (i.e. more negative) knee angles, which correspond to more flexion. This may be a compensation to make sure the foot clears the ground during swing.
--   Left knee: weak (yellow) has larger (i.e. more positive) knee angles, which correspond to more extension. This may be a compensation to help ground clearance of the right foot during swing.
+Red line: healthy simulation.
+Yellow line: simulation with imposed weakness of the tibialis anterior. 
 
 **bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `set_up_paths.m`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#getting-started-with-one-of-the-cases) for more details.
 
@@ -59,10 +57,12 @@ You can now run a simulation by running the `Predsim/main.m` script. Once your s
 
 ![picture](Plotting/Fig2.png)
 
-The grey shaded area, red lines and yellow lines are the same as before. The simulation with weakness and the ankle-foot orthosis is shown in purple. There are still differences with the simulated healthy gait (red), but these are smaller than the differences with the gait with imposed weakness (yellow). Thus, adding the ankle-foot orthosis reduced gait deviations.
+Red line: healthy simulation.
+Yellow line: simulation with imposed weakness of the tibialis anterior. 
+Purple line: simulation with imposed weakness of the tibialis anterior and assistance from an ankle-foot orthosis.
 
 ## Optional Step 2.3: test different stiffnesses and/or neutral angles of the ankle-foot orthosis
-If you want, you can change the weakness level, ankle-foot orthosis stiffness and/or neutral  angle to gain more insight into the effect of weakness and/or assistive devices. To do so, adjust the following lines of code in `PredSim-workshop-ESMAC-2026/code/update_settings.m`
+If you want, you can change the weakness level, ankle-foot orthosis stiffness and/or neutral angle to gain more insight into the effect of weakness and/or assistive devices. To do so, adjust the following lines of code in `PredSim-workshop-ESMAC-2026/code/update_settings.m`
 
 ```matlab
 strength_level = .05; % specify the strength level (0-1)
