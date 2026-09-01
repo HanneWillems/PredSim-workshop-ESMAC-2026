@@ -30,26 +30,16 @@ S = update_settings(S);
 This is required to make sure that `Predsim` uses the updated settings.
 
 ## Step 1.2: simulate effect of tibialis anterior muscle weakness on walking
-You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/blob/main/README.md#predsimresults)).
-
-**bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `PredSim-workshop-smalll-2025\set_up_paths`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim) for more details.
-
-If all went well, you can now evaluate visualize the resulting gait pattern in OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim). Note: if this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. 
-
-You can also visualize the resulting joint angles by running the `PredSim-workshop-smalll-2025/S3 Orthosis/Plotting/compare_devices.m` script. Before you run `compare_devices.m`, specify the versions we want to plot. To plot versions `v1` and `v2`, set `line 2` to:
-
-```matlab
-vs = [1, 2];
-```
-
-You should see the figure below: 
+You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). You should see the figure below: 
 
 ![picture](Plotting/Fig1.png)
 
-The grey shaded region shows experimental data from nine healthy participants (data source: [van der Zee et al., 2022](https://www.nature.com/articles/s41597-022-01817-1)). You may notice that there are differences between healthy data (grey) and the healthy simulation (red). These differences are in part due to using a 2D model instead of a (more accurate) 3D model. In addition, differences between simulation and data are also due to the fact that our understanding of human walking is currently incomplete. We are still actively improving our simulations to yield better agreement with experimental data (e.g. [d'Hondt et al., 2024](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012219); [Afschrift et al., 2025](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012713)). Despite differences with data, the healthy simulation (red) generally matches data (grey) better than the simulation with imposed weakness of the tibialis anterior (yellow). Most noticable difference occurs for:
+The most noticable effects of weakness are:
 -   Right ankle: weak (yellow) has smaller (i.e. more negative) ankle angles, which correspond to more plantar flexion. This is due to the tibialis anterior weakness.
 -   Right knee: weak (yellow) has smaller (i.e. more negative) knee angles, which correspond to more flexion. This may be a compensation to make sure the foot clears the ground during swing.
 -   Left knee: weak (yellow) has larger (i.e. more positive) knee angles, which correspond to more extension. This may be a compensation to help ground clearance of the right foot during swing.
+
+**bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `set_up_paths.m`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#getting-started-with-one-of-the-cases) for more details.
 
 ## Step 2.1: add an ankle-foot orthosis to the model
 After inducing weakness in Step 1, you are now ready to try and normalize the gait pattern by adding an ankle-foot orthosis to the model. Like before, you can edit the function `PredSim-workshop-smalll-2025/code/update_settings.m` to adjust the model and accomplish this. In this function, add the following lines of code:
