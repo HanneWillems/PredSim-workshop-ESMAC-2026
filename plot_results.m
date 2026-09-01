@@ -56,8 +56,8 @@ end
 %%
 figure(1)
 set(gcf, 'units', 'centimeters', 'position', [10 10 20 15])
-cd(pathRepo);
-% exportgraphics(gcf,'Fig1.png')
+% cd(pathRepo);
+% exportgraphics(gcf,'Fig2.png')
 
 %% functions
 function [] = plot_data()
