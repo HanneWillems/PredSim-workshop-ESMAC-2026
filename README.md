@@ -9,7 +9,7 @@ You can find the workshop program [here](https://github.com/KULeuvenNeuromechani
 This repo contains the resources used during the workshop. Below is a list of the 3 hands-on tutorials:
 - S1 DMD
 - S2 CP
-- S3 Dropfoot
+- S3 Orthosis
 
 Tutorial specific information can be found in the respective folders.
 
@@ -74,4 +74,16 @@ Before starting one of the three cases, make sure that this repository is added 
 Now you're ready to start with one the three cases!
 - [S1 DMD](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S1%20DMD)
 - [S2 CP](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S2%20CP)
-- [S3 Dropfoot](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S3%20Dropfoot)
+- [S3 Orthosis](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/S3%20Orthosis)
+
+## Switching to another case
+Once you have completed one case, you may want to switch to another. In that case, please remove any edits you made to the `update_settings.m` file. Before starting a new case, it should look like this:
+
+ ```matlab
+function[S] = update_settings(S)
+
+% Full gait cycle simulations instead of Half gait cycle (default) simulations
+S.misc.gaitmotion_type = 'FullGaitCycle';
+
+end
+```
