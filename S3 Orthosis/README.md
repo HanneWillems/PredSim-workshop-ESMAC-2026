@@ -30,29 +30,19 @@ S = update_settings(S);
 This is required to make sure that `Predsim` uses the updated settings.
 
 ## Step 1.2: simulate effect of tibialis anterior muscle weakness on walking
-You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/blob/main/README.md#predsimresults)).
-
-**bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `PredSim-workshop-smalll-2025\set_up_paths`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim) for more details.
-
-If all went well, you can now evaluate visualize the resulting gait pattern in OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim). Note: if this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. 
-
-You can also visualize the resulting joint angles by running the `PredSim-workshop-smalll-2025/S3 Orthosis/Plotting/compare_devices.m` script. Before you run `compare_devices.m`, specify the versions we want to plot. To plot versions `v1` and `v2`, set `line 2` to:
-
-```matlab
-vs = [1, 2];
-```
-
-You should see the figure below: 
+You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). You should see the figure below: 
 
 ![picture](Plotting/Fig1.png)
 
-The grey shaded region shows experimental data from nine healthy participants (data source: [van der Zee et al., 2022](https://www.nature.com/articles/s41597-022-01817-1)). You may notice that there are differences between healthy data (grey) and the healthy simulation (red). These differences are in part due to using a 2D model instead of a (more accurate) 3D model. In addition, differences between simulation and data are also due to the fact that our understanding of human walking is currently incomplete. We are still actively improving our simulations to yield better agreement with experimental data (e.g. [d'Hondt et al., 2024](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012219); [Afschrift et al., 2025](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012713)). Despite differences with data, the healthy simulation (red) generally matches data (grey) better than the simulation with imposed weakness of the tibialis anterior (yellow). Most noticable difference occurs for:
+The healthy simulation (red) generally matches data (grey) better than the simulation with imposed weakness of the tibialis anterior (yellow). This makes sense, because this data is from healthy participants. The most noticeable effects of weakness are:
 -   Right ankle: weak (yellow) has smaller (i.e. more negative) ankle angles, which correspond to more plantar flexion. This is due to the tibialis anterior weakness.
 -   Right knee: weak (yellow) has smaller (i.e. more negative) knee angles, which correspond to more flexion. This may be a compensation to make sure the foot clears the ground during swing.
 -   Left knee: weak (yellow) has larger (i.e. more positive) knee angles, which correspond to more extension. This may be a compensation to help ground clearance of the right foot during swing.
 
+**bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `set_up_paths.m`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#getting-started-with-one-of-the-cases) for more details.
+
 ## Step 2.1: add an ankle-foot orthosis to the model
-After inducing weakness in Step 1, you are now ready to try and normalize the gait pattern by adding an ankle-foot orthosis to the model. Like before, you can edit the function `PredSim-workshop-smalll-2025/code/update_settings.m` to adjust the model and accomplish this. In this function, add the following lines of code:
+After inducing weakness in Step 1, you are now ready to try and normalize the gait pattern by adding an ankle-foot orthosis to the model. Like before, you can edit the function `PredSim-workshop-ESMAC-2026/code/update_settings.m` to adjust the model and accomplish this. In this function, add the following lines of code:
 
 ```matlab
 exo1.ankle_stiffness = 2; % ankle stiffness in Nm/deg
@@ -64,25 +54,15 @@ S.orthosis.settings{1} = exo1;
 
 This adds an exoskeleton with a stiffness of 2 Nm/deg and a neutral ankle angle of 15 deg dorsiflexion to the right foot. The mass of the exoskeleton is ignored for simplicity. 
 
-## Step 2.2: simuluate the effects of an ankle-foot orthosis on gaits in individuals with tibialis anterior muscle weakness
-You can now run a simulation by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018`. 
-
-If all went well, you can visualize the resulting gait pattern in OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025/tree/main?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim). Note: if this is the third time you ran a simulation, the results are stored in files starting with `gait1018_v3`. **Invisible ankle-foot orthosis**: at the moment, it is not possible yet to visualize the ankle-foot orthosis itself in OpenSim, only its effects on gait. 
-
-Like before, you can visualize the joint angles using the `PredSim-workshop-smalll-2025/S3 Orthosis/Plotting/compare_devices.m` script. Before you run `compare_devices.m`, specify the versions we want to plot. To plot `v1`, `v2` and `v3`, set `line 2` to:
-
-```matlab
-vs = [1, 2, 3];
-```
-
-You should see the figure below:
+## Step 2.2: simulate the effects of an ankle-foot orthosis on gaits in individuals with tibialis anterior muscle weakness
+You can now run a simulation by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018`. If this is the third time you ran a simulation, the results are stored in files starting with `gait1018_v3`. If all went well, you can visualize the resulting gait pattern in MATLAB and/or OpenSim (see **Step 1.2** above). **Invisible ankle-foot orthosis**: at the moment, it is not possible yet to visualize the ankle-foot orthosis itself in OpenSim, only its effects on gait. You should see the figure below:
 
 ![picture](Plotting/Fig2.png)
 
 The grey shaded area, red lines and yellow lines are the same as before. The simulation with weakness and the ankle-foot orthosis is shown in purple. There are still differences with the simulated healthy gait (red), but these are smaller than the differences with the gait with imposed weakness (yellow). Thus, adding the ankle-foot orthosis reduced gait deviations.
 
 ## Optional Step 2.3: test different stiffnesses and/or neutral angles of the ankle-foot orthosis
-If you want, you can change the weakness level, ankle-foot orthosis stiffness and/or neutral  angle to gain more insight into the effect of weakness and/or assitive devices. To do so, adjust the following lines of code in `PredSim-workshop-smalll-2025/code/update_settings.m`:
+If you want, you can change the weakness level, ankle-foot orthosis stiffness and/or neutral  angle to gain more insight into the effect of weakness and/or assistive devices. To do so, adjust the following lines of code in `PredSim-workshop-ESMAC-2026/code/update_settings.m`
 
 ```matlab
 strength_level = .05; % specify the strength level (0-1)
@@ -90,4 +70,4 @@ exo1.ankle_stiffness = 2; % ankle stiffness in Nm/deg
 exo1.ankle_offset = 15; % neutral ankle angle in deg
 ```
 
-Replace (one of) the numbers `.05`, `2` and `15` with (a) number(s) of your choosing. Repeat Step 2.2 to simulate the resulting gait pattern. 
+Replace (one of) the numbers `.05`, `2` and `15` with (a) number(s) of your choosing. Repeat **Step 2.2** to simulate the resulting gait pattern. 

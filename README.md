@@ -49,7 +49,16 @@ Once your simulation is done, the results are stored in `PredSimResults\gait1018
 - `gait1018_v1.mot`: contains the motion files of the simulation, which can be visualized using OpenSim
 - `gait1018_v1_log.txt`: contains the logged information about the simulation
 
-## Visualizing your simulation results in OpenSim
+## Visualizing your simulation results
+
+### Visualization in MATLAB
+To visualize the results in MATLAB, run the script `plot_results.m`. You should see the figure shown below:
+
+![picture](Fig1.png)
+
+The grey shaded region shows experimental data from nine healthy participants (data source: [van der Zee et al., 2022](https://www.nature.com/articles/s41597-022-01817-1)). You may notice that there are differences between healthy data (grey) and the healthy simulation (red). These differences are in part due to using a 2D model instead of a (more accurate) 3D model. In addition, differences between simulation and data are also due to the fact that our understanding of human walking is currently incomplete. We are still actively improving our simulations to yield better agreement with experimental data (e.g. [d'Hondt et al., 2024](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012219); [Afschrift et al., 2025](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012713)). 
+
+### Visualizing in OpenSim
 To visualize the simulation in OpenSim:
 1. Open OpenSim
 2. Click on 'File > Open Model...' and navigate to the 2D model `PredSim/Subjects/gait1018/gait1018.osim`
