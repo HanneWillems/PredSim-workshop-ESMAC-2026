@@ -49,7 +49,16 @@ Once your simulation is done, the results are stored in `PredSimResults\gait1018
 - `gait1018_v1.mot`: contains the motion files of the simulation, which can be visualized using OpenSim
 - `gait1018_v1_log.txt`: contains the logged information about the simulation
 
-## Visualizing your simulation results in OpenSim
+## Visualizing your simulation results
+
+### Visualization in MATLAB
+To visualize the results in MATLAB, run the script `plot_results.m`. You should see the figure shown below:
+
+![picture](Fig1.png)
+
+**Note**: deviations between model and data in part arise from the simplicity of this 2D model without arms. PredSim can also be used with more realistic, 3D models (see [PredSim](https://github.com/KULeuvenNeuromechanics/PredSim)).
+
+### Visualizing in OpenSim
 To visualize the simulation in OpenSim:
 1. Open OpenSim
 2. Click on 'File > Open Model...' and navigate to the 2D model `PredSim/Subjects/gait1018/gait1018.osim`
