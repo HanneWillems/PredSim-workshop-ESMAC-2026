@@ -40,7 +40,7 @@ for k = 1:length(files)
     
     for i = 1:6
         subplot(2,3,i)
-        plot(R.kinematics.Qs(:,is(i)),'DisplayName',['Simulation ', files(k).name(10:end-4)], 'linewidth', 1.5); hold on
+        plot(R.kinematics.Qs(:,is(i)),'DisplayName',['Simulation ', files(k).name(17:end-4)], 'linewidth', 1.5); hold on
         title(strrep(R.colheaders.coordinates{is(i)}, '_', '-')); hold on
         ylim([-70 70])
         box off
