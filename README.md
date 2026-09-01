@@ -56,7 +56,7 @@ To visualize the results in MATLAB, run the script `plot_results.m`. You should 
 
 ![picture](Fig1.png)
 
-**Note**: deviations between model and data in part arise from the simplicity of this 2D model without arms. PredSim can also be used with more realistic, 3D models (see [PredSim](https://github.com/KULeuvenNeuromechanics/PredSim)).
+The grey shaded region shows experimental data from nine healthy participants (data source: [van der Zee et al., 2022](https://www.nature.com/articles/s41597-022-01817-1)). You may notice that there are differences between healthy data (grey) and the healthy simulation (red). These differences are in part due to using a 2D model instead of a (more accurate) 3D model. In addition, differences between simulation and data are also due to the fact that our understanding of human walking is currently incomplete. We are still actively improving our simulations to yield better agreement with experimental data (e.g. [d'Hondt et al., 2024](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012219); [Afschrift et al., 2025](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012713)). 
 
 ### Visualizing in OpenSim
 To visualize the simulation in OpenSim:
