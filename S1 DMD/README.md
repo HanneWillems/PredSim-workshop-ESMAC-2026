@@ -88,7 +88,7 @@ The user will run a predictive simulation in [PredSim](https://github.com/KULeuv
 
 ### Step 4. Visualizing and plotting the results
 
-Once your simulations are done, the results are stored in `PredSimResults\gait1018` as `gait1018_vx` as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026?tab=readme-ov-file#predsimresults).
+Once your simulations are done, the results are stored in `PredSimResults\gait1018_ESMAC` as `gait1018_ESMAC_vx` as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026?tab=readme-ov-file#predsimresults).
 
 To visualize the mot file in OpenSim follow the steps described [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim).
    
@@ -96,8 +96,8 @@ To plot the kinematics of your simulations and compare them to the Experimental 
 1. Open the script [PredSim-workshop-ESMAC-2026/S1 DMD/PlotFigure/run_this_file_to_plot_figures_Case_DMD.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_Case_DMD.m) in matlab
 2. Line 11 - change the path in `results_folder = fullfile('C:\GBW_MyPrograms\PredSimResults');` to the path of your `PredSimResults` folder 
 3. Update **Lines 12 to 13** with the `.mat` files that contain your simulation results:
-   - Line 12 - replace `gait1018_v1.mat` with the `.mat` file containing your **reference simulation** *(If the reference simulation was the first simulation you ran with this 2D model, the results are stored in v1)*
-   - Line 13 - replace `gait1018_v2.mat` with the `.mat` file containing your **DMD simulation** *(If the DMD simulation was the second simulation you ran with this 2D model, the results are stored in v2)*
+   - Line 12 - replace `gait1018_ESMAC_v1.mat` with the `.mat` file containing your **reference simulation** *(If the reference simulation was the first simulation you ran with this 2D model, the results are stored in v1)*
+   - Line 13 - replace `gait1018_ESMAC_v2.mat` with the `.mat` file containing your **DMD simulation** *(If the DMD simulation was the second simulation you ran with this 2D model, the results are stored in v2)*
 4. Click on the green 'Run' button
 
 The second figure should look like this:  
@@ -137,7 +137,7 @@ To plot the kinematics of your simulations and compare them to the Experimental 
 1. Open the script [PlotFigure/run_this_file_to_plot_figures_Case_DMD.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_Case_DMD.m) in matlab
 2. Add **Line 14** with the `.mat` files that contain the results of your **simulated Achilles tendon lengthening**. Specifically, copy the code below to **Line 14**. *(If the DMD simulation was the second simulation you ran with this 2D model, the results are stored in v3, otherwise adapt vx)* :
 
-	 	result_paths{3} = fullfile(results_folder,'gait1018','gait1018_v3.mat');
+	 	result_paths{3} = fullfile(results_folder,'gait1018_ESMAC','gait1018_ESMAC_v3.mat');
       
 3. Modify **Line 17** to:
 
