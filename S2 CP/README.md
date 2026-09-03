@@ -438,8 +438,36 @@ Once your simulations are done, the results are stored in PredSimResults\gait101
 2. Load the .mot file (File > Load Motion...) PredSimResults/gait1018_esmac/gait1018_esmac_vx.mot in OpenSim
    
 ### To visualize the kinematics of your simulations and compare it to the experimental data of the patient:
-1. Open the script [run_this_file_to_plot_figures_CP_ESMAC.m](Code/PlotFigures_run_this_file_to_plot_figures_CP_ESMAC.m)
-2. Change lines 12 to 29 with the .mat files containing the simulation results that you want to plot
+
+1. Open the script [run_this_file_to_plot_figures_CP_ESMAC.m](Code/PlotFigures_run_this_file_to_plot_figures_CP_ESMAC.m).
+2. Edit the section marked `% ------- start edit -------` to `% ------- stop edit -------` (lines 14–29) to point to your own simulation results and configure which comparisons you want to see.
+
+#### What to edit
+
+**`results_folder`**
+Set this to the folder on your machine where PredSim saves its output.
+
+**`results_path`**
+A struct that links a label (used in the legend) to the `.mat` file of a specific simulation run. Only the fields you include here will be plotted. You don't need to fill in all three.
+
+> ⚠️ **Note:** the version numbers (`_v2`, `_v3`, `_v4`, …) will be different for you, depending on how many simulations you've run and in what order. Check the `PredSimResults\gait1018_esmac` folder to confirm which version corresponds to which settings (pre-intervention, post-intervention, reference), and update the paths accordingly.
+
+> 💡 The field names you choose (`reference`, `pre_surgery`, `post_surgery`) become the legend labels in your figures (spaces are inserted automatically instead of underscores), so keep them short and descriptive.
+
+**`plot_experimental_kinematics`** *(true/false)*
+Set to `true` to overlay the patient's own experimental IK envelope (from motion capture) on the kinematic plots. Set to `false` to skip this.
+
+**`include_TD_reference`** *(true/false)*
+Set to `true` to overlay a typically-developing (TD) reference envelope for comparison. Set to `false` to skip this.
+
+**`apply_clinical_convention`** *(true/false)*
+Set to `true` to convert joint angle signs/directions to the clinical convention (as typically reported in gait analysis reports) instead of the raw OpenSim convention. This affects both the simulation curves and the experimental/TD reference curves, so keep it consistent across your figures.
+
+**`legend_names`**
+By default, this is generated automatically from the field names in `results_path`, with underscores replaced by spaces:
+
+**`figure_folder`** and **`figure_savename`**
+Control where figures are saved and the common prefix used in the filenames. By default, `figure_folder` points to the `IK` results folder and doesn't need to be changed unless you want figures saved elsewhere.
 
 	**⚠️ Be aware** that the simulations are based on a simplified 2D musculoskeletal model, while the experimental data represent full 3D kinematics. Consequently, differences between simulated and experimental curves may partly arise from model simplifications rather than true biomechanical discrepancies. The goal of predictive simulation is not to perfectly reproduce every experimental detail, but to evaluate whether the personalized model captures clinically relevant gait characteristics and predicts the key changes after intervention.
 	
