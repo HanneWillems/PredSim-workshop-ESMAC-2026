@@ -33,7 +33,7 @@ for i = 1:nGroups
     % Shift based on ROM (ROM_diff assumed to have 1 row for this case)
     rom_value = ROM_diff{1, idxROM};
 
-    if any(ismember(muscleGroups.Muscles{i},{'gastroc_r', 'gastroc_l' ,'soleus_r' ,'soleus_l'}))
+    if any(ismember(muscleGroups.Muscles{i},{'gastroc_r', 'gastroc_l' ,'soleus_r' ,'soleus_l', 'iliopsoas_l', 'iliopsoas_r'}))
     Shift_ROM(i) = 0.9 - (rom_value * av_MA) / av_Lmo;
     else 
     Shift_ROM(i) = 1 - (rom_value * av_MA) / av_Lmo;
