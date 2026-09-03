@@ -9,8 +9,8 @@ clc
 % Construct a cell array with full paths to files with saved results for
 % which you want to appear on the plotted figures.
 results_folder = fullfile('C:\GBW_MyPrograms\PredSimResults');
-result_paths{1} = fullfile(results_folder,'gait1018','gait1018_v1.mat');
-result_paths{2} = fullfile(results_folder,'gait1018','gait1018_v2.mat');
+result_paths{1} = fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v1.mat');
+result_paths{2} = fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v2.mat');
 
 
 % Cell array with legend name for each result

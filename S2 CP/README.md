@@ -12,12 +12,12 @@ Want to quickly go through this example? Simply follow the step instructions and
 ### **Background:** 
 Cerebral palsy (CP) is caused by a non-progressive lesion of the developing brain, resulting in impaired motor control and secondary musculoskeletal impairments. These impairments can lead to pathological gait patterns. Treatment decisions aim to improve gait function but their individual effects can be difficult to predict. 
 
-Physics-based computer simulations, that can predict the effect of treatments (e.g., bony and soft tissue correction, ankle-foot-orthoses) on gait in children with cerebral palsy (CP), have the potential to improve clinical decision-making. To this end, an important challenge is to accurately estimate patient-specific neuromusculoskeletal models.
+Physics-based computer simulations, that can predict the effect of treatments (e.g., bony and soft tissue correction, ankle-foot-orthoses) on gait in children with CP, have the potential to improve clinical decision-making. To this end, an important challenge is to accurately estimate patient-specific neuromusculoskeletal models.
 
-In this tutorial you will (I.) personalize for a child with Cerebral Palsy(CP). Next, (II.) you will model the effect of surgery and (III.) run simulations and evaluate the predicted data. The workflow you will apply in this tutorial has been published in [Van Den Bosch et al. (2025)](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-025-01767-w)
+In this tutorial you will (I.) personalize for a child with CP. Next, (II.) you will model the effect of surgery and (III.) run simulations and evaluate the predicted data. The workflow you will apply in this tutorial has been published in [Van Den Bosch et al. (2025)](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-025-01767-w)
 
 ## Step 0: run a reference simulation with the 2D model
-If you have not already done so, you need to run a reference simulation of healthy walking with the 2D model. Please follow the steps explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025?tab=readme-ov-file#running-a-reference-2d-simulation-with-predsim).
+If you have not already done so, you need to run a reference simulation of healthy walking with the 2D model. Please follow the steps explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-esmac-2026?tab=readme-ov-file#running-a-reference-2d-simulation-with-predsim).
 
 # I. Personalizing the musculoskeletal model
 ### Summary
@@ -30,14 +30,14 @@ In this part you will personalize a model for a child with CP based on a clinica
 
 In example 1. you will use (I.1) manual muscle testing strength scores to personalize optimal muscle force (FMo) and (I.2) passive Range of Motion (ROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
 
-To this end, you will create a settings file that can later be used in PredSim. In this tutorial you will change the model inputs in a default settings file. This file can later be used to run personalized simulations in PredSim.
+In this tutorial you will change the model inputs in a default settings file. This file can later be used to run personalized simulations in PredSim.
 
 ## I.1 Personalizing muscle strength
 ### **Background:**   
-The strength is evaluated for the full active range of motion by manual muscle testing (MMT). You will scale the maximal (active) muscle force based on the strength scores in the Clinical Exam. A lower MMT score refers to decreased strength. To represent muscle weakness in the model, maximal active fiber force of the muscles has to be scaled. 
+The strength is evaluated for the full active range of motion by manual muscle testing (MMT). You will scale the maximal (active) muscle force based on the strength scores (MMT scores) in the Clinical Exam. A lower MMT score refers to decreased strenght, to represent this in the model, maximal active fiber force of the muscles has to be scaled.
 
 **Requirements:** Matlab.   
-**Data:** MMT scores in the clinical exam (CE), provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.       
+**Data:** MMT scores in the clinical exam (CE), provided in [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx). T0 refers to pre intervention and T1 to post intervention.       
 **Additional information:** The protocol of the clinical exam, and normative values for all tests are provided in [Documentation](../Documentation)   
 
 ### Step 1. Open [update_settings_pre.m](Code/update_settings_pre.m) in your Code folder (e.g. PredSim-workshop-ESMAC-2026\S2 CP\Code)
@@ -46,8 +46,8 @@ This file is a copy of the [default settings file](../code/update_settings.m) th
 ### Step 2. Scaling muscle strength
 In this step you will scale muscle strength for the **muscles around the knee**. The scaling factors represent the remaining percentage of maximal muscle force (FMo) in the model. As shown in the "Scaling muscle strength" panel of the figure above, reducing this parameter decreases the maximum force-generating capacity of the muscle and represents muscle weakness.
 
-
-Copy the `S.settings.muscle_strength` setting below and add it to your `update_settings_pre` file.
+**To do:**
+* Copy the `S.settings.muscle_strength` setting below and add it to your `update_settings_pre` file. 
 
 ```matlab
 S.settings.muscle_strength = {...       
@@ -67,9 +67,7 @@ S.settings.muscle_strength = {...
 
 The setting already includes the scaling factors for muscles acting on joints other than the knee. You only need to edit the scaling factors for the **knee flexors and knee extensors**.
 
-**To do:**
-
-* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
+* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) file
 > **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 * Find the strength scores for the **right and left knee flexors** and **right and left knee extensors**.
 * Use the reference table below to convert each CE strength score into a scaling factor.
@@ -112,7 +110,7 @@ During the standardized clinical examination, goniometry is used to measure the 
 The model is positioned according to the clinical pROM assessment, after which optimal fiber length is adjusted until the simulated passive joint torque matches the clinically applied resistance. The optimal fiber length will then be adjusted so that the modeled net joint torque reaches 15 Nm at the end of the range of motion, matching the clinician’s resistance.
 
 **Requirements:** Matlab, OpenSim, CasADi.   
-**Data:** pROM scores, provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
+**Data:** pROM scores, provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)      
 **Code:**  [main_scale_lMo.m](Code/main_scale_lMo.m)provided in the folder [Code](Code).  
 
@@ -122,7 +120,7 @@ The model is positioned according to the clinical pROM assessment, after which o
 
 In this step, you will scale the optimal muscle fiber length of the hamstrings. Scaling the optimal muscle fiber length modifies the muscle force–length relationship. As shown in the "Scaling passive muscle stiffness" panel of the figure above, reducing optimal fiber length increases passive forces at the same muscle-tendon length, representing a contracted muscle.
 
-* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
+* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) file
 > **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 * Compare the passive range of motion scores with the normative values below.
 
@@ -138,7 +136,7 @@ The scores indicate no contracture of the soleus or gastrocs. Therefore, their o
 
 * Add the following `S.subject.scale_MT_params` setting to your `update_settings_pre` file.
 * Keep the scaling factors at **1** for the soleus, gastrocs, and iliopsoas for now.
-* The hamstring scaling factors will be determined using `main_scale_lMo.m` below.
+* The hamstring scaling factors will be determined using `main_scale_lMo.m` below (in Folder Code/.
 
 ```matlab
 S.subject.scale_MT_params = {{'hamstrings_r'},'lMo',1,...   % pROM_Poplbi_R %% to edit
@@ -152,8 +150,7 @@ S.subject.scale_MT_params = {{'hamstrings_r'},'lMo',1,...   % pROM_Poplbi_R %% t
 ```
 
 #### Calculate the hamstring scaling factors
-
-Open [`main_scale_lMo.m`](Code/main_scale_lMo.m) and use the script to calculate the scaling factors for the hamstrings. The code guides you through the estimation process.
+Open [`main_scale_lMo.m`](Code/Scale_MT_params/main_scale_lMo.m) and use the script to calculate the scaling factors for the hamstrings. The code guides you through the estimation process.
 
 You only need to edit the lines between the following markers:
 
@@ -250,7 +247,7 @@ The contracture of the contralateral iliopsoas is determined by finding the scal
 
 #### To do:
 
-* Open [`main_scale_lMo.m`](Code/main_scale_lMo.m).
+* Open [`main_scale_lMo.m`](Code/Scale_MT_params/main_scale_lMo.m).
 * Use the script to calculate the scaling factors for the iliopsoas.
 * Edit **only** the lines between:
 
@@ -366,10 +363,10 @@ This patient underwent a bilateral distal femur extension osteotomy, a surgical 
 In the model, this surgical correction shifts the knee geometry, this means that passive extension torques will begin to act at a more extended (= less negative) knee angle.
 
 **Requirements:** Matlab.   
-**Data:** pROM scores in the clinical exam (CE), provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
+**Data:** pROM scores in the clinical exam (CE), provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)   
 
-### Step 6a. Copy the pre-intervention settings
+### Step 1. Copy the pre-intervention settings
 
 Open [`update_settings_post.m`](Code/update_settings_post.m) in your **Code** folder.
 
@@ -380,9 +377,9 @@ The post-intervention model starts from the personalized pre-intervention model.
 * Paste them into `update_settings_post.m`.
 * Keep these settings unchanged; only the surgical modifications will be updated in the following steps.
 
-### Step 6b. Evaluate the post-intervention clinical exam
+### Step 2. Adapt the knee extension deficit
 
-* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam) file
+* Open the Clinical Exam [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) file
 > **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 
 **To do:**
@@ -441,7 +438,7 @@ Once your simulations are done, the results are stored in PredSimResults\gait101
 2. Load the .mot file (File > Load Motion...) PredSimResults/gait1018_esmac/gait1018_esmac_vx.mot in OpenSim
    
 ### To visualize the kinematics of your simulations and compare it to the experimental data of the patient:
-1. Open the script [run_this_file_to_plot_figures_CP_SMALLL.m](Code/run_this_file_to_plot_figures_CP_SMALLL.m)
+1. Open the script [run_this_file_to_plot_figures_CP_ESMAC.m](Code/PlotFigures_run_this_file_to_plot_figures_CP_ESMAC.m)
 2. Change lines 12 to 29 with the .mat files containing the simulation results that you want to plot
 
 	**⚠️ Be aware** that the simulations are based on a simplified 2D musculoskeletal model, while the experimental data represent full 3D kinematics. Consequently, differences between simulated and experimental curves may partly arise from model simplifications rather than true biomechanical discrepancies. The goal of predictive simulation is not to perfectly reproduce every experimental detail, but to evaluate whether the personalized model captures clinically relevant gait characteristics and predicts the key changes after intervention.
