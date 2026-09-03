@@ -400,10 +400,10 @@ Open [`main.m`](https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/ma
 
 Update the following lines in `main.m`:
 
-* **Line 20:** Initialize the `gait1018_ESMAC` model.
+* **Line 20:** Initialize the `gait1018_esmac` model.
 
 ```matlab
-S = initializeSettings('gait1018_ESMAC');
+S = initializeSettings('gait1018_esmac');
 ```
 
 * **Line 21:** Add the settings file corresponding to the simulation you want to run.
@@ -423,7 +423,7 @@ S = update_settings_post(S);
 * **Line 25:** Set the subject name.
 
 ```matlab
-S.subject.name = 'gait1018_ESMAC';
+S.subject.name = 'gait1018_esmac';
 ```
 
 ### Step 3. Run the simulation
@@ -434,11 +434,11 @@ Now sit back and let PredSim do the work! ☕
 
 
 ##  Visualizing and plotting the results
-Once your simulations are done, the results are stored in PredSimResults\gait1018_ESMAC as gait1018_ESMAC_vx. Every time you run a simulation, the results are saved with an incremental version number: v1, v2, v3, v4, … The most recently run simulation always has the highest version number.
+Once your simulations are done, the results are stored in PredSimResults\gait1018_esmac as gait1018_esmac_vx. Every time you run a simulation, the results are saved with an incremental version number: v1, v2, v3, v4, … The most recently run simulation always has the highest version number.
 
 ### To visualize the motion in OpenSim:
-1. Open the model (File > Open Model...) PredSim/gait1018_ESMAC/gait1018_ESMAC.osim in OpenSim 
-2. Load the .mot file (File > Load Motion...) PredSimResults/gait1018_ESMAC/gait1018_ESMAC_vx.mot in OpenSim
+1. Open the model (File > Open Model...) PredSim/gait1018_esmac/gait1018_esmac.osim in OpenSim 
+2. Load the .mot file (File > Load Motion...) PredSimResults/gait1018_esmac/gait1018_esmac_vx.mot in OpenSim
    
 ### To visualize the kinematics of your simulations and compare it to the experimental data of the patient:
 1. Open the script [run_this_file_to_plot_figures_CP_SMALLL.m](Code/run_this_file_to_plot_figures_CP_SMALLL.m)
