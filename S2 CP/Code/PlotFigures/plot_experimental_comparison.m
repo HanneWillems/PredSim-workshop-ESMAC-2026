@@ -134,7 +134,7 @@ for i = 1:length(IK_names_os)
                 [0.5 0.5 0.5], 'FaceAlpha',0.3,'EdgeAlpha',0.4,'EdgeColor',[0.5 0.5 0.5]);
             % hTD = plot(1:length(avg_TD), avg_TD, 'Color',[0.5 0.5 0.5],'LineWidth',2);
             lbl = sprintf('TD reference %s', convention_str);
-            if isempty(legend_handles) || ~any(strcmp(legend_labels,'TD reference'))
+            if isempty(legend_handles) || ~any(contains(legend_labels,'TD reference'))
                 legend_handles(end+1) = hTD; 
                 legend_labels{end+1}  = lbl; 
             end

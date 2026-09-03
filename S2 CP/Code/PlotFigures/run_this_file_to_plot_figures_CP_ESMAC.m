@@ -1,5 +1,5 @@
 clear
-close all
+% close all
 clc
 
 %% General settings
@@ -32,7 +32,7 @@ results_path = struct( ...
     include_TD_reference = true; % options: true/false
     
     % clinical convention instead of open sim convention
-    apply_clinical_convention = true; % options: true/false
+    apply_clinical_convention = false; % options: true/false
 
 % legend for your figure
 legend_names = strrep(fieldnames(results_path), '_', ' ')';
@@ -42,7 +42,6 @@ figure_folder = IKResultsFolder;
 
 % Common part of the filename for all saved figures
 figure_savename = 'CP_SMALLL_simulations';
-
 
 % -------    stop edit  -------
 
@@ -167,7 +166,7 @@ if plot_experimental_kinematics || include_TD_reference
     if fig_opts.apply_clinical_convention
         fig_opts.TD_path = fullfile(TD_reference_folder,'ExpData_TD_transf.mat');
     else
-        fig_opts.TD_path = fullfile(TD_reference_folder,'ExpData_TD_fixed.mat');
+        fig_opts.TD_path = fullfile(TD_reference_folder,'ExpData_TD.mat');
     end
 
     if isfield(results_path,'pre_surgery') && ~isempty(results_path.pre_surgery)
