@@ -6,6 +6,9 @@ clc
 % These settings will apply to all figures
 % Construct a cell array with full paths to files with saved results for
 % which you want to appear on the plotted figures.
+[pathRepo,~,~] = fileparts(mfilename('fullpath')); addpath(genpath(pathRepo));
+IKResultsFolder = fullfile(fileparts(fileparts(pathRepo)), 'IK');
+TD_reference_folder = fullfile(fileparts(fileparts(fileparts(pathRepo))), 'Reference');
 
 % -------    start edit  -------
 results_folder = 'C:\GBW_MyPrograms\PredSimResults';
@@ -17,27 +20,32 @@ results_folder = 'C:\GBW_MyPrograms\PredSimResults';
     % only post surgery is plotted 
 
 results_path = struct( ...
-    'reference',   fullfile(results_folder,'gait1018','gait1018_v28.mat'), ...
-    'pre_surgery', fullfile(results_folder,'gait1018','gait1018_v26.mat'), ...
-    'post_surgery',fullfile(results_folder,'gait1018','gait1018_v27.mat'));
+    'reference',   fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v4.mat'), ...
+    'pre_surgery', fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v2.mat'), ...
+    'post_surgery',fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v3.mat'));
 
-% enable/disable the visualisation of experimental kinematics
-experimental_kinematics = 1; % options: 1 (yes) 0 (no)
+% enable/disable:
+    % visualization of experimental kinematics of the patient
+    plot_experimental_kinematics = true; % options: true/false
+
+    % visualization of TD reference data
+    include_TD_reference = true; % options: true/false
+    
+    % clinical convention instead of open sim convention
+    apply_clinical_convention = true; % options: true/false
 
 % legend for your figure
-legend_names = {'reference', 'pre surgery', 'post surgery'};
+legend_names = strrep(fieldnames(results_path), '_', ' ')';
 
 % Path to the folder where figures are saved
-figure_folder = results_folder;
+figure_folder = IKResultsFolder;
 
 % Common part of the filename for all saved figures
-figure_savename = 'ComparisonSimulations_CP_SMALLL';
+figure_savename = 'CP_SMALLL_simulations';
 
 
 % -------    stop edit  -------
 
-[pathRepo,~,~] = fileparts(mfilename('fullpath')); addpath(genpath(pathRepo));
-IKResultsFolder = fullfile(fileparts(pathRepo), 'IK');
 %% Settings for each figure to be made
 % "figure_settings" is a cell array where each cell contains a struct with
 % the settings for a single figure.
@@ -53,7 +61,7 @@ IKResultsFolder = fullfile(fileparts(pathRepo), 'IK');
 %   coordinates or muscles.
 %
 %   - variables -
-%   * Cell array of strings. Containsone or more variable names. e.g. 'Qs'
+%   * Cell array of strings. Contains one or more variable names. e.g. 'Qs'
 %   to plot coordinate positions, 'a' to plot muscle activity. Variables
 %   that do not rely on coordinates or muscles (e.g. GRFs)
 %
@@ -136,25 +144,37 @@ fig_count = fig_count+1;
 % figure_settings(fig_count).filetype = {};
 % fig_count = fig_count+1;
 
-%%
-result_fieldnames = fieldnames(results_path);
+%% Experimental kinematics / TD reference comparison figures
+% Adds up to two extra figures (pre_surgery and post_surgery, whichever
+% are present in results_path), each showing the simulated kinematics
+% together with:
+%   - the subject's own experimental IK envelope, if experimental_kinematics = 1
+%   - the TD reference envelope, if include_TD_reference = 1
+% If apply_clinical_convention = 1, both the simulation results (via the
+% shared transform_result_clinical_format.m) and the experimental curves
+% are converted to clinical convention, and ExpData_TD_transf.mat is used
+% for the TD reference instead of ExpData_TD.mat.
+%
 
-for i = 1:length(result_fieldnames)
-    resultName = result_fieldnames{i};
 
-    result_paths{i} = results_path.(resultName);
-end
+if plot_experimental_kinematics || include_TD_reference
 
-plot_figures(result_paths,legend_names,figure_settings);
+    fig_opts = struct( ...
+        'apply_clinical_convention', apply_clinical_convention, ...
+        'include_TD_reference',      include_TD_reference, ...
+        'include_patient_ik',        plot_experimental_kinematics);
 
-
-if experimental_kinematics
-    if isfield(results_path, 'pre_surgery')
-        idx_pre = find(strcmp(result_fieldnames,'pre_surgery'));
-        plot_pre_surgery_v2(result_paths{idx_pre},IKResultsFolder)
+    if fig_opts.apply_clinical_convention
+        fig_opts.TD_path = fullfile(TD_reference_folder,'ExpData_TD_transf.mat');
+    else
+        fig_opts.TD_path = fullfile(TD_reference_folder,'ExpData_TD_fixed.mat');
     end
-    if isfield(results_path, 'post_surgery') 
-        idx_post = find(strcmp(result_fieldnames,'post_surgery'));
-        plot_post_surgery_v2(result_paths{idx_post},IKResultsFolder)
+
+    if isfield(results_path,'pre_surgery') && ~isempty(results_path.pre_surgery)
+        plot_experimental_comparison(results_path.pre_surgery, 'pre', IKResultsFolder, fig_opts);
+    end
+
+    if isfield(results_path,'post_surgery') && ~isempty(results_path.post_surgery)
+        plot_experimental_comparison(results_path.post_surgery, 'post', IKResultsFolder, fig_opts);
     end
 end
