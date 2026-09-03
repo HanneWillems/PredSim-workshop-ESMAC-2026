@@ -32,7 +32,7 @@ function [f_lMT_vMT_dM, model_info,coordinates] = generatePolynomials_ESMAC(osim
 addpath(pathPredSim)
 addpath(fullfile(pathPredSim,'DefaultSettings'))
 
-[S] = initializeSettings('gait1018_v1');
+[S] = initializeSettings('gait1018');
 
 % pass something to required settings, doesn't really matter what
 S.misc.save_folder = pwd;
