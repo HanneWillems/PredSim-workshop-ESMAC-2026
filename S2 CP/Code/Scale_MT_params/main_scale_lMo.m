@@ -30,8 +30,9 @@ casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to Casadi
 
 addpath(genpath(PredSim_path));
 addpath(genpath(casadi_path));
-%% 2. Intialize settings
+%% 2. Initialize settings
 subject_name = 'gait1018_esmac'; 
+
 osim_path = fullfile(PredSim_path,'Subjects',subject_name,[subject_name,'.osim']);
 
 %% 3 Get the passive range of motion (pROM) scores from the clinical exam
