@@ -170,10 +170,10 @@ if plot_experimental_kinematics || include_TD_reference
     end
 
     if isfield(results_path,'pre_surgery') && ~isempty(results_path.pre_surgery)
-        plot_experimental_comparison(results_path.pre_surgery, 'pre', IKResultsFolder, fig_opts);
+        plot_experimental_comparison_CP_ESMAC(results_path.pre_surgery, 'pre', IKResultsFolder, fig_opts);
     end
 
     if isfield(results_path,'post_surgery') && ~isempty(results_path.post_surgery)
-        plot_experimental_comparison(results_path.post_surgery, 'post', IKResultsFolder, fig_opts);
+        plot_experimental_comparison_CP_ESMAC(results_path.post_surgery, 'post', IKResultsFolder, fig_opts);
     end
 end
