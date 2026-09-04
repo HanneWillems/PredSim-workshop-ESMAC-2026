@@ -363,7 +363,7 @@ This patient underwent a bilateral distal femur extension osteotomy, a surgical 
 In the model, this surgical correction shifts the knee geometry, this means that passive extension torques will begin to act at a more extended (= less negative) knee angle.
 
 **Requirements:** Matlab.   
-**Data:** pROM scores in the CE [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx), provided in the folder [ClinicalExam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
+**Data:** pROM scores in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) file, provided in the folder [ClinicalExam](ClinicalExam). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)   
 
 ### Step 1. Copy the pre-intervention settings
