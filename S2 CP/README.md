@@ -391,7 +391,7 @@ The post-intervention model starts from the personalized pre-intervention model.
 # III. Running PredSim with personalized settings
 ### Step 1. Open `main.m`
 
-Open [`main.m`](https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/main.m) in your ⚠️ **PredSim** folder.
+Open [`main.m`](https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/main.m) in your **PredSim** folder.
 
 ### Step 2. Adapt the code for your simulation
 
