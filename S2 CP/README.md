@@ -112,7 +112,7 @@ The model is positioned according to the clinical pROM assessment, after which o
 **Requirements:** Matlab, OpenSim, CasADi.   
 **Data:** pROM scores, provided in the [`CE_CP_ESMAC_T0_T1`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx). T0 refers to pre intervention and T1 to post intervention.   
 **Additional information:** The protocol of the clinical exam, and normative values are provided in [Documentation](../Documentation)      
-**Code:**  [main_scale_lMo.m](Code/main_scale_lMo.m)provided in the folder [Code](Code).  
+**Code:**  [main_scale_lMo.m](Code/Scale_MT_params/main_scale_lMo.m)provided in the folder [Code](Code).  
 
 >💡 Optional: Now that you have updated the muscle strength (S.settings.muscle_strength), you can already start a simulation with these settings (see III. Running PredSim with personalized settings). Since a simulation can take several minutes to run, you can let it run in the background while you continue with I.2 Personalizing passive range of motion (pROM). Remember to re-run the simulation later once you have also added the pROM settings.
 
@@ -439,7 +439,7 @@ Once your simulations are done, the results are stored in PredSimResults\gait101
    
 ### To visualize the kinematics of your simulations and compare it to the experimental data of the patient:
 
-1. Open the script [run_this_file_to_plot_figures_CP_ESMAC.m](Code/PlotFigures_run_this_file_to_plot_figures_CP_ESMAC.m).
+1. Open the script [run_this_file_to_plot_figures_CP_ESMAC.m](Code/PlotFigures/run_this_file_to_plot_figures_CP_ESMAC.m).
 2. Edit the section marked `% ------- start edit -------` to `% ------- stop edit -------` (lines 14–29) to point to your own simulation results and configure which comparisons you want to see.
 
 #### What to edit
