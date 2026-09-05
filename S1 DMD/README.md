@@ -93,7 +93,7 @@ Once your simulations are done, the results are stored in `PredSimResults\gait10
 To visualize the mot file in OpenSim follow the steps described [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim).
    
 To plot the kinematics of your simulations and compare them to the Experimental Data of the patient:
-1. Open the script [run_this_file_to_plot_figures_DMD_ESMAC.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_DMD_ESMAC.m)).
+1. Open the script [run_this_file_to_plot_figures_DMD_ESMAC.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_DMD_ESMAC.m).
 2. Edit the section marked `% ------- start edit -------` to `% ------- stop edit -------` (lines 14–45) to point to your own simulation results and configure which comparisons you want to see.
 
 #### What to edit
