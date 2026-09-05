@@ -55,7 +55,7 @@ Muscle stiffness was evaluated through passive ROM and clinical stiffness scale.
 
 **Data:** passive ROM and clinical stiffness scale values, provided in [Clinical Exam/Clinical_Exam_DMDCase.xlsx](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/Clinical%20Exam/Clinical_Exam_DMDcase.xlsx), reference passive ROM values for typically developing children from Mudge et al., matched to the case’s age, are provided in subfolder [Clinical Exam/Ref_ROM_TD.xlsx](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/Clinical%20Exam/Ref_ROM_TD.xlsx) 
 
-**Code:** [Muscle stiffness code/Personalize_passive_muscle_stiffness_based_on_CE.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/Muscle%20stiffness%20code/Personalize_passive_muscle_stiffness_based_on_CE.m))
+**Code:** [Muscle stiffness code/Personalize_passive_muscle_stiffness_based_on_CE.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/Muscle%20stiffness%20code/Personalize_passive_muscle_stiffness_based_on_CE.m)
 
 **Additional information:** The protocol of the clinical examination is provided in [Documentation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/Documentation) (Optional content you can explore if you want to learn more)
 
