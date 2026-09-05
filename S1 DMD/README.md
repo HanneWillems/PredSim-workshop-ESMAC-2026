@@ -93,17 +93,44 @@ Once your simulations are done, the results are stored in `PredSimResults\gait10
 To visualize the mot file in OpenSim follow the steps described [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim).
    
 To plot the kinematics of your simulations and compare them to the Experimental Data of the patient:
-1. Open the script [PredSim-workshop-ESMAC-2026/S1 DMD/PlotFigure/run_this_file_to_plot_figures_Case_DMD.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_Case_DMD.m) in matlab
-2. Line 11 - change the path in `results_folder = fullfile('C:\GBW_MyPrograms\PredSimResults');` to the path of your `PredSimResults` folder 
-3. Update **Lines 12 to 13** with the `.mat` files that contain your simulation results:
-   - Line 12 - replace `gait1018_esmac_v1.mat` with the `.mat` file containing your **reference simulation** *(If the reference simulation was the first simulation you ran with this 2D model, the results are stored in v1)*
-   - Line 13 - replace `gait1018_esmac_v2.mat` with the `.mat` file containing your **DMD simulation** *(If the DMD simulation was the second simulation you ran with this 2D model, the results are stored in v2)*
-4. Click on the green 'Run' button
+1. Open the script [run_this_file_to_plot_figures_DMD_ESMAC.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_DMD_ESMAC.m)).
+2. Edit the section marked `% ------- start edit -------` to `% ------- stop edit -------` (lines 14–45) to point to your own simulation results and configure which comparisons you want to see.
 
-The second figure should look like this:  
-![Figure results_DMD_plot](https://github.com/user-attachments/assets/cea3ea64-e184-4616-aabd-718eab426919)
+#### What to edit
 
-The gray band is the patient's experimental data measured using standard 3D gait analysis (mean ± 2 standard deviations). For the ankle, the blue curve (simulation with DMD impairments) is closer to the gray band than the red curve (reference simulation on healthy model). This means that incorporating the DMD-specific impairments into the model already brings the simulation closer to the experimental data (for the ankle). The simulation results predict a tiptoeing gait pattern, which is also observed experimentally. However, the simulated gait still does not fully match the experimental data. This may be due to the use of a 2D model instead of a more accurate 3D model, and because not all mechanisms are yet captured in the simulations. We are currently working on further improving the models so that the simulation results better match the experimental data across all conditions. 
+**`results_folder`**
+Set this to the folder on your machine where PredSim saves its output.
+
+**`results_path`**
+A struct that links a label (used in the legend) to the `.mat` file of a specific simulation. Only the fields you include here will be plotted. 
+
+> ⚠️ **Note:** the version numbers (`_v1`,`_v2`, `_v3`, `_v4`, …) will be different for you, depending on how many simulations you've run and in what order. Check the `PredSimResults\gait1018_esmac` folder to confirm which version corresponds to which settings (reference, DMD_simulation), and update the paths accordingly.
+
+> 💡 The field names you choose (`reference`, `DMD_simulation`) become the legend labels in your figures (spaces are inserted automatically instead of underscores), so keep them short and descriptive.
+
+**`plot_experimental_kinematics`** *(true/false)*
+Set to `true` to overlay the patient's own experimental IK envelope (from motion capture) on the kinematic plots. Set to `false` to skip this.
+
+**`include_TD_reference`** *(true/false)*
+Set to `true` to overlay a typically-developing (TD) reference envelope for comparison. Set to `false` to skip this.
+
+**`apply_clinical_convention`** *(true/false)*
+Set to `true` to convert joint angle signs/directions to the clinical convention (as typically reported in clinical gait analysis reports) instead of the raw OpenSim convention. This affects both the simulation curves and the experimental/TD reference curves, so keep it consistent across your figures.
+
+**`legend_names`**
+By default, this is generated automatically from the field names in `results_path`, with underscores replaced by spaces:
+
+**`figure_folder`** and **`figure_savename`**
+Control where figures are saved and the common prefix used in the filenames. By default, `figure_folder` points to the `IK` results folder and doesn't need to be changed unless you want figures saved elsewhere.
+	
+3. Click on the green 'Run' button
+
+If you chose to plot the reference simulation and the DMD simulation against the experimental data of the patient (`plot_experimental_kinematics = true;`) and the TD experimental reference data (`include_TD_reference = true;`) and if you chose to apply the clinical convention (`apply_clinical_convention = true;`), the figure should look like this: 
+<img width="3988" height="2956" alt="Figure for op github" src="https://github.com/user-attachments/assets/5014c851-7eea-49eb-8af8-97f27d270665" />
+
+
+You can see that the simulation with DMD impairments (yellow line) is closer to the experimental data of the patient (yellow band), than the reference simulation (dark gray line). This means that incorporating the DMD-specific impairments into the model already brings the simulation closer to the experimental data. The DMD simulation predicts a tiptoeing gait pattern, which is also observed experimentally. However, the simulated gait still does not fully match the experimental data. This may be due to the use of a 2D model instead of a more accurate 3D model, and because not all mechanisms are yet captured in the simulations. We are currently working on further improving the models so that the simulation results better match the experimental data across all conditions. 
+**⚠️ Be aware** that the simulations are based on a simplified 2D musculoskeletal model, while the experimental data represent full 3D kinematics. Consequently, differences between simulated and experimental curves may partly arise from model simplifications rather than true biomechanical discrepancies. 
 
 ## Optional: simulate the effect of Achilles tendon lengthening
 
@@ -133,17 +160,17 @@ The user will run a predictive simulation in [PredSim](https://github.com/KULeuv
 To visualize the mot file in OpenSim follow the steps described [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026?tab=readme-ov-file#visualizing-your-simulation-results-in-opensim).
    
 ⚠️ Note that plotting the kinematics of the last simulation is not very useful because no solution was found (see visualization in OpenSim). The instructions below are therefore primarly intended for future use after the workshop.
+
 To plot the kinematics of your simulations and compare them to the Experimental Data of the patient:  
-1. Open the script [PlotFigure/run_this_file_to_plot_figures_Case_DMD.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_Case_DMD.m) in matlab
-2. Add **Line 14** with the `.mat` files that contain the results of your **simulated Achilles tendon lengthening**. Specifically, copy the code below to **Line 14**. *(If the DMD simulation was the second simulation you ran with this 2D model, the results are stored in v3, otherwise adapt vx)* :
+1. Open the script [run_this_file_to_plot_figures_DMD_ESMAC.m](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/blob/main/S1%20DMD/PlotFigure/run_this_file_to_plot_figures_DMD_ESMAC.m)).
+2. Edit the section marked `% ------- start edit -------` to `% ------- stop edit -------` (lines 14–45) to point to your own simulation results and configure which comparisons you want to see. 
 
-	 	result_paths{3} = fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v3.mat');
-      
-3. Modify **Line 17** to:
+#### What to edit
 
-	 	legend_names = {'Reference simulation', 'DMD simulation', 'Simulated Achilles tendon lengthening'};
- 
-4. Click on the green 'Run' button
+**`results_path`**
+Add your third simulation in this struct. You may want to comment lines 17-19 (highlight the lines and do Ctrl+R) and uncomment lines 21-22 (highlight the lines and do Ctrl+Shift+R). ⚠️ Don't forget to change the version number of your simulation results. 
 
+You may also want to change the other settings depending on what you want to see (see instructions above). 
 
+3. Click on the green 'Run' button
 
