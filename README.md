@@ -36,7 +36,7 @@ Before going to the hands-on tutorials, the user should run a reference 2D simul
    - Line 51-52:
      ```matlab
      result_paths{1} = fullfile(pathRepo,'Tests','ReferenceResults',...
-        'gait1018_esmac','gait1018_esmac.mat');
+        'gait1018_esmac','gait1018_esmac_reference.mat');
      ```
 5. Click on the green 'Run' button
 
