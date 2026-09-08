@@ -142,8 +142,8 @@ This treatment was often performed in patients with DMD who walk on their toes (
 
 1. Go to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and change the setting `S.subject.scale_MT_params` to scale the tendon slack length (lTs) in order to simulate a Achilles tendon lengthening. Specifically, comment this line `S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5};` by putting your cursor on this line and do Ctrl+R  and add this line instead `S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5, {'soleus_l', 'soleus_r', 'gastroc_r', 'gastroc_l'}, 'lTs', 1.3};` in `update_settings.m`. This line will scale the tendon slack length (lTs) of both muscles (left and right) by 1.3 :
 		
-	% S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5};
-   S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5, {'soleus_l', 'soleus_r', 'gastroc_r', 'gastroc_l'}, 'lTs', 1.3};	
+		% S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5};
+   		S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5, {'soleus_l', 'soleus_r', 'gastroc_r', 'gastroc_l'}, 'lTs', 1.3};	 	 
 
 Important: Do not change the other settings in `update_settings.m`. This way, you will simulate an Achilles tendon lengthening on a model that has DMD-specific muscle weakness and stiffness. 
 
