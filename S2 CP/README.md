@@ -475,9 +475,9 @@ Control where figures are saved and the common prefix used in the filenames. By 
 
 Once you have completed this case, you may want to switch to another. In that case, you have to start from a new `update_settings` file.
 
-Since you worked with `update_settings_pre` and `update_settings_post` in this case (rather than editing `update_settings` directly), this cleanup
-is not strictly necessary for those files -- they are case-specific and won't carry over. However, make sure you create a fresh `update_settings`
-file before starting a new case, so that no edits from this case remain. 
+Since you worked with `update_settings_pre` and `update_settings_post` in this case (rather than editing `update_settings` directly), you can start
+from a new `update_settings` file and the case-specific settings won't carry over.
+
 Before starting a new case, `update_settings` should look like this:
 
 ```matlab
