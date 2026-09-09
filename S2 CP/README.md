@@ -472,7 +472,13 @@ Control where figures are saved and the common prefix used in the filenames. By 
 **⚠️ Be aware** that the simulations are based on a simplified 2D musculoskeletal model, while the experimental data represent full 3D kinematics. Consequently, differences between simulated and experimental curves may partly arise from model simplifications rather than true biomechanical discrepancies. The goal of predictive simulation is not to perfectly reproduce every experimental detail, but to evaluate whether the personalized model captures clinically relevant gait characteristics and predicts the key changes after intervention.
 
 ## Switching to another case
-Once you have completed this case, you may want to switch to another. In that case, please remove any edits you made to the update_settings.m file. Before starting a new case, it should look like this:
+
+Once you have completed this case, you may want to switch to another. In that case, you have to start from a new `update_settings` file.
+
+Since you worked with `update_settings_pre` and `update_settings_post` in this case (rather than editing `update_settings` directly), this cleanup
+is not strictly necessary for those files -- they are case-specific and won't carry over. However, make sure you create a fresh `update_settings`
+file before starting a new case, so that no edits from this case remain. 
+Before starting a new case, `update_settings` should look like this:
 
 ```matlab
 function[S] = update_settings(S)
