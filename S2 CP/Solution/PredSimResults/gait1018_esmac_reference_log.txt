@@ -1,0 +1,697 @@
+ 
+Subject name: gait1018_esmac
+OpenSim model: C:\GBW_MyPrograms\PredSimSHARED3\Subjects\gait1018_esmac\gait1018_esmac.osim
+ 
+ 
+Start PreProcessing...
+ 
+   Creating new external function...
+   ... external function created (36.11 s)
+   start analysing musculoskeletal geometry...
+   analysing MSK geometry: 54.51 s
+   approximating MSK geometry: 5.63 s
+ 
+...PreProcessing done. Time elapsed 103.95 s
+ 
+ 
+Start creating CasADi functions...
+ 
+
+--------------------------------------------------------------------------------
+             Access violation detected at 2026-09-14 19:54:13 +0200
+--------------------------------------------------------------------------------
+
+Configuration:
+  Crash Decoding           : Disabled - No sandbox or build area path
+  Crash Mode               : continue (default)
+  Default Encoding         : UTF-8
+  Deployed                 : false
+  Graphics Driver          : Uninitialized hardware 
+  Graphics card 1          : NVIDIA ( 0x10de ) NVIDIA RTX A500 Laptop GPU Version 32.0.15.9595 (2026-3-15)
+  Graphics card 2          : Intel Corporation ( 0x8086 ) Intel(R) Iris(R) Xe Graphics Version 32.0.101.7085 (2026-3-3)
+  Interpreter 0            : Executing request: 72323561302F4576616C466576616C43616E63656C2E637070
+  Java Version             : Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+  MATLAB Architecture      : win64
+  MATLAB Entitlement ID    : 1827771
+  MATLAB Root              : C:\Program Files\MATLAB\R2026a
+  MATLAB Version           : 26.1.0.3251617 (R2026a) Update 2
+  OpenGL                   : hardware
+  Operating System         : Microsoft Windows 11 Enterprise
+  Process ID               : 8076
+  Processor ID             : x86 Family 6 Model 186 Stepping 2, GenuineIntel
+  Session Key              : 7skfhj4zl0r4uk00z00qn7aas
+  Window System            : Version 10.0 (Build 26200)
+
+Fault Count: 1
+
+
+Abnormal termination:
+Access violation
+
+Current Thread: 'MCR 0 interpreter thread' id 35412
+
+Register State (from fault):
+  RAX = 0000026de0384040  RBX = 000000ed3d0f0868
+  RCX = 00007ffc806b47c0  RDX = 00007ffc806b47c0
+  RSP = 000000ed3d0f0800  RBP = 0000026de0383f70
+  RSI = 0000000000000000  RDI = 0000026de0383ea8
+ 
+   R8 = 0000026de0383fb0   R9 = 0000026de0383ea0
+  R10 = 0000026dd7960000  R11 = 0000000000000001
+  R12 = 00007ffc80702828  R13 = 000000ed3d0f0af0
+  R14 = 00007ffc80702850  R15 = 000000ed3d0f0b10
+ 
+  RIP = 00007ffc8066e0ae  EFL = 00010283
+ 
+   CS = 0033   FS = 0053   GS = 002b
+
+Stack Trace (from fault):
+[  0] 0x00007ffc8066e0ae                  C:\GBW_MyPrograms\libstdc++-6.dll+00975022 ZNSt6localeaSERKS_+00000046
+[  1] 0x00007ffc8068ddf8                  C:\GBW_MyPrograms\libstdc++-6.dll+01105400 ZNSt8ios_base7_M_initEv+00000056
+[  2] 0x00007ffc8068f6f1                  C:\GBW_MyPrograms\libstdc++-6.dll+01111793 ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_E+00000017
+[  3] 0x0000000065c1e743       C:\GBW_MyPrograms\casadi_3_5_5\libcasadi.dll+03008323 ZN6casadi14FileSerializerC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt3mapIS6_NS_11GenericTypeESt4lessIS6_ESaISt4pairIS7_SA_EEE+00000227
+[  4] 0x0000000065a6dfd6       C:\GBW_MyPrograms\casadi_3_5_5\libcasadi.dll+01236950 ZNK6casadi8Function4saveERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt3mapIS6_NS_11GenericTypeESt4lessIS6_ESaISt4pairIS7_SA_EEE+00000022
+[  5] 0x0000000061b78190    C:\GBW_MyPrograms\casadi_3_5_5\casadiMEX.mexw64+01540496 Z19_wrap_Function_saveiPP11mxArray_tagiS1_+00000304
+[  6] 0x0000000061b94cae    C:\GBW_MyPrograms\casadi_3_5_5\casadiMEX.mexw64+01658030 mexFunction+00011070
+[  7] 0x00007ffb76268a49 C:\Program Files\MATLAB\R2026a\bin\win64\libmex.dll+00690761 mexfile::Inspector::needs_upgrade+00024649
+[  8] 0x00007ffb7626ba72 C:\Program Files\MATLAB\R2026a\bin\win64\libmex.dll+00703090 MexRetrieveVersion+00009138
+[  9] 0x00007ffb7626bbe7 C:\Program Files\MATLAB\R2026a\bin\win64\libmex.dll+00703463 MexRetrieveVersion+00009511
+[ 10] 0x00007ffb7626bdd8 C:\Program Files\MATLAB\R2026a\bin\win64\libmex.dll+00703960 MexRetrieveVersion+00010008
+[ 11] 0x00007ffb7624d2f8 C:\Program Files\MATLAB\R2026a\bin\win64\libmex.dll+00578296 mexUnlock+00017976
+[ 12] 0x00007ffb81621fd1 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01253329 Mfh_error::lookup+00012865
+[ 13] 0x00007ffb81622e2d C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01257005 Mfh_file::dispatch+00000045
+[ 14] 0x00007ffb75cd6b7d C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00879485 mwboost::serialization::singleton_module::unlock+00813837
+[ 15] 0x00007ffb75cf3964 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00997732 mwboost::serialization::singleton_module::unlock+00932084
+[ 16] 0x00007ffb72d04966 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+06703462 MathWorks::lxe::ObservableXvaluePtr::~ObservableXvaluePtr+00006470
+[ 17] 0x00007ffb72cffaa7 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+06683303 MathWorks::lxe::LXEConstants::NewIrMacro+00009223
+[ 18] 0x00007ffb72c10458 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05702744 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00278344
+[ 19] 0x00007ffb72c30679 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05834361 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00409961
+[ 20] 0x00007ffb729a62a5 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03170981 MathWorks::lxe::LXEConstants::IsIfElse+00549989
+[ 21] 0x00007ffb729aa3a2 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03187618 MathWorks::lxe::LXEConstants::IsY+00011666
+[ 22] 0x00007ffb729a7d71 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03177841 MathWorks::lxe::LXEConstants::IsY+00001889
+[ 23] 0x00007ffb729ab455 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03191893 MathWorks::lxe::LXEConstants::IsY+00015941
+[ 24] 0x00007ffb729ab703 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03192579 MathWorks::lxe::LXEConstants::IsY+00016627
+[ 25] 0x00007ffb729ab06e C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03190894 MathWorks::lxe::LXEConstants::IsY+00014942
+[ 26] 0x00007ffb729a7456 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03175510 MathWorks::lxe::LxeTypes::GetTypeXvalueOf+00000262
+[ 27] 0x00007ffb72aa7c3f C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04226111 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00048735
+[ 28] 0x00007ffb72aab805 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04241413 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00064037
+[ 29] 0x00007ffb75f61e36 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+03546678 FeatureTestObservableWorkspace+00367686
+[ 30] 0x00007ffb75cc613d C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00811325 mwboost::serialization::singleton_module::unlock+00745677
+[ 31] 0x00007ffb75cc5dc4 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00810436 mwboost::serialization::singleton_module::unlock+00744788
+[ 32] 0x00007ffb75cca862 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00829538 mwboost::serialization::singleton_module::unlock+00763890
+[ 33] 0x00007ffb816219dc C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01251804 Mfh_error::lookup+00011340
+[ 34] 0x00007ffb81622dc0 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01256896 Mfh_file::dispatch+00000176
+[ 35] 0x00007ffb689f152b C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+04724011 mwboost::archive::detail::oserializer<mwboost::archive::text_oarchive,MathWorks::MatlabComponents::ComponentIdentifier>::save_object_data+00370331
+[ 36] 0x00007ffb688de8f7 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03598583 mcos::heterogeneous::mcosIsHeterogeneousArray+00042663
+[ 37] 0x00007ffb688deec1 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03600065 mcos::heterogeneous::mcosIsHeterogeneousArray+00044145
+[ 38] 0x00007ffb688df35f C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03601247 mcos::heterogeneous::mcosIsHeterogeneousArray+00045327
+[ 39] 0x00007ffb688e2c20 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03615776 mcos::heterogeneous::mcosIsHeterogeneousArray+00059856
+[ 40] 0x00007ffb688e2fc6 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03616710 mcos::heterogeneous::mcosIsHeterogeneousArray+00060790
+[ 41] 0x00007ffb68a2595d C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+04938077 namedArgsToCell+00009341
+[ 42] 0x00007ffb68a48901 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+05081345 mcos::impl::validation::createScalarDefaultPropValue+00080993
+[ 43] 0x00007ffb9a5dd0f8  C:\Program Files\MATLAB\R2026a\bin\win64\mcos.dll+00184568 omDirectCallMethod+00000072
+[ 44] 0x00007ffb72168e22 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxeindexing.dll+00757282 MathWorks::lxe::McosModuleImplementation::DirectCallMethod+00000066
+[ 45] 0x00007ffb72167b47 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxeindexing.dll+00752455 MathWorks::lxe::NativeObjectRuntimeFieldQuery<mxArray_tag>::~NativeObjectRuntimeFieldQuery<mxArray_tag>+00003095
+[ 46] 0x00007ffb72165b7a C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxeindexing.dll+00744314 MathWorks::lxe::MatrixModuleImplementation::SubscriptedDelete+00027386
+[ 47] 0x00007ffb72167de9 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxeindexing.dll+00753129 MathWorks::lxe::NativeObjectRuntimeFieldQuery<mxArray_tag>::~NativeObjectRuntimeFieldQuery<mxArray_tag>+00003769
+[ 48] 0x00007ffb721c7415 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxeindexing.dll+01143829 MathWorks::lxe::at_rparen_nargout_mcos_method_rplace+00000149
+[ 49] 0x00007ffb72c10408 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05702664 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00278264
+[ 50] 0x00007ffb72c1f519 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05764377 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00339977
+[ 51] 0x00007ffb729a62b8 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03171000 MathWorks::lxe::LXEConstants::IsIfElse+00550008
+[ 52] 0x00007ffb729aa3a2 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03187618 MathWorks::lxe::LXEConstants::IsY+00011666
+[ 53] 0x00007ffb729a7d71 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03177841 MathWorks::lxe::LXEConstants::IsY+00001889
+[ 54] 0x00007ffb729ab455 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03191893 MathWorks::lxe::LXEConstants::IsY+00015941
+[ 55] 0x00007ffb729ab703 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03192579 MathWorks::lxe::LXEConstants::IsY+00016627
+[ 56] 0x00007ffb729ab06e C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03190894 MathWorks::lxe::LXEConstants::IsY+00014942
+[ 57] 0x00007ffb729a7456 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03175510 MathWorks::lxe::LxeTypes::GetTypeXvalueOf+00000262
+[ 58] 0x00007ffb72aa7c3f C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04226111 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00048735
+[ 59] 0x00007ffb72aab805 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04241413 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00064037
+[ 60] 0x00007ffb75f61e36 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+03546678 FeatureTestObservableWorkspace+00367686
+[ 61] 0x00007ffb75d9a3dd C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+01680349 mwboost::archive::detail::pointer_oserializer<mwboost::archive::xml_oarchive,MathWorks::lxe::PreLineExecutionEvent>::save_object_ptr+00198077
+[ 62] 0x00007ffb75d9bd0b C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+01686795 mwboost::archive::detail::pointer_oserializer<mwboost::archive::xml_oarchive,MathWorks::lxe::PreLineExecutionEvent>::save_object_ptr+00204523
+[ 63] 0x00007ffb75d70de5 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+01510885 mwboost::archive::detail::pointer_oserializer<mwboost::archive::xml_oarchive,MathWorks::lxe::PreLineExecutionEvent>::save_object_ptr+00028613
+[ 64] 0x00007ffb75d70bde C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+01510366 mwboost::archive::detail::pointer_oserializer<mwboost::archive::xml_oarchive,MathWorks::lxe::PreLineExecutionEvent>::save_object_ptr+00028094
+[ 65] 0x00007ffb830200ce C:\Program Files\MATLAB\R2026a\bin\win64\m_interpreter.dll+00721102 inReferenceSubsScript+00000062
+[ 66] 0x00007ffb99f23a3d C:\Program Files\MATLAB\R2026a\bin\win64\builtin.dll+00211517 MathWorks::builtin::BuiltinFcn::invoke+00001389
+[ 67] 0x00007ffb815474aa C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00357546 mdLoadModuleForPackageOrClass+00009594
+[ 68] 0x00007ffb81547575 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00357749 mdLoadModuleForPackageOrClass+00009797
+[ 69] 0x00007ffb814fcb60 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00052064
+[ 70] 0x00007ffb8151ccd3 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00183507 Mfh_MATLAB_fn_impl::dispatch+00000227
+[ 71] 0x00007ffb68b2aceb C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+06008043 mustBeA+00202171
+[ 72] 0x00007ffb8161a999 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01223065 mdBuiltinAsBuiltinFcn+00000233
+[ 73] 0x00007ffb99f23a3d C:\Program Files\MATLAB\R2026a\bin\win64\builtin.dll+00211517 MathWorks::builtin::BuiltinFcn::invoke+00001389
+[ 74] 0x00007ffb815474aa C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00357546 mdLoadModuleForPackageOrClass+00009594
+[ 75] 0x00007ffb81547575 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00357749 mdLoadModuleForPackageOrClass+00009797
+[ 76] 0x00007ffb814fd218 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00053784
+[ 77] 0x00007ffb8151cd9d C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00183709 Mfh_MATLAB_fn_impl::dispatch+00000045
+[ 78] 0x00007ffb75cd6b7d C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00879485 mwboost::serialization::singleton_module::unlock+00813837
+[ 79] 0x00007ffb75cf3964 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00997732 mwboost::serialization::singleton_module::unlock+00932084
+[ 80] 0x00007ffb72d04966 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+06703462 MathWorks::lxe::ObservableXvaluePtr::~ObservableXvaluePtr+00006470
+[ 81] 0x00007ffb72cffaa7 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+06683303 MathWorks::lxe::LXEConstants::NewIrMacro+00009223
+[ 82] 0x00007ffb72c10458 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05702744 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00278344
+[ 83] 0x00007ffb72c30679 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05834361 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00409961
+[ 84] 0x00007ffb729a62a5 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03170981 MathWorks::lxe::LXEConstants::IsIfElse+00549989
+[ 85] 0x00007ffb729aa3a2 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03187618 MathWorks::lxe::LXEConstants::IsY+00011666
+[ 86] 0x00007ffb729a7d71 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03177841 MathWorks::lxe::LXEConstants::IsY+00001889
+[ 87] 0x00007ffb729ab455 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03191893 MathWorks::lxe::LXEConstants::IsY+00015941
+[ 88] 0x00007ffb729ab703 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03192579 MathWorks::lxe::LXEConstants::IsY+00016627
+[ 89] 0x00007ffb729ab06e C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03190894 MathWorks::lxe::LXEConstants::IsY+00014942
+[ 90] 0x00007ffb729a7456 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03175510 MathWorks::lxe::LxeTypes::GetTypeXvalueOf+00000262
+[ 91] 0x00007ffb72aa7c3f C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04226111 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00048735
+[ 92] 0x00007ffb72aab805 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04241413 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00064037
+[ 93] 0x00007ffb75f61e36 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+03546678 FeatureTestObservableWorkspace+00367686
+[ 94] 0x00007ffb75cc647d C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00812157 mwboost::serialization::singleton_module::unlock+00746509
+[ 95] 0x00007ffb75cc5dbd C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00810429 mwboost::serialization::singleton_module::unlock+00744781
+[ 96] 0x00007ffb75cca898 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00829592 mwboost::serialization::singleton_module::unlock+00763944
+[ 97] 0x00007ffb81621c0c C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01252364 Mfh_error::lookup+00011900
+[ 98] 0x00007ffb81622fc0 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01257408 Mfh_file::dispatch_with_reuse+00000176
+[ 99] 0x00007ffb689f151a C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+04723994 mwboost::archive::detail::oserializer<mwboost::archive::text_oarchive,MathWorks::MatlabComponents::ComponentIdentifier>::save_object_data+00370314
+[100] 0x00007ffb688de8f7 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03598583 mcos::heterogeneous::mcosIsHeterogeneousArray+00042663
+[101] 0x00007ffb688deec1 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03600065 mcos::heterogeneous::mcosIsHeterogeneousArray+00044145
+[102] 0x00007ffb688df35f C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03601247 mcos::heterogeneous::mcosIsHeterogeneousArray+00045327
+[103] 0x00007ffb688e3157 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+03617111 mcos::heterogeneous::mcosIsHeterogeneousArray+00061191
+[104] 0x00007ffb68b59219 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+06197785 mustBeA+00391913
+[105] 0x00007ffb68b57946 C:\Program Files\MATLAB\R2026a\bin\win64\mcos_impl.dll+06191430 mustBeA+00385558
+[106] 0x00007ffb814fcd90 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00052624
+[107] 0x00007ffb8151ceb3 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+00183987 Mfh_MATLAB_fn_impl::dispatch_with_reuse+00000227
+[108] 0x00007ffb75ce7966 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00948582 mwboost::serialization::singleton_module::unlock+00882934
+[109] 0x00007ffb721d1f4e C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxeindexing.dll+01187662 MathWorks::lxe::GetSubstructTypeAndSubsOffsets+00002990
+[110] 0x00007ffb721d44f4 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxeindexing.dll+01197300 MathWorks::lxe::at_rparen0_subsref_place+00000148
+[111] 0x00007ffb72c10408 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05702664 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00278264
+[112] 0x00007ffb72c1f1d9 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+05763545 MathWorks::lxe::XvalueFactory::XvalueDeleter::XvalueDeleter+00339145
+[113] 0x00007ffb729a62b8 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03171000 MathWorks::lxe::LXEConstants::IsIfElse+00550008
+[114] 0x00007ffb729aa3a2 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03187618 MathWorks::lxe::LXEConstants::IsY+00011666
+[115] 0x00007ffb729a7d71 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03177841 MathWorks::lxe::LXEConstants::IsY+00001889
+[116] 0x00007ffb729ab455 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03191893 MathWorks::lxe::LXEConstants::IsY+00015941
+[117] 0x00007ffb729ab703 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03192579 MathWorks::lxe::LXEConstants::IsY+00016627
+[118] 0x00007ffb729ab06e C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03190894 MathWorks::lxe::LXEConstants::IsY+00014942
+[119] 0x00007ffb729a7456 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+03175510 MathWorks::lxe::LxeTypes::GetTypeXvalueOf+00000262
+[120] 0x00007ffb72aa7c3f C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04226111 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00048735
+[121] 0x00007ffb72aab805 C:\Program Files\MATLAB\R2026a\bin\win64\m_lxe.dll+04241413 MathWorks::lxe::SetEngineImplUnlinkFlagForAllCallsOnStack+00064037
+[122] 0x00007ffb75f61e36 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+03546678 FeatureTestObservableWorkspace+00367686
+[123] 0x00007ffb75cc6789 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00812937 mwboost::serialization::singleton_module::unlock+00747289
+[124] 0x00007ffb75cc5dcb C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00810443 mwboost::serialization::singleton_module::unlock+00744795
+[125] 0x00007ffb75cca862 C:\Program Files\MATLAB\R2026a\bin\win64\libmwlxemainservices.dll+00829538 mwboost::serialization::singleton_module::unlock+00763890
+[126] 0x00007ffb81621fd1 C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01253329 Mfh_error::lookup+00012865
+[127] 0x00007ffb81622e2d C:\Program Files\MATLAB\R2026a\bin\win64\m_dispatcher.dll+01257005 Mfh_file::dispatch+00000045
+
+
+This error was detected while a MEX-file was running. If the MEX-file
+is not an official MathWorks function, please examine its source code
+for errors. Please consult the External Interfaces Guide for information
+on debugging MEX-files.
+** This crash report has been saved to disk as C:\Users\u0167909\AppData\Local\Temp\matlab_crash_dump.8076-1 **
+
+
+
+MATLAB is exiting because of fatal error
+ 
+Subject name: gait1018_esmac
+OpenSim model: C:\GBW_MyPrograms\PredSimSHARED3\Subjects\gait1018_esmac\gait1018_esmac.osim
+ 
+ 
+Start PreProcessing...
+ 
+   Using existing external function: 
+      C:\GBW_MyPrograms\PredSimSHARED3\Subjects\gait1018_esmac\F_gait1018_esmac.dll
+   start analysing musculoskeletal geometry...
+   analysing MSK geometry: 13.85 s
+   approximating MSK geometry: 1.77 s
+ 
+...PreProcessing done. Time elapsed 24.82 s
+ 
+ 
+Start creating CasADi functions...
+ 
+ 
+...CasADi functions created. Time elapsed 1.44 s
+ 
+ 
+Start formulating OCP...
+ 
+...OCP formulation done. Time elapsed 2.92 s
+ 
+Starting NLP solver...
+ 
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+This is Ipopt version 3.12.3, running with linear solver mumps.
+NOTE: Other linear solvers might be more efficient (see Ipopt documentation).
+
+Number of nonzeros in equality constraint Jacobian...:   115460
+Number of nonzeros in inequality constraint Jacobian.:    10800
+Number of nonzeros in Lagrangian Hessian.............:        0
+
+Total number of variables............................:    16607
+                     variables with only lower bounds:        0
+                variables with lower and upper bounds:    16607
+                     variables with only upper bounds:        0
+Total number of equality constraints.................:    15657
+Total number of inequality constraints...............:     5400
+        inequality constraints with only lower bounds:     2700
+   inequality constraints with lower and upper bounds:        0
+        inequality constraints with only upper bounds:     2700
+
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+   0 1.2019675e+004 5.21e+002 1.00e+002   0.0 0.00e+000    -  0.00e+000 0.00e+000   0
+   1 1.2663693e+004 5.16e+002 1.05e+002   0.3 3.14e+001    -  3.72e-002 1.10e-002F  1
+   2 1.4904961e+006 5.49e+002 1.68e+005   0.3 3.35e+001    -  2.13e-001 1.79e-001f  1
+   3 1.4646900e+006 5.43e+002 1.64e+005   1.3 4.57e+001    -  1.00e+000 9.58e-003f  1
+   4 7.6525710e+005 9.85e+002 3.00e+005   1.9 8.22e+001    -  3.14e-001 3.64e-001f  1
+   5 3.6572132e+005 1.20e+003 8.84e+005   1.5 3.59e+001    -  4.54e-002 5.28e-001f  1
+   6 2.4255289e+005 8.26e+002 7.14e+005   1.5 4.20e+001    -  4.76e-001 3.44e-001f  1
+   7 1.5401545e+005 4.72e+002 5.26e+005   1.5 2.56e+001    -  4.32e-001 4.79e-001f  1
+   8 1.1459121e+005 3.15e+002 5.45e+005   1.5 4.27e+001    -  7.47e-001 3.69e-001f  1
+   9 7.6084918e+004 1.16e+002 2.59e+005   1.2 1.73e+001    -  5.66e-001 9.05e-001f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  10 7.1106073e+004 9.51e+001 1.73e+005   1.4 1.19e+001    -  4.53e-001 4.34e-001f  1
+  11 6.3020183e+004 1.16e+002 4.40e+003   0.8 7.51e+000    -  7.49e-001 1.00e+000f  1
+  12 6.0043395e+004 1.20e+002 5.24e+004   1.0 2.14e+001    -  9.90e-001 1.00e+000f  1
+  13 5.5894184e+004 2.68e+001 7.18e+003   0.4 3.04e+000    -  7.85e-001 1.00e+000f  1
+  14 5.2087028e+004 1.49e+000 5.34e+002  -0.1 2.78e+000    -  1.00e+000 1.00e+000f  1
+  15 3.7933810e+004 1.71e+003 8.10e+003  -0.5 8.16e+000    -  9.37e-001 1.00e+000f  1
+  16 3.9113246e+004 8.17e+002 9.08e+003  -0.6 8.58e+000    -  1.00e+000 6.04e-001h  1
+  17 4.2340422e+004 1.54e+002 1.33e+004  -0.6 7.55e+000    -  3.79e-001 1.00e+000h  1
+  18 3.9434138e+004 6.85e+001 3.26e+003  -0.3 9.34e+000    -  1.00e+000 1.00e+000f  1
+  19 3.5810014e+004 6.76e+001 6.98e+002  -0.5 5.95e+000    -  1.00e+000 1.00e+000f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  20 3.4779740e+004 9.00e+001 1.25e+003  -0.7 7.57e+000    -  9.99e-001 1.00e+000h  1
+  21 3.1508792e+004 5.34e+001 9.46e+002  -0.8 4.96e+000    -  1.00e+000 1.00e+000f  1
+  22 2.6715493e+004 2.04e+001 2.54e+002  -1.0 4.93e+000    -  1.00e+000 1.00e+000f  1
+  23 2.5146380e+004 1.49e+001 3.18e+002  -1.0 5.74e+000    -  9.90e-001 4.01e-001f  1
+  24 2.9982337e+004 5.82e+001 4.64e+002  -0.8 1.12e+001    -  1.00e+000 1.00e+000f  1
+  25 2.6419727e+004 4.38e+001 4.29e+002  -0.9 5.18e+000    -  9.66e-001 1.00e+000f  1
+  26 2.6514292e+004 3.51e+001 3.06e+002  -0.9 5.37e+000    -  8.18e-001 1.00e+000h  1
+  27 2.7575598e+004 2.16e+001 2.21e+002  -0.9 3.44e+000    -  1.00e+000 1.00e+000h  1
+  28 2.7074512e+004 3.79e+000 1.24e+002  -0.9 2.90e+000    -  1.00e+000 1.00e+000h  1
+  29 2.4803408e+004 1.11e+001 1.66e+002  -1.0 4.21e+000    -  9.97e-001 1.00e+000f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  30 2.1356486e+004 4.23e+001 2.58e+002  -1.3 4.43e+000    -  1.00e+000 1.00e+000f  1
+  31 2.3980381e+004 2.50e+001 4.95e+002  -1.1 5.77e+000    -  1.00e+000 1.00e+000f  1
+  32 1.9918248e+004 2.10e+001 1.08e+002  -1.6 6.76e+000    -  1.00e+000 1.00e+000f  1
+  33 1.3871427e+004 3.51e+001 8.34e+001  -1.8 1.36e+001    -  1.00e+000 1.00e+000f  1
+  34 1.2445996e+004 2.19e+001 6.00e+001  -1.9 8.79e+000    -  1.00e+000 1.00e+000h  1
+  35 1.0941623e+004 7.99e+000 9.11e+001  -2.1 6.20e+000    -  9.99e-001 1.00e+000h  1
+  36 1.9754099e+004 1.09e+002 4.20e+002  -1.6 1.89e+001    -  1.00e+000 1.00e+000f  1
+  37 1.3071367e+004 7.34e+001 1.50e+002  -1.7 1.27e+001    -  1.00e+000 1.00e+000f  1
+  38 1.4938044e+004 2.53e+001 2.36e+001  -1.7 6.70e+000    -  8.72e-001 1.00e+000h  1
+  39 1.3695267e+004 8.77e+000 5.02e+001  -1.7 4.48e+000    -  1.00e+000 1.00e+000h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  40 1.4017881e+004 7.75e+000 2.64e+001  -1.7 1.43e+000    -  1.00e+000 1.00e+000h  1
+  41 1.1487960e+004 1.00e+001 2.08e+001  -1.9 6.23e+000    -  1.00e+000 1.00e+000h  1
+  42 1.0662947e+004 1.33e+000 3.85e+001  -2.1 1.73e+001    -  1.00e+000 1.00e+000H  1
+  43 1.2211941e+004 6.79e+001 4.20e+001  -1.9 1.19e+001    -  1.00e+000 1.00e+000f  1
+  44 1.0939894e+004 3.52e+000 2.95e+001  -2.0 6.54e+000    -  1.00e+000 1.00e+000H  1
+  45 1.0250033e+004 3.18e+000 9.56e+000  -2.0 5.44e+000    -  1.00e+000 1.00e+000h  1
+  46 8.6728856e+003 5.61e+000 8.82e+000  -2.3 5.02e+000    -  1.00e+000 1.00e+000f  1
+  47 8.3501264e+003 2.43e+000 4.28e+001  -2.4 1.24e+001    -  1.00e+000 1.00e+000H  1
+  48 8.5739035e+003 3.04e+001 2.03e+001  -2.2 1.08e+001    -  1.00e+000 1.00e+000f  1
+  49 9.0937982e+003 8.42e+000 8.88e+001  -2.3 7.23e+000    -  9.96e-001 9.59e-001H  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  50 7.3216618e+003 1.20e+001 8.35e+001  -2.3 5.55e+000    -  7.28e-001 1.00e+000f  1
+  51 5.8917262e+003 8.48e+000 1.65e+001  -2.7 5.15e+000    -  1.00e+000 1.00e+000h  1
+  52 4.9886046e+003 1.01e+001 2.41e+001  -2.7 1.31e+001    -  1.00e+000 1.00e+000H  1
+  53 6.2684321e+003 4.23e+001 1.36e+001  -2.4 1.00e+001    -  6.63e-001 1.00e+000f  1
+  54 5.7663662e+003 2.84e+001 2.15e+001  -2.6 1.12e+001    -  6.87e-001 4.59e-001h  2
+  55 4.8340062e+003 1.02e+001 1.67e+001  -2.6 5.40e+000    -  1.00e+000 1.00e+000h  1
+  56 4.1409748e+003 1.02e+001 1.70e+001  -2.9 6.50e+000    -  1.00e+000 1.00e+000h  1
+  57 5.7867018e+003 1.24e+001 2.08e+001  -2.6 8.24e+000    -  1.00e+000 1.00e+000f  1
+  58 6.0810947e+003 1.51e+001 2.06e+001  -2.6 1.26e+001    -  8.99e-001 1.00e+000H  1
+  59 4.5712511e+003 5.97e+000 1.91e+001  -2.6 6.13e+000    -  9.88e-001 1.00e+000f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  60 3.6222732e+003 6.01e+000 1.12e+001  -3.0 6.75e+000    -  1.00e+000 8.90e-001h  1
+  61 3.1913902e+003 1.09e+001 2.13e+001  -3.0 1.20e+001    -  1.00e+000 7.65e-001h  1
+  62 3.1014876e+003 2.34e+000 1.92e+001  -3.0 8.42e+000    -  8.18e-001 8.52e-001h  1
+  63 3.2509219e+003 7.30e+000 6.71e+000  -3.0 5.36e+000    -  8.53e-001 1.00e+000h  1
+  64 2.8368946e+003 3.33e+000 4.21e+000  -3.1 3.18e+000    -  1.00e+000 1.00e+000h  1
+  65 2.7424072e+003 5.57e-001 2.41e+000  -3.2 4.33e+000    -  1.00e+000 1.00e+000h  1
+  66 2.6361249e+003 6.91e-001 4.06e+000  -3.2 6.69e+000    -  7.54e-001 5.70e-001h  1
+  67 2.5489788e+003 2.45e+000 5.33e+000  -3.2 1.65e+001    -  2.40e-001 3.17e-001h  1
+  68 2.3950169e+003 2.10e+000 4.85e+000  -3.5 1.34e+001    -  6.18e-002 3.17e-001h  1
+  69 2.2125411e+003 2.33e+000 5.65e+000  -4.2 2.13e+001    -  2.17e-001 1.74e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  70 2.0260830e+003 1.94e+000 4.88e+000  -9.3 1.64e+001    -  5.04e-002 2.16e-001h  1
+  71 1.9474792e+003 1.87e+000 3.79e+000  -3.7 1.50e+001    -  1.92e-001 2.23e-001h  1
+  72 2.4796817e+003 4.13e+000 3.07e+000  -3.1 7.94e+000    -  4.46e-001 1.00e+000h  1
+  73 2.4114939e+003 3.72e+000 4.76e+000  -3.3 1.20e+001    -  9.13e-001 1.78e-001h  2
+  74 2.1058853e+003 1.77e+000 5.48e+000  -3.3 7.00e+000    -  9.25e-001 8.67e-001h  1
+  75 1.8958322e+003 2.24e+000 6.68e+000  -4.6 2.06e+001    -  2.41e-001 1.97e-001h  1
+  76 1.8248183e+003 2.18e+000 6.57e+000  -3.9 1.37e+001    -  1.80e-001 1.20e-001h  1
+  77 1.6772292e+003 5.32e+000 4.90e+000  -5.1 1.21e+001    -  1.76e-001 3.88e-001h  1
+  78 1.6053112e+003 4.38e+000 4.85e+000  -4.4 1.32e+001    -  3.07e-002 1.78e-001h  1
+  79 1.5710445e+003 2.35e+000 3.85e+000  -3.8 9.83e+000    -  4.12e-001 3.78e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  80 1.7114933e+003 1.94e+000 3.49e+000  -3.4 5.55e+000    -  2.58e-001 5.29e-001h  1
+  81 1.7186350e+003 1.35e+000 5.05e+000  -3.7 9.77e+000    -  3.27e-001 4.06e-001h  1
+  82 1.9807627e+003 3.55e+000 4.31e+000  -3.3 7.24e+000    -  5.79e-001 1.00e+000h  1
+  83 2.0337514e+003 4.25e+000 4.32e+000  -3.5 2.53e+001    -  9.84e-002 2.24e-001h  1
+  84 1.6999051e+003 3.81e+000 1.69e+000  -3.5 4.84e+000    -  1.19e-001 1.00e+000h  1
+  85 1.7943464e+003 1.68e+000 3.98e+000  -3.5 5.92e+000    -  5.89e-001 5.54e-001h  1
+  86 1.6949090e+003 1.79e-001 4.77e-001  -3.5 2.50e+000    -  3.77e-001 1.00e+000h  1
+  87 1.5804850e+003 7.32e-001 1.42e+000  -5.6 7.53e+000    -  6.93e-001 4.05e-001h  1
+  88 1.6744742e+003 1.10e+000 2.82e+000  -3.3 2.15e+001    -  1.18e-001 1.08e-001h  2
+  89 1.5501567e+003 1.55e+000 2.36e+000  -3.9 1.00e+001    -  6.29e-001 3.63e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+  90 1.6799652e+003 1.71e+000 3.73e+000  -3.2 2.04e+001    -  2.86e-001 1.93e-001f  1
+  91 1.6556409e+003 1.37e+000 3.91e+000  -3.7 9.75e+000    -  1.64e-001 2.62e-001h  1
+  92 1.5600754e+003 1.89e-001 9.84e-001  -3.7 2.34e+000    -  2.73e-001 1.00e+000h  1
+  93 1.4878320e+003 3.84e-001 8.39e-001  -9.6 8.34e+000    -  1.81e-001 2.21e-001h  1
+  94 1.5460007e+003 3.64e-001 3.78e+000  -3.7 7.17e+000    -  1.00e+000 6.98e-001H  1
+  95 1.7443371e+003 2.50e+000 5.46e+000  -3.5 5.02e+000    -  5.65e-001 1.00e+000f  1
+  96 1.7166712e+003 2.27e+000 4.72e+000  -3.7 1.50e+001    -  1.71e-001 9.56e-002h  2
+  97 1.5719474e+003 1.55e+000 1.80e+000  -3.7 4.51e+000    -  1.00e+000 7.77e-001h  1
+  98 1.5510636e+003 1.45e+000 3.03e+000  -3.7 1.93e+001    -  1.70e-001 1.80e-001h  2
+  99 1.5634897e+003 7.43e-001 2.54e+000  -3.7 3.77e+000    -  2.11e-001 8.55e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 100 1.5355071e+003 1.50e-001 9.82e-001  -3.7 2.19e+000    -  1.45e-001 1.00e+000f  1
+ 101 1.4613927e+003 3.30e-001 5.25e-001  -3.9 3.14e+000    -  1.00e+000 5.65e-001h  1
+ 102 1.4316123e+003 9.26e-001 2.03e+000  -4.1 1.25e+001    -  3.12e-001 2.21e-001h  1
+ 103 1.3868939e+003 1.08e+000 2.97e+000  -5.0 1.28e+001    -  4.86e-001 1.67e-001h  1
+ 104 1.4046028e+003 1.34e+000 5.93e+000  -3.7 2.02e+001    -  3.90e-001 2.25e-001h  1
+ 105 1.3818832e+003 1.11e+000 5.91e+000  -4.0 7.53e+000    -  3.04e-001 2.75e-001h  2
+ 106 1.3658049e+003 3.62e-001 2.62e+000  -4.0 1.54e+000    -  1.00e+000 7.07e-001h  1
+ 107 1.3646773e+003 3.30e-001 1.19e+000  -4.0 1.65e+000    -  8.42e-001 1.00e+000h  1
+ 108 1.3301420e+003 1.38e-001 1.20e+000  -4.1 1.63e+000    -  8.88e-001 1.00e+000h  1
+ 109 1.3915512e+003 6.60e-001 1.83e+000  -3.8 4.55e+000    -  3.45e-001 5.16e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 110 1.3692593e+003 8.13e-001 3.13e+000  -4.1 6.68e+000    -  2.41e-001 5.00e-001h  1
+ 111 1.3310706e+003 6.12e-001 3.67e+000  -4.1 4.24e+000    -  5.99e-002 5.52e-001h  1
+ 112 1.3210628e+003 3.22e-001 2.36e+000  -4.1 1.66e+000    -  5.87e-001 4.77e-001h  1
+ 113 1.3015812e+003 4.26e-002 7.54e-001  -4.1 8.01e-001    -  1.00e+000 1.00e+000h  1
+ 114 1.3050420e+003 7.16e-002 3.22e+000  -4.1 4.54e+000    -  6.71e-001 8.64e-001H  1
+ 115 1.3814539e+003 1.27e+000 3.01e+000  -3.8 3.27e+000    -  6.48e-001 7.33e-001f  1
+ 116 1.3758645e+003 1.38e+000 4.90e+000  -4.0 8.87e+000    -  1.44e-001 1.78e-001h  1
+ 117 1.3378037e+003 3.35e-001 2.36e+000  -4.0 1.59e+000    -  2.33e-001 8.92e-001h  1
+ 118 1.3248995e+003 1.95e-001 2.34e+000  -4.0 1.79e+000    -  1.36e-001 7.97e-001H  1
+ 119 1.3195613e+003 6.47e-002 2.70e+000  -4.0 1.53e+000    -  3.76e-002 6.79e-001f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 120 1.3193484e+003 2.46e-001 7.92e-001  -4.0 1.01e+000    -  1.00e+000 1.00e+000f  1
+ 121 1.3274043e+003 3.54e-002 1.14e+000  -4.0 7.52e-001    -  1.00e+000 1.00e+000h  1
+ 122 1.3158567e+003 2.90e-002 5.05e-001  -4.0 5.89e-001    -  1.00e+000 1.00e+000h  1
+ 123 1.3150133e+003 5.35e-003 3.32e-001  -4.0 1.32e-001    -  1.00e+000 1.00e+000h  1
+ 124 1.3018507e+003 9.38e-001 4.82e+000  -4.1 4.00e+000    -  1.00e+000 3.42e-001h  1
+ 125 1.2851028e+003 1.44e+000 7.45e+000  -4.1 9.80e+000    -  1.00e+000 2.96e-001h  2
+ 126 1.3173322e+003 3.35e+000 1.12e+001  -3.9 8.82e+000    -  8.40e-001 6.08e-001h  1
+ 127 1.3473848e+003 4.33e-001 9.00e+000  -4.0 3.38e+000    -  6.74e-001 1.00e+000H  1
+ 128 1.3224818e+003 3.35e-001 7.91e+000  -4.0 2.55e+000    -  4.48e-001 2.35e-001h  1
+ 129 1.2935329e+003 2.12e-001 5.11e+000  -4.0 2.87e+000    -  8.19e-001 4.57e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 130 1.2893225e+003 1.06e-001 3.04e+000  -4.0 2.18e+000    -  6.10e-001 4.69e-001h  1
+ 131 1.2663248e+003 5.18e-002 4.87e-001  -4.1 8.26e-001    -  4.42e-001 1.00e+000h  1
+ 132 1.3225630e+003 1.64e+000 6.69e+000  -3.8 2.03e+000    -  1.00e+000 1.00e+000h  1
+ 133 1.3606486e+003 8.27e-001 1.53e+001  -3.9 4.14e+000    -  5.02e-001 7.31e-001H  1
+ 134 1.3075717e+003 2.38e-001 8.38e+000  -3.9 1.88e+000    -  4.27e-001 9.46e-001f  1
+ 135 1.2978330e+003 1.44e-001 2.75e+000  -3.9 1.78e+000    -  9.23e-002 5.00e-001f  2
+ 136 1.2974381e+003 1.40e-002 8.17e-001  -3.9 7.27e-001    -  1.00e+000 1.00e+000h  1
+ 137 1.2724886e+003 9.48e-002 5.11e-001  -4.1 7.97e-001    -  1.00e+000 8.36e-001h  1
+ 138 1.3381077e+003 2.97e-001 7.72e+000  -3.8 3.16e+000    -  6.82e-001 9.91e-001H  1
+ 139 1.2973906e+003 1.34e-001 6.99e+000  -4.0 2.41e+000    -  4.96e-001 6.10e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 140 1.2792989e+003 1.40e-001 5.63e+000  -4.0 2.70e+000    -  8.56e-002 5.37e-001f  1
+ 141 1.2756962e+003 1.17e-001 4.91e+000  -4.0 6.88e+000    -  3.61e-003 1.76e-001f  1
+ 142 1.2757088e+003 1.16e-001 4.86e+000  -4.0 4.43e+001    -  3.18e-004 7.52e-003f  2
+ 143 1.2679236e+003 9.19e-002 3.89e+000  -4.0 1.19e+000    -  5.41e-001 2.71e-001h  1
+ 144 1.2631506e+003 1.01e-001 9.75e-001  -4.0 8.30e-001    -  1.00e+000 1.00e+000f  1
+ 145 1.2416083e+003 2.20e-001 8.25e-001  -4.2 6.84e-001    -  7.98e-001 1.00e+000h  1
+ 146 1.2910525e+003 2.11e-001 5.64e-001  -3.9 9.85e-001    -  1.00e+000 1.00e+000h  1
+ 147 1.2795281e+003 3.46e-001 2.55e+000  -4.0 2.18e+000    -  7.20e-001 5.30e-001h  1
+ 148 1.2579105e+003 1.63e-001 1.21e+000  -4.0 6.23e-001    -  5.00e-001 1.00e+000f  1
+ 149 1.2183296e+003 3.94e-001 1.27e+000  -4.4 1.84e+000    -  5.96e-001 5.48e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 150 1.2109066e+003 4.47e-001 2.03e+000  -4.3 5.76e+000    -  4.92e-001 1.43e-001h  2
+ 151 1.2020082e+003 6.41e-001 4.26e+000  -4.2 2.23e+000    -  1.00e+000 8.81e-001h  1
+ 152 1.1860483e+003 2.23e+000 1.29e+001  -4.4 6.54e+000    -  5.58e-001 4.58e-001h  1
+ 153 1.2070233e+003 2.45e+000 1.94e+001  -4.1 4.55e+000    -  4.57e-001 4.63e-001h  1
+ 154 1.1839401e+003 8.19e-001 1.46e+001  -4.3 1.75e+000    -  5.41e-001 6.95e-001h  1
+ 155 1.1644800e+003 9.18e-002 4.33e+000  -4.4 1.21e+000    -  7.90e-001 9.39e-001h  1
+ 156 1.1666580e+003 6.91e-002 3.91e+000  -4.1 8.15e-001    -  1.00e+000 3.06e-001h  1
+ 157 1.1648604e+003 3.09e-001 4.31e+000  -4.2 2.77e+000    -  7.45e-001 3.72e-001h  1
+ 158 1.1561673e+003 1.45e+000 9.07e+000  -4.3 1.95e+001    -  2.06e-001 2.31e-001h  1
+ 159 1.1842477e+003 8.80e+000 1.94e+001  -3.8 3.90e+001    -  3.36e-001 2.53e-001f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 160 1.1622250e+003 1.19e+001 1.48e+001  -4.1 1.54e+001    -  4.80e-001 5.59e-001h  1
+ 161 1.1476918e+003 1.15e+001 1.46e+001  -4.1 2.14e+001    -  2.33e-001 1.02e-001h  1
+ 162 1.1253263e+003 1.06e+001 1.45e+001  -6.2 1.23e+001    -  1.53e-001 1.24e-001h  1
+ 163 1.1461905e+003 9.64e+000 1.41e+001  -3.7 1.45e+001    -  1.53e-001 2.23e-001h  1
+ 164 1.1097858e+003 9.41e+000 1.36e+001 -10.0 1.26e+001    -  1.31e-001 1.73e-001h  1
+ 165 1.0958530e+003 8.70e+000 1.25e+001  -6.0 7.80e+000    -  1.61e-001 7.84e-002h  1
+ 166 1.0752552e+003 7.40e+000 1.04e+001  -4.5 1.30e+001    -  3.36e-001 1.97e-001h  1
+ 167 1.0490571e+003 9.71e+000 9.88e+000  -4.8 3.49e+001    -  2.03e-001 1.76e-001h  1
+ 168 1.0423985e+003 9.60e+000 9.32e+000  -4.1 3.18e+001    -  3.29e-001 1.40e-001h  1
+ 169 1.0848812e+003 8.65e+000 8.50e+000  -3.6 2.88e+001    -  1.43e-001 1.83e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 170 1.0697178e+003 9.40e+000 7.12e+000  -4.1 1.63e+001    -  9.78e-002 4.24e-001h  1
+ 171 1.0502011e+003 7.56e+000 6.39e+000  -4.1 5.14e+000    -  2.24e-001 2.01e-001h  1
+ 172 1.0816625e+003 4.77e+000 4.57e+000  -3.7 4.34e+000    -  4.56e-001 3.82e-001f  1
+ 173 1.1033198e+003 3.20e+000 2.87e+000  -3.9 7.58e+000    -  2.41e-001 4.25e-001h  1
+ 174 1.0725962e+003 9.42e-001 3.07e+000  -3.9 1.85e+000    -  5.04e-001 7.31e-001h  1
+ 175 1.0510974e+003 2.97e-001 9.33e-001  -4.0 1.26e+000    -  1.00e+000 7.37e-001h  1
+ 176 1.1358822e+003 5.89e-001 2.18e+000  -3.7 2.58e+000    -  1.00e+000 1.00e+000h  1
+ 177 1.1298600e+003 2.13e+000 2.52e+000  -3.8 1.62e+001    -  2.54e-001 1.50e-001h  3
+ 178 1.1025454e+003 6.91e+000 3.04e+000  -3.8 5.96e+000    -  6.80e-001 6.93e-001h  1
+ 179 1.0947209e+003 5.61e+000 3.74e+000  -3.8 9.20e+000    -  2.47e-001 2.35e-001h  2
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 180 1.0867604e+003 7.26e-002 1.02e+000  -3.8 1.35e+000    -  1.00e+000 1.00e+000h  1
+ 181 1.0804546e+003 3.88e-002 8.74e-001  -3.9 1.01e+000    -  1.00e+000 8.95e-001h  1
+ 182 1.0330421e+003 1.84e-001 7.81e-001  -4.1 1.40e+000    -  1.00e+000 1.00e+000h  1
+ 183 1.1329173e+003 1.88e+000 1.41e+000  -3.7 7.09e+000    -  6.18e-001 5.00e-001h  2
+ 184 1.1443711e+003 5.23e-001 3.02e+000  -3.9 4.42e+000    -  5.25e-001 6.59e-001h  1
+ 185 1.0677321e+003 2.48e+000 9.32e-001  -3.9 2.61e+000    -  3.07e-002 9.61e-001h  1
+ 186 1.0664160e+003 5.58e-001 5.94e-001  -3.9 1.39e+000    -  1.00e+000 7.76e-001f  1
+ 187 1.0660299e+003 2.11e-003 3.01e-001  -3.9 3.22e-001    -  1.00e+000 1.00e+000h  1
+ 188 9.9587648e+002 5.85e-001 1.42e+000  -4.5 3.26e+000    -  9.99e-001 8.24e-001f  1
+ 189 1.0066131e+003 5.44e-001 7.03e-001  -3.9 8.01e+000    -  3.63e-001 1.32e-001h  3
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 190 1.0672020e+003 7.46e-001 1.20e+000  -3.9 2.92e+000    -  8.94e-001 1.00e+000h  1
+ 191 1.1266587e+003 8.50e-001 2.71e+000  -4.1 6.77e+000    -  2.81e-001 3.84e-001H  1
+ 192 1.0206823e+003 9.58e-001 3.94e-001  -4.1 2.91e+000    -  8.31e-002 1.00e+000f  1
+ 193 1.0291459e+003 2.34e-001 1.50e+000  -4.1 1.65e+000    -  5.60e-001 7.66e-001h  1
+ 194 1.1117243e+003 4.51e-001 2.17e+000  -3.8 3.46e+000    -  1.00e+000 1.00e+000f  1
+ 195 1.1518532e+003 3.11e-001 2.19e+000  -3.9 3.55e+000    -  6.15e-001 6.01e-001H  1
+ 196 1.0694307e+003 2.87e-001 4.30e-001  -3.9 2.23e+000    -  8.03e-002 1.00e+000h  1
+ 197 1.0783348e+003 4.69e-003 8.08e-001  -3.9 6.58e-001    -  1.00e+000 1.00e+000h  1
+ 198 1.0731991e+003 1.50e-003 1.03e-001  -3.9 4.71e-001    -  1.00e+000 1.00e+000h  1
+ 199 1.0737363e+003 4.07e-004 4.47e-002  -3.9 7.03e-002    -  1.00e+000 1.00e+000h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 200 1.0368185e+003 3.03e-001 5.86e-001  -4.1 3.57e+000    -  9.95e-001 5.00e-001f  2
+ 201 1.0137746e+003 3.96e-001 1.49e+000  -4.2 4.90e+000    -  5.67e-001 4.50e-001H  1
+ 202 9.8418997e+002 3.72e-001 1.56e+000  -4.6 4.71e+000    -  2.25e-001 5.31e-001h  1
+ 203 1.1440314e+003 7.73e-001 2.50e+000  -3.8 6.64e+000    -  1.76e-001 9.05e-001F  1
+ 204 1.1002981e+003 4.18e-001 2.14e+000  -4.2 5.09e+000    -  2.72e-001 3.90e-001h  1
+ 205 9.9225589e+002 1.16e+000 1.83e+000  -4.2 3.86e+000    -  2.70e-002 9.43e-001f  1
+ 206 9.9743853e+002 1.08e+000 1.63e+000  -4.2 5.35e+000    -  1.45e-001 2.30e-001h  1
+ 207 9.9272158e+002 8.35e-002 6.09e-001  -4.2 8.04e-001    -  2.62e-001 1.00e+000h  1
+ 208 9.7006020e+002 7.06e-002 4.64e-001  -4.4 1.53e+000    -  1.00e+000 9.13e-001h  1
+ 209 9.7853562e+002 7.09e-002 7.42e-001  -4.1 4.67e+000    -  8.91e-001 2.11e-001h  3
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 210 9.7475671e+002 1.29e-001 4.77e-001  -4.3 8.60e-001    -  8.47e-001 1.00e+000h  1
+ 211 9.7706451e+002 3.47e-003 8.59e-001  -4.3 9.25e-001    -  8.80e-001 1.00e+000h  1
+ 212 9.6825148e+002 1.20e-002 1.24e-001  -4.3 5.45e-001    -  1.00e+000 1.00e+000h  1
+ 213 9.5110797e+002 5.97e-002 3.52e-001  -4.6 1.52e+000    -  1.00e+000 7.46e-001h  1
+ 214 9.4667879e+002 3.72e-001 1.33e+000  -4.6 5.35e+000    -  7.45e-001 3.10e-001h  2
+ 215 9.5340818e+002 5.26e-001 2.46e+000  -4.3 2.51e+000    -  4.38e-001 4.01e-001h  1
+ 216 9.5761002e+002 5.31e-001 2.37e+000  -4.5 3.15e+000    -  3.70e-001 5.97e-001H  1
+ 217 9.4786048e+002 2.06e-001 8.98e-001  -4.5 1.69e+000    -  4.33e-001 6.86e-001F  1
+ 218 9.7002295e+002 4.89e-001 1.10e+000  -4.2 2.45e+000    -  3.17e-001 7.81e-001f  1
+ 219 9.6304309e+002 3.50e-001 1.20e+000  -4.5 2.90e+000    -  2.90e-001 3.26e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 220 9.4474649e+002 5.58e-001 7.82e-001  -4.5 2.21e+000    -  8.32e-002 8.41e-001f  1
+ 221 9.6445950e+002 4.78e-001 9.28e-001  -4.1 6.12e+000    -  1.46e-001 2.54e-001f  2
+ 222 9.5345901e+002 1.53e-001 1.00e+000  -4.5 1.91e+000    -  9.29e-001 7.20e-001h  1
+ 223 9.4800526e+002 1.44e-001 7.33e-001  -4.5 1.79e+000    -  9.37e-002 6.36e-001h  1
+ 224 9.4632640e+002 6.28e-002 6.71e-001  -4.5 1.14e+000    -  1.00e+000 1.00e+000f  1
+ 225 9.3790468e+002 4.15e-002 3.39e-001  -5.3 1.76e+000    -  6.92e-001 3.38e-001h  1
+ 226 9.3802746e+002 4.17e-002 4.02e-001  -4.6 3.38e+000    -  4.72e-001 8.39e-002h  3
+ 227 9.3206507e+002 1.83e-002 2.29e-001  -4.7 5.35e-001    -  1.00e+000 8.54e-001h  1
+ 228 9.3291010e+002 7.97e-003 9.33e-001  -4.8 1.15e+000    -  9.92e-001 8.61e-001H  1
+ 229 9.3618138e+002 6.34e-002 3.38e-001  -4.5 1.23e+000    -  3.55e-001 7.31e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 230 9.3863103e+002 4.74e-002 7.83e-001  -4.8 3.63e+000    -  2.60e-001 2.40e-001H  1
+ 231 9.2891515e+002 1.50e-002 7.86e-002  -4.8 6.80e-001    -  6.94e-001 1.00e+000f  1
+ 232 9.2473903e+002 2.22e-002 4.04e-001  -4.9 5.27e-001    -  1.00e+000 8.77e-001h  1
+ 233 9.3169968e+002 3.90e-002 3.94e-001  -4.7 1.05e+000    -  7.09e-001 8.43e-001h  1
+ 234 9.2670318e+002 1.49e-002 4.86e-001  -4.8 5.70e-001    -  6.35e-001 8.66e-001h  1
+ 235 9.2537401e+002 9.91e-003 2.15e-001  -4.8 1.60e+000    -  2.71e-001 3.54e-001f  2
+ 236 9.2046913e+002 1.81e-002 1.64e-001  -5.1 4.64e-001    -  1.00e+000 9.79e-001h  1
+ 237 9.3579371e+002 5.24e-003 1.62e+000  -5.1 1.55e+000    -  5.23e-001 9.04e-001H  1
+ 238 9.2483945e+002 1.59e-001 2.31e-001  -4.8 1.20e+000    -  4.24e-001 1.00e+000f  1
+ 239 9.2468406e+002 9.39e-002 6.23e-001  -5.0 1.33e+000    -  3.05e-001 4.09e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 240 9.2015217e+002 1.39e-002 8.10e-002  -5.0 5.17e-001    -  5.72e-001 1.00e+000f  1
+ 241 9.1810698e+002 2.12e-002 3.18e-001  -5.2 6.95e-001    -  1.00e+000 8.37e-001h  1
+ 242 9.2109442e+002 3.06e-002 3.95e-001  -5.0 5.31e-001    -  8.02e-001 1.00e+000h  1
+ 243 9.1886798e+002 1.04e-002 3.23e-001  -5.1 5.32e-001    -  4.26e-001 6.33e-001h  1
+ 244 9.1665724e+002 6.70e-003 1.67e-001  -5.2 5.31e-001    -  1.00e+000 8.17e-001f  1
+ 245 9.1585886e+002 1.10e-002 1.94e-001  -5.3 5.17e-001    -  1.00e+000 6.71e-001h  1
+ 246 9.1799347e+002 7.62e-003 2.39e-001  -5.0 5.30e-001    -  6.48e-001 8.78e-001h  1
+ 247 9.1703593e+002 1.58e-002 2.85e-001  -5.2 7.52e-001    -  6.93e-001 6.75e-001h  1
+ 248 9.1642782e+002 1.25e-002 2.51e-001  -5.2 6.29e-001    -  5.72e-001 4.29e-001f  2
+ 249 9.1558134e+002 4.21e-004 1.68e-001  -5.2 2.85e-001    -  8.78e-001 1.00e+000h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 250 9.1437487e+002 3.29e-003 4.95e-002  -5.4 3.03e-001    -  1.00e+000 6.99e-001h  1
+ 251 9.1416292e+002 4.79e-003 8.80e-002  -5.4 1.56e+000    -  7.43e-001 1.93e-001h  2
+ 252 9.1386377e+002 1.50e-002 1.20e-001  -5.4 1.68e+000    -  7.88e-001 4.32e-001h  2
+ 253 9.1359500e+002 5.30e-002 2.44e-001  -5.4 6.17e+000    -  7.13e-001 2.08e-001h  1
+ 254 9.1323651e+002 8.50e-002 2.48e-001  -5.9 9.46e+000    -  3.02e-001 1.23e-001h  2
+ 255 9.1284662e+002 1.07e-001 2.91e-001  -5.6 6.29e+000    -  3.74e-001 1.63e-001h  2
+ 256 9.1267695e+002 1.13e-001 3.24e-001  -5.3 5.94e+000    -  4.10e-001 1.38e-001h  2
+ 257 9.1421057e+002 8.43e-002 2.62e-001  -4.8 1.43e+000    -  2.69e-001 2.57e-001h  1
+ 258 9.1356598e+002 6.20e-002 2.22e-001  -5.3 8.25e-001    -  7.27e-001 2.83e-001h  1
+ 259 9.1225253e+002 5.47e-002 1.95e-001  -6.4 1.82e+000    -  3.88e-001 3.13e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 260 9.1211590e+002 5.28e-002 3.26e-001  -5.4 2.00e+000    -  5.62e-001 3.55e-001h  1
+ 261 9.1380646e+002 2.44e-002 3.21e-001  -5.2 8.81e-001    -  6.28e-001 7.35e-001h  1
+ 262 9.1568531e+002 1.04e-002 3.06e-001  -5.0 5.54e-001    -  1.00e+000 1.00e+000h  1
+ 263 9.1575167e+002 4.97e-003 3.46e-001  -5.1 7.15e-001    -  6.51e-001 5.86e-001h  1
+ 264 9.1390430e+002 5.80e-003 7.47e-002  -5.1 4.11e-001    -  5.35e-001 1.00e+000f  1
+ 265 9.1219079e+002 2.19e-002 2.18e-001  -5.4 6.83e-001    -  1.00e+000 1.00e+000h  1
+ 266 9.1223292e+002 1.10e-002 4.54e-001  -5.4 9.28e-001    -  9.22e-001 6.98e-001H  1
+ 267 9.1232586e+002 2.67e-003 3.77e-001  -5.4 5.58e-001    -  4.71e-001 8.75e-001h  1
+ 268 9.1128160e+002 2.12e-003 2.68e-001 -11.0 3.85e-001    -  1.98e-001 3.02e-001h  1
+ 269 9.1054022e+002 2.71e-003 1.24e-001  -6.4 6.03e-001    -  3.86e-001 3.20e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 270 9.1027347e+002 2.08e-003 1.37e-001  -5.6 3.58e-001    -  7.54e-001 6.58e-001h  1
+ 271 9.0988273e+002 6.86e-004 8.57e-002  -5.9 1.53e-001    -  1.00e+000 8.03e-001h  1
+ 272 9.0970555e+002 8.46e-004 4.79e-002  -5.9 2.81e-001    -  1.00e+000 6.85e-001h  1
+ 273 9.0945450e+002 2.05e-003 6.65e-002  -6.1 6.91e-001    -  8.35e-001 5.87e-001h  1
+ 274 9.0992227e+002 6.61e-003 3.02e-001  -5.7 9.78e-001    -  8.40e-001 9.53e-001h  1
+ 275 9.0969017e+002 4.52e-003 3.09e-001  -5.8 7.13e-001    -  2.56e-001 3.93e-001h  1
+ 276 9.0946851e+002 2.30e-003 1.07e-001  -5.8 2.11e-001    -  4.43e-001 5.85e-001f  1
+ 277 9.0935183e+002 3.69e-004 4.98e-002  -5.8 1.08e-001    -  1.00e+000 1.00e+000f  1
+ 278 9.0896798e+002 1.38e-003 3.44e-002  -6.8 6.95e-001    -  8.26e-001 5.70e-001h  1
+ 279 9.0896161e+002 1.60e-003 1.70e-001  -6.1 1.66e+000    -  6.09e-001 1.40e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 280 9.0917142e+002 1.06e-003 1.29e-001  -5.9 3.03e-001    -  5.96e-001 9.37e-001h  1
+ 281 9.0900954e+002 7.16e-004 7.17e-002  -6.2 4.11e-001    -  5.03e-001 5.64e-001h  1
+ 282 9.0909108e+002 4.81e-004 3.85e-002  -5.8 1.30e-001    -  8.91e-001 3.61e-001h  1
+ 283 9.0909734e+002 7.54e-007 8.00e-002  -6.0 1.32e-001    -  9.46e-001 1.00e+000H  1
+ 284 9.0894187e+002 4.12e-004 3.56e-002  -6.0 2.71e-001    -  1.00e+000 1.00e+000h  1
+ 285 9.0937344e+002 6.09e-004 1.27e-001  -5.8 3.79e-001    -  7.85e-001 1.00e+000h  1
+ 286 9.0907836e+002 5.19e-005 4.79e-002  -5.9 1.40e-001    -  1.00e+000 9.74e-001h  1
+ 287 9.0893626e+002 6.01e-005 2.83e-002  -6.2 7.62e-002    -  1.00e+000 5.29e-001f  1
+ 288 9.0881689e+002 1.43e-004 4.94e-002  -6.4 2.66e-001    -  1.00e+000 4.05e-001h  1
+ 289 9.0896101e+002 1.04e-003 4.67e-002  -5.9 4.79e-001    -  1.00e+000 5.65e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 290 9.0897728e+002 9.78e-004 1.27e-001  -6.0 3.57e-001    -  1.00e+000 5.25e-001h  1
+ 291 9.0896453e+002 7.56e-005 9.45e-002  -6.0 1.09e-001    -  1.00e+000 1.00e+000f  1
+ 292 9.0892811e+002 1.45e-005 4.61e-002  -6.0 5.74e-002    -  1.00e+000 1.00e+000h  1
+ 293 9.0877543e+002 6.03e-005 1.13e-002  -6.2 7.32e-002    -  1.00e+000 7.52e-001h  1
+ 294 9.0859041e+002 9.80e-004 4.72e-002  -6.7 3.51e-001    -  1.00e+000 6.55e-001h  1
+ 295 9.0872086e+002 6.79e-004 5.88e-002  -5.9 3.23e-001    -  7.74e-001 3.44e-001h  1
+ 296 9.0870084e+002 2.12e-004 4.78e-002  -6.2 9.65e-002    -  9.09e-001 1.00e+000h  1
+ 297 9.0858449e+002 1.45e-004 5.13e-002  -6.4 6.03e-002    -  1.00e+000 9.05e-001h  1
+ 298 9.0849933e+002 1.40e-004 1.62e-002  -7.0 1.09e-001    -  1.00e+000 5.39e-001h  1
+ 299 9.0848434e+002 2.20e-004 4.58e-002  -6.7 2.28e-001    -  1.00e+000 5.60e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 300 9.0847360e+002 4.78e-004 2.92e-002  -6.7 3.81e-001    -  9.71e-001 4.62e-001h  1
+ 301 9.0853138e+002 3.13e-004 5.49e-002  -6.5 2.64e-001    -  7.22e-001 6.03e-001H  1
+ 302 9.0848284e+002 2.12e-004 3.14e-002  -6.6 1.01e-001    -  9.16e-001 1.00e+000h  1
+ 303 9.0843521e+002 1.23e-004 1.59e-002  -7.5 8.10e-002    -  5.41e-001 4.33e-001h  1
+ 304 9.0840336e+002 1.29e-004 8.44e-003  -8.0 1.82e-001    -  9.20e-001 4.62e-001h  1
+ 305 9.0839814e+002 2.31e-004 1.71e-002  -7.7 1.19e+000    -  6.24e-001 1.02e-001h  2
+ 306 9.0838682e+002 3.46e-004 2.52e-002  -7.7 5.47e-001    -  1.00e+000 3.12e-001h  1
+ 307 9.0838192e+002 4.44e-004 3.10e-002  -8.9 1.06e+000    -  4.64e-001 1.79e-001h  1
+ 308 9.0837472e+002 3.61e-004 2.89e-002  -9.2 3.48e-001    -  1.11e-001 1.91e-001h  1
+ 309 9.0837067e+002 2.91e-004 2.65e-002  -7.6 2.40e-001    -  1.39e-001 1.92e-001h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 310 9.0836220e+002 1.23e-004 1.78e-002  -8.0 2.83e-002    -  6.88e-001 5.76e-001h  1
+ 311 9.0835648e+002 5.51e-005 1.27e-002  -8.3 2.73e-002    -  8.78e-001 5.52e-001h  1
+ 312 9.0835318e+002 3.04e-005 1.06e-002  -8.2 4.52e-002    -  8.80e-001 6.71e-001h  1
+ 313 9.0835123e+002 6.81e-005 2.82e-002  -8.2 3.61e-001    -  3.58e-001 2.28e-001h  1
+ 314 9.0834996e+002 9.71e-005 4.81e-002  -7.6 1.29e+000    -  5.35e-001 6.07e-002h  1
+ 315 9.0834930e+002 8.44e-005 4.96e-002  -8.3 2.00e-001    -  7.12e-001 1.19e-001h  1
+ 316 9.0834700e+002 5.22e-005 3.62e-002 -11.0 5.56e-002    -  6.61e-001 3.66e-001h  1
+ 317 9.0834971e+002 1.51e-004 1.65e-002  -7.8 2.38e-001    -  2.17e-001 4.34e-001h  1
+ 318 9.0834932e+002 1.46e-004 1.44e-002  -8.3 1.09e-001    -  5.57e-001 3.47e-002h  1
+ 319 9.0834573e+002 7.74e-005 1.17e-002  -8.3 3.68e-002    -  4.39e-001 4.79e-001f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 320 9.0834461e+002 6.10e-005 6.57e-003 -10.1 3.03e-002    -  9.31e-001 2.16e-001h  1
+ 321 9.0834307e+002 4.25e-005 7.19e-003  -9.3 6.83e-002    -  1.00e+000 4.50e-001h  1
+ 322 9.0834256e+002 4.24e-005 4.70e-003  -9.0 1.50e-001    -  6.28e-001 1.53e-001h  1
+ 323 9.0834249e+002 4.16e-005 4.50e-003  -9.6 5.63e-002    -  1.00e+000 1.81e-002h  1
+ 324 9.0834140e+002 2.91e-005 4.66e-003  -9.1 3.42e-002    -  9.49e-001 6.94e-001h  1
+ 325 9.0834115e+002 2.86e-005 3.11e-003  -9.3 1.00e-001    -  1.00e+000 1.24e-001h  1
+ 326 9.0834171e+002 5.65e-008 2.52e-004  -9.0 5.27e-002    -  8.28e-001 1.00e+000H  1
+ 327 9.0834173e+002 3.21e-005 1.10e-002  -8.7 1.16e-001    -  8.17e-001 3.51e-001h  1
+ 328 9.0834079e+002 1.50e-005 8.82e-003  -8.9 3.05e-002    -  1.00e+000 5.66e-001h  1
+ 329 9.0834291e+002 2.62e-006 8.81e-003  -8.2 2.87e-002    -  9.76e-001 1.00e+000f  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 330 9.0834214e+002 1.08e-006 8.92e-005  -8.3 1.14e-002    -  1.00e+000 1.00e+000h  1
+ 331 9.0834180e+002 3.44e-006 3.02e-003  -8.3 1.38e-002    -  1.00e+000 1.00e+000h  1
+ 332 9.0834181e+002 7.45e-006 3.63e-003  -8.3 1.86e-002    -  1.00e+000 1.00e+000h  1
+ 333 9.0834151e+002 1.45e-005 4.51e-003  -8.3 5.38e-002    -  1.00e+000 4.73e-001h  1
+ 334 9.0834959e+002 1.56e-004 1.25e-002  -7.4 3.00e-001    -  1.00e+000 3.09e-001f  1
+ 335 9.0835808e+002 1.30e-005 2.18e-002  -7.5 3.73e-002    -  1.00e+000 1.00e+000h  1
+ 336 9.0835446e+002 1.23e-005 1.17e-002  -7.5 2.55e-002    -  9.22e-001 1.00e+000h  1
+ 337 9.0835423e+002 5.06e-006 3.16e-003  -7.5 1.52e-002    -  1.00e+000 7.13e-001h  1
+ 338 9.0835438e+002 1.24e-006 3.01e-005  -7.5 8.03e-003    -  4.32e-001 1.00e+000f  1
+ 339 9.0835447e+002 2.43e-006 5.37e-005  -7.5 8.77e-003    -  1.00e+000 1.00e+000h  1
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 340 9.0835435e+002 1.14e-006 2.80e-005  -7.5 3.99e-003    -  1.00e+000 1.00e+000h  1
+ 341 9.0835432e+002 1.66e-006 2.13e-005  -7.5 7.72e-003    -  1.00e+000 1.00e+000h  1
+ 342 9.0835435e+002 1.14e-005 4.17e-003  -7.5 2.24e-002    -  1.00e+000 1.00e+000h  1
+ 343 9.0835473e+002 4.59e-008 1.10e-004  -7.5 9.59e-002    -  1.00e+000 1.00e+000H  1
+ 344 9.0840465e+002 2.72e-003 6.22e-002  -7.0 4.06e-001    -  9.87e-001 8.76e-001h  1
+ 345 9.0838678e+002 9.07e-004 2.90e-002  -7.1 1.99e-001    -  1.00e+000 1.00e+000h  1
+ 346 9.0838010e+002 1.33e-003 1.54e-002  -7.1 5.10e-001    -  3.37e-001 3.61e-001h  1
+ 347 9.0837881e+002 1.00e-003 1.58e-002  -7.1 6.56e-002    -  9.31e-001 2.50e-001f  3
+ 348 9.0837730e+002 4.40e-004 6.15e-003  -7.1 1.11e-001    -  6.83e-001 6.85e-001h  1
+ 349 9.0837723e+002 4.03e-004 2.63e-003  -7.1 2.17e-001    -  1.00e+000 1.13e-001f  4
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+ 350 9.0837737e+002 9.62e-006 4.73e-003  -7.1 1.90e-002    -  1.00e+000 1.00e+000h  1
+ 351 9.0837727e+002 3.53e-006 6.34e-005  -7.1 1.01e-002    -  1.00e+000 1.00e+000h  1
+ 352 9.0837710e+002 2.11e-006 2.63e-005  -7.1 9.98e-003    -  1.00e+000 1.00e+000h  1
+ 353 9.0837716e+002 2.29e-007 5.31e-005  -7.1 2.94e-003    -  1.00e+000 1.00e+000h  1
+
+Number of Iterations....: 353
+
+                                   (scaled)                 (unscaled)
+Objective...............:  2.5443053166756693e+000   9.0837716403126376e+002
+Dual infeasibility......:  5.3104456748075077e-005   1.8959546836645039e-002
+Constraint violation....:  3.7913263013475397e-009   2.2890895934324365e-007
+Complementarity.........:  8.2197624692662508e-008   2.9346495768041078e-005
+Overall NLP error.......:  5.3104456748075077e-005   1.8959546836645039e-002
+
+
+Number of objective function evaluations             = 489
+Number of objective gradient evaluations             = 354
+Number of equality constraint evaluations            = 489
+Number of inequality constraint evaluations          = 489
+Number of equality constraint Jacobian evaluations   = 354
+Number of inequality constraint Jacobian evaluations = 354
+Number of Lagrangian Hessian evaluations             = 0
+Total CPU secs in IPOPT (w/o function evaluations)   =     72.716
+Total CPU secs in NLP function evaluations           =     87.920
+
+EXIT: Optimal Solution Found.
+      solver  :   t_proc      (avg)   t_wall      (avg)    n_eval
+       nlp_f  |  11.85 s ( 24.23ms)  11.84 s ( 24.21ms)       489
+       nlp_g  |  12.19 s ( 24.93ms)  12.20 s ( 24.96ms)       489
+  nlp_grad_f  |  26.53 s ( 74.72ms)  26.53 s ( 74.72ms)       355
+   nlp_jac_g  |  37.48 s (105.57ms)  37.49 s (105.60ms)       355
+       total  | 160.64 s (160.64 s) 160.64 s (160.64 s)         1
+ 
+...Exit NLP solver. Time elapsed 162.72 s
+ 
+ 
+Retrieving solution...
+ 
+Saving results as: C:\GBW_MyPrograms\PredSimResults\gait1018_esmac\gait1018_esmac_v36.mat
+ 
+ 
+Start PostProcessing...
+ 
+ 
+...PostProcessing done. Time elapsed 3.00 s
+ 
+ 
+Total time elapsed 198.23 s
+ 
+Diary saved as C:\GBW_MyPrograms\PredSimResults\gait1018_esmac\gait1018_esmac_v36_log.txt
+ 
+ 

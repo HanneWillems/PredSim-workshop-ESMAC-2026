@@ -1,4 +1,4 @@
-function[S] = update_settings_pre(S)
+function[S] = update_settings_pre_solution(S)
 
 % Full gait cycle simulations instead of Half gait cycle (default) simulations
 S.misc.gaitmotion_type = 'FullGaitCycle';
@@ -17,14 +17,15 @@ S.settings.muscle_strength = {...
 	 {'tib_ant_r'},0.3,...               	% R_ankle_df  
 	 {'tib_ant_l'},0.3};                 	% L_ankle_df 
 
-S.subject.scale_MT_params = {{'hamstrings_r'},'lMo',0.88,... 		% pROM_Poplbi_R %% to edit 
-								{'hamstrings_l'},'lMo',0.91,... 	% pROM_Poplbi_L %% to edit 
+S.subject.scale_MT_params = merge_PredSim_settings(S.subject.scale_MT_params, ...
+                                {{'hamstrings_r'},'lMo',0.88,...% pROM_Poplbi_R %% to edit 
+								{'hamstrings_l'},'lMo',0.91,... % pROM_Poplbi_L %% to edit 
 								{'iliopsoas_r'},'lMo',1,...  	% explained in step 4
-								{'iliopsoas_l'},'lMo',0.74,... 	% explained in step 4  (%% to edit)
+								{'iliopsoas_l'},'lMo',0.92,... 	% explained in step 4  (%% to edit)
 								{'gastroc_r'},'lMo',1,...		% pROM_Ankledf0_R
 								{'gastroc_l'},'lMo',1,...		% pROM_Ankledf0_L
 								{'soleus_r'},'lMo',1,... 		% pROM_Ankledf90_R
-								{'soleus_l'},'lMo',1};			% pROM_Ankledf90_L
+								{'soleus_l'},'lMo',1});			% pROM_Ankledf90_L
 
 
 S.subject.set_limit_torque_coefficients_selected_dofs =...

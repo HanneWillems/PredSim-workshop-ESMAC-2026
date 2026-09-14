@@ -1067,7 +1067,7 @@
 				<SmoothSphereHalfSpaceForce name="contactHeel_r">
 					<socket_sphere>/contactgeometryset/heel_r</socket_sphere>
 					<socket_half_space>/contactgeometryset/floor</socket_half_space>
-					<!--The stiffness constant (i.e., plain strain modulus), default is 1 (N/m^2)-->
+					<!--The stiffness constant (i.e., plain strain modulus), default is 1 (N/m^2) 10000000 in D'Hondt -->
 					<stiffness>3067776</stiffness>
 					<!--The dissipation coefficient, default is 0 (s/m).-->
 					<dissipation>2</dissipation>
@@ -2817,12 +2817,12 @@
                 <ContactSphere name="heel_r">
                     <socket_frame>/bodyset/calcn_r</socket_frame>
                     <radius>0.035000000000000003</radius>
-                    <location>0.031307527581931796 0.010435842527310599 0</location>
+                    <location>0.01 0.010435842527310599 0</location>
                 </ContactSphere>
                 <ContactSphere name="heel_l">
                     <socket_frame>/bodyset/calcn_l</socket_frame>
                     <radius>0.035000000000000003</radius>
-                    <location>0.031307527581931796 0.010435842527310599 0</location>
+                    <location>0.01 0.010435842527310599 0</location>
                 </ContactSphere>
                 <ContactSphere name="front_r">
                     <socket_frame>/bodyset/calcn_r</socket_frame>

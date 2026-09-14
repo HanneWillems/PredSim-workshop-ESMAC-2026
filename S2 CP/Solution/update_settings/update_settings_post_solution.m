@@ -1,4 +1,4 @@
-function[S] = update_settings_post(S)
+function[S] = update_settings_post_solution(S)
 
 % Full gait cycle simulations instead of Half gait cycle (default) simulations
 S.misc.gaitmotion_type = 'FullGaitCycle';
@@ -12,19 +12,21 @@ S.settings.muscle_strength = {...
 	 {'hamstrings_l' 'bifemsh_l'},0.3,...  	% L_knee_flex %% to edit
 	 {'rect_fem_r' 'vasti_r'},0.5,...      	% R_knee_ext  %% to edit
 	 {'rect_fem_l' 'vasti_l'},0.7,...      	% L_knee_ext  %% to edit
-	 {'gastroc_r' 'soleus_r'},0.3,...     	% R_ankle_pf  
-	 {'gastroc_l' 'soleus_l'},0.5,...     	% L_ankle_pf
-	 {'tib_ant_r'},0.3,...               	% R_ankle_df  
-	 {'tib_ant_l'},0.3};                 	% L_ankle_df 
+	 {'gastroc_r' 'soleus_r'},0.1,...     	% R_ankle_pf  
+	 {'gastroc_l' 'soleus_l'},0.1,...     	% L_ankle_pf
+	 {'tib_ant_r'},0.1,...               	% R_ankle_df  
+	 {'tib_ant_l'},0.1};                 	% L_ankle_df 
 
-S.subject.scale_MT_params = {{'hamstrings_r'},'lMo',0.88,... 	% pROM_Poplbi_R %% to edit 
-								{'hamstrings_l'},'lMo',0.91,... % pROM_Poplbi_L %% to edit 
-								{'iliopsoas_r'},'lMo',1,...  	% explained in step 4
-								{'iliopsoas_l'},'lMo',0.74,... 	% explained in step 4  (%% to edit)
-								{'gastroc_r'},'lMo',1,...		% pROM_Ankledf0_R
-								{'gastroc_l'},'lMo',1,...		% pROM_Ankledf0_L
-								{'soleus_r'},'lMo',1,... 		% pROM_Ankledf90_R
-								{'soleus_l'},'lMo',1};			% pROM_Ankledf90_L
+S.subject.scale_MT_params = merge_PredSim_settings(...
+							 S.subject.scale_MT_params, ...
+							 {{'hamstrings_r'},'lMo',0.88,...  % pROM_Poplbi_R %% to edit
+                             {'hamstrings_l'},'lMo',0.91,...   % pROM_Poplbi_L %% to edit
+                             {'iliopsoas_r'},'lMo',1,...    % explained in Step 4
+                             {'iliopsoas_l'},'lMo',0.92,...    % explained in Step 4
+                             {'gastroc_r'},'lMo',1,...      % pROM_Ankledf0_R
+                             {'gastroc_l'},'lMo',1,...      % pROM_Ankledf0_L
+                             {'soleus_r'},'lMo',1,...       % pROM_Ankledf90_R
+                             {'soleus_l'},'lMo',1});         % pROM_Ankledf90_L
 
 
 S.subject.set_limit_torque_coefficients_selected_dofs =...

@@ -8,6 +8,7 @@
 #include <OpenSim/Common/LinearFunction.h>
 #include <OpenSim/Common/PolynomialFunction.h>
 #include <OpenSim/Common/MultiplierFunction.h>
+#include <OpenSim/Common/MultivariatePolynomialFunction.h>
 #include <OpenSim/Common/Constant.h>
 #include <OpenSim/Simulation/Model/SmoothSphereHalfSpaceForce.h>
 #include "SimTKcommon/internal/recorder.h"
@@ -177,7 +178,7 @@ int F_generic(const T** arg, T** res) {
 
 	OpenSim::SmoothSphereHalfSpaceForce* contactHeel_r;
 	contactHeel_r = new SmoothSphereHalfSpaceForce("contactHeel_r", *calcn_r, model->getGround());
-	Vec3 contactHeel_r_location(0.03130752758193179608, 0.01043584252731059869, 0.00000000000000000000);
+	Vec3 contactHeel_r_location(0.01000000000000000021, 0.01043584252731059869, 0.00000000000000000000);
 	contactHeel_r->set_contact_sphere_location(contactHeel_r_location);
 	double contactHeel_r_radius = (0.03500000000000000333);
 	contactHeel_r->set_contact_sphere_radius(contactHeel_r_radius );
@@ -198,7 +199,7 @@ int F_generic(const T** arg, T** res) {
 
 	OpenSim::SmoothSphereHalfSpaceForce* contactHeel_l;
 	contactHeel_l = new SmoothSphereHalfSpaceForce("contactHeel_l", *calcn_l, model->getGround());
-	Vec3 contactHeel_l_location(0.03130752758193179608, 0.01043584252731059869, 0.00000000000000000000);
+	Vec3 contactHeel_l_location(0.01000000000000000021, 0.01043584252731059869, 0.00000000000000000000);
 	contactHeel_l->set_contact_sphere_location(contactHeel_l_location);
 	double contactHeel_l_radius = (0.03500000000000000333);
 	contactHeel_l->set_contact_sphere_radius(contactHeel_l_radius );
