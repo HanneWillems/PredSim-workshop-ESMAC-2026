@@ -14,7 +14,7 @@ Cerebral palsy (CP) is caused by a non-progressive lesion of the developing brai
 
 Physics-based computer simulations, that can predict the effect of treatments (e.g., bony and soft tissue correction, ankle-foot-orthoses) on gait in children with CP, have the potential to improve clinical decision-making. To this end, an important challenge is to accurately estimate patient-specific model parameters.
 
-In this tutorial you will (I.) personalize a neuromusculoskeletal model for a child with CP. Next, (II.) you will model the effect of surgery and (III.) run simulations and evaluate the predicted gait pattern. The workflow you will apply in this tutorial has been published in [Van Den Bosch et al. (2025)](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-025-01767-w)
+In this tutorial you will (I.) personalize a neuromusculoskeletal model for a child with CP. Next, (II.) you will model the effect of surgery and (III.) run simulations to evaluate the predicted gait pattern. The workflow you will apply in this tutorial has been published in [Van Den Bosch et al. (2025)](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-025-01767-w)
 
 ## Step 0: run a reference simulation with the 2D model
 If you have not already done so, you need to run a reference simulation of healthy walking with the 2D model. Please follow the steps explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-esmac-2026?tab=readme-ov-file#running-a-reference-2d-simulation-with-predsim).
