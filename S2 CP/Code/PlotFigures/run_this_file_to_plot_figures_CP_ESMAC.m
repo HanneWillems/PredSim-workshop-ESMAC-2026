@@ -19,10 +19,10 @@ results_folder = 'C:\GBW_MyPrograms\PredSimResults';
         % 'post_surgery',fullfile(results_folder,'gait1018','gait1018_v24.mat'));
     % only post surgery is plotted 
 
-results_path = struct( ...
-    'reference',   fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v4.mat'), ...
-    'pre_surgery', fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v2.mat'), ...
-    'post_surgery',fullfile(results_folder,'gait1018_esmac','gait1018_esmac_v3.mat'));
+results_paths_ESMAC = struct( ...
+    'reference',   fullfile(results_folder,'gait1018_esmac','gait1018_esmac_reference.mat'), ...
+    'pre_surgery', fullfile(results_folder,'gait1018_esmac','gait1018_esmac_pre.mat'),...
+    'post_surgery',fullfile(results_folder,'gait1018_esmac','gait1018_esmac_post.mat'));
 
 % enable/disable:
     % visualization of experimental kinematics of the patient
@@ -32,16 +32,16 @@ results_path = struct( ...
     include_TD_reference = true; % options: true/false
     
     % clinical convention instead of open sim convention
-    apply_clinical_convention = false; % options: true/false
+    apply_clinical_convention = true; % options: true/false
 
 % legend for your figure
-legend_names = strrep(fieldnames(results_path), '_', ' ')';
+legend_names = strrep(fieldnames(results_paths_ESMAC), '_', ' ')';
 
 % Path to the folder where figures are saved
 figure_folder = IKResultsFolder;
 
 % Common part of the filename for all saved figures
-figure_savename = 'CP_SMALLL_simulations';
+figure_savename = 'CP_ESMAC_simulations';
 
 % -------    stop edit  -------
 
@@ -143,6 +143,14 @@ fig_count = fig_count+1;
 % figure_settings(fig_count).filetype = {};
 % fig_count = fig_count+1;
 
+%% PredSim default plotting
+if isstruct(results_paths_ESMAC)
+    fn = fieldnames(results_paths_ESMAC);
+    results_paths = cellfun(@(f) results_paths_ESMAC.(f), fn, 'UniformOutput', false);
+end
+plot_figures(results_paths,legend_names,figure_settings);
+
+
 %% Experimental kinematics / TD reference comparison figures
 % Adds up to two extra figures (pre_surgery and post_surgery, whichever
 % are present in results_path), each showing the simulated kinematics
@@ -169,11 +177,11 @@ if plot_experimental_kinematics || include_TD_reference
         fig_opts.TD_path = fullfile(TD_reference_folder,'ExpData_TD.mat');
     end
 
-    if isfield(results_path,'pre_surgery') && ~isempty(results_path.pre_surgery)
-        plot_experimental_comparison_CP_ESMAC(results_path.pre_surgery, 'pre', IKResultsFolder, fig_opts);
+    if isfield(results_paths_ESMAC,'pre_surgery') && ~isempty(results_paths_ESMAC.pre_surgery)
+        plot_experimental_comparison_CP_ESMAC(results_paths_ESMAC.pre_surgery, 'pre', IKResultsFolder, fig_opts);
     end
 
-    if isfield(results_path,'post_surgery') && ~isempty(results_path.post_surgery)
-        plot_experimental_comparison_CP_ESMAC(results_path.post_surgery, 'post', IKResultsFolder, fig_opts);
+    if isfield(results_paths_ESMAC,'post_surgery') && ~isempty(results_paths_ESMAC.post_surgery)
+        plot_experimental_comparison_CP_ESMAC(results_paths_ESMAC.post_surgery, 'post', IKResultsFolder, fig_opts);
     end
 end

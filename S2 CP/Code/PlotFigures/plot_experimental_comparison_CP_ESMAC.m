@@ -28,8 +28,8 @@ function [] = plot_experimental_comparison_CP_ESMAC(result_path, T, IKResultsFol
 % Original author: Ellis Van Can
 % Original date: September 3, 2026
 
-% Last edit by: 
-% Last edit date: 
+% Last edit by: Ellis Van Can
+% Last edit date: September 14, 2026
 
 
 %% Defaults 
@@ -115,11 +115,16 @@ legend_labels  = {};
 
 n_rows = 3; n_cols = 3;
 
+% Maps each entry in IK_names_os to a subplot slot, putting
+% pelvis_ant_tilt alone on row 1 (slot 1) and the 6 angles on
+% rows 2-3 (slots 4-9). Leaves row 1, columns 2 and 3 empty.
+subplot_positions = [1, 4, 5, 6, 7, 8, 9];
+
 for i = 1:length(IK_names_os)
 
     AngleName_os = IK_names_os{i};   % OpenSim name -> used to look up angles
 
-    subplot(n_rows, n_cols, i); hold on
+    subplot(n_rows, n_cols, subplot_positions(i)); hold on
 
     %  TD reference (plotted first, in the background) 
     if opts.include_TD_reference
@@ -215,7 +220,7 @@ ylabel(han,'Angle (deg)','FontSize',12)
 
 legend1 = legend(legend_handles, legend_labels);
 legend1.ItemTokenSize = [30,18];
-set(legend1,'Position',[0.677123632983556 0.103763141299236 0.236785717759814 0.118925488587332]);
+% Empty space in row 1 (columns 2-3), next to pelvis_ant_tilt
+set(legend1,'Position',[0.42 0.75 0.50 0.15]);
 
 end
-
