@@ -118,9 +118,6 @@ for j = 1:length(sf_lMo)
             {['hamstrings_',side]},'lMo',sf_lMo_prev.(side).hamstrings,...
             {['hamstrings_',other_side]},'lMo',sf_lMo_prev.(other_side).hamstrings,...
             {['iliopsoas_',other_side]},'lMo',sf_lMo(j)};
-            % S.bounds.activation_all_muscles.lower = 0.01;
-            scale.subject.muscle_pass_stiff_shift = {{'iliopsoas_l', 'iliopsoas_r'}, 0.9};
-            scale.subject.muscle_pass_stiff_scale = {{'iliopsoas_l', 'iliopsoas_r'}, 2.5};
     end
 
 

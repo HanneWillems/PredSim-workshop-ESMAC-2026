@@ -24,7 +24,7 @@ clc; clear; close all
 %% 1. Specify local paths 
 
 % -------   start edit   -------
-PredSim_path = 'C:\GBW_MyPrograms\PredSimSHARED'; % path to PredSim
+PredSim_path = 'C:\GBW_MyPrograms\PredSim'; % path to PredSim
 casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to Casadi
 % -------   stop edit    -------
 
@@ -37,9 +37,9 @@ osim_path = fullfile(PredSim_path,'Subjects',subject_name,[subject_name,'.osim']
 
 %% 3 Get the passive range of motion (pROM) scores from the clinical exam
 %% -------    start edit  -------
-muscle_toScale = 'iliopsoas'; % Options: 'soleus', 'gastroc','hamstrings','iliopsoas'
+muscle_toScale = 'gastroc'; % Options: 'soleus', 'gastroc','hamstrings','iliopsoas'
 
-side = 'r'; % side evaluated in clinical exam
+side = 'l'; % side evaluated in clinical exam
 
 % Step 3. scaling muscle fiber length of the hamstrings
 if ismember(muscle_toScale, {'soleus','gastroc','hamstrings'})
@@ -148,7 +148,7 @@ end
 % Define scaling factor range 
 % (sf_lMo = flip([start range : step size : end range]);
 
-sf_lMo = flip([0.7:0.01:0.8]); 
+sf_lMo = flip([0.7:0.1:1]);
 
 %% -------    stop edit   -------
 
