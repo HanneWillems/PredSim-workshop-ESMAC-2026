@@ -33,7 +33,7 @@ Before going to the hands-on tutorials, the user should run a reference 2D simul
       ```matlab
          S.subject.name = 'gait1018_esmac';
       ```
-   - Line 51-52:
+   - Line 50-51:
      ```matlab
      result_paths{1} = fullfile(pathRepo,'Tests','ReferenceResults',...
         'gait1018_esmac','gait1018_esmac_reference.mat');
