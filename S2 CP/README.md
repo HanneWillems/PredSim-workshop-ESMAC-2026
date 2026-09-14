@@ -357,7 +357,7 @@ Now that you have personalized your model, it is time to run a simulation with y
 
 Scroll down to III. Running PredSim with personalized settings to start the simulation.
 
-While the optimization is running, take a well-deserved break from the coding and reading. ☕️ 
+The optimization will take approximately 5–10 minutes. While it is running, take a well-deserved break from the coding and reading☕️. Or, if you are feeling productive, you can already continue reading through the next steps!
 
 # II. Simulate the effect of a surgical intervention
 ### **Background:**   
