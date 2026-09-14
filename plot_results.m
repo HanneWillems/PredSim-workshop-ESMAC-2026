@@ -1,42 +1,22 @@
-clear all; close all; clc
+% plot data
+if ishandle(1), close(1); end
+plot_data()
 
-% path to the repository folder
-[pathRepo,~,~] = fileparts(mfilename('fullpath'));
-addpath(genpath(pathRepo))
-
-% change this to your own paths
-filename = which('initializeSettings.m');
-
-PredSimSettingsFolder = fileparts(filename);
-cd(PredSimSettingsFolder)
-cd ..
-PredSimRepo = cd;
-
-addpath(fullfile(cd,'PlotFigures'))
-
-cd(PredSimRepo)
-cd ..
-cd('PredSimResults')
-
-PredSimResultsRepo = cd;
-
-figure(1)
-plot_data();
-
-cd(fullfile(PredSimResultsRepo, 'gait1018_esmac'))
-
+% load simulataion results
+% PredSimResultsRepo = uigetdir('Select the folder that contains the simulation output');
+cd(PredSimResultsRepo);
 files = dir('*.mat');
 
+% select a few outputs
+ylabels = {'Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)','Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)'};
+is = [8 6 4 9 7 5];
 
-% plot all versions
+% loop over versions
 for k = 1:length(files)
     
     load(files(k).name,'R','model_info');
-        
-    is = [8 6 4 9 7 5];
-    
+     
     figure(1)
-    ylabels = {'Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)','Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)'};
     
     for i = 1:6
         subplot(2,3,i)
@@ -55,8 +35,8 @@ for k = 1:length(files)
 end
 
 %%
-figure(1)
-set(gcf, 'units', 'centimeters', 'position', [10 10 20 15])
+% figure(1)
+% set(gcf, 'units', 'centimeters', 'position', [10 10 20 15])
 % cd(pathRepo);
 % exportgraphics(gcf,'Fig2.png')
 
