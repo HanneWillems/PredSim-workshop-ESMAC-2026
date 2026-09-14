@@ -272,14 +272,14 @@ casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to CasADi
 ```matlab
 muscle_toScale = 'iliopsoas'; % Options: 'soleus', 'gastroc', 'hamstrings', 'iliopsoas'
 
-side = 'l'; % side evaluated in clinical exam
+side = 'r'; % side evaluated in clinical exam
 ```
 ```matlab
 % Step 4. Scaling optimal muscle fiber length of iliopsoas
 elseif strcmp(muscle_toScale, 'iliopsoas')
 
-    CE_angle_uni = -80;
     CE_angle_bi  = -70;
+    CE_angle_uni = -80;
 
 end
 ```
