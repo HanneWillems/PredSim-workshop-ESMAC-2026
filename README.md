@@ -31,7 +31,7 @@ Before going to the hands-on tutorials, the user should run a reference 2D simul
       ```
    - Line 25:
       ```matlab
-         `S.subject.name = 'gait1018_esmac';
+         S.subject.name = 'gait1018_esmac';
       ```
    - Line 51-52:
      ```matlab
