@@ -28,7 +28,7 @@ In this part you will personalize a model for a child with CP based on a clinica
 
 <img src="https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png" width="1200">
 
-In example 1. you will use (I.1) manual muscle testing strength scores to personalize muscle strength (I.2) passive Range of Motion (ROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
+In example 1. you will use (I.1) manual muscle testing strength scores to personalize muscle strength (I.2) passive Range of Motion (pROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
 
 In this tutorial you will change the model inputs in a default settings file. This file can later be used to run personalized simulations in PredSim.
 
@@ -105,7 +105,7 @@ S.settings.muscle_strength = {{'hamstrings_r' 'bifemsh_r'},0.3}
 
 ## I.2 Personalizing passive range of motion (pROM) 
 ### **Background:**   
-During the standardized clinical examination, goniometry is used to measure the passive range of motion (ROM). The ROM represents the maximum amplitude of the joint motion and is therefore an indication for muscle length. Therefore, when the pROM is smaller than normative values, there is a clinical indication for a contracture. Contractures are modelled by reducing optimal fiber length. When optimal fiber length is reduced, muscle fibers will be stretched more at the same muscle-tendon length resulting in higher passive forces. 
+During the standardized clinical examination, goniometry is used to measure the passive range of motion (pROM). The pROM represents the maximum amplitude of the joint motion and is therefore an indication for muscle length. Therefore, when the pROM is smaller than normative values, there is a clinical indication for a contracture. Contractures are modelled by reducing optimal fiber length. When optimal fiber length is reduced, muscle fibers will be stretched more at the same muscle-tendon length resulting in higher passive forces. 
 
 The model is positioned according to the clinical pROM assessment, after which optimal fiber length is adjusted until the simulated passive joint torque matches the clinically applied resistance. The optimal fiber length will then be adjusted so that the modeled net joint torque reaches 15 Nm at the end of the range of motion, matching the clinician’s resistance.
 
