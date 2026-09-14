@@ -10,11 +10,11 @@
 Want to quickly go through this example? Simply follow the step instructions and skip the Background and Additional information sections.
 
 ### **Background:** 
-Cerebral palsy (CP) is caused by a non-progressive lesion of the developing brain, resulting in impaired motor control and secondary musculoskeletal impairments. These impairments can lead to pathological gait patterns. Treatment decisions aim to improve gait function but their individual effects can be difficult to predict. 
+Cerebral palsy (CP) is caused by a non-progressive lesion of the developing brain, resulting in impaired motor control and secondary musculoskeletal impairments. These impairments can lead to pathological gait patterns. Treatment decisions aim to improve gait function but their effect can be difficult to predict. 
 
-Physics-based computer simulations, that can predict the effect of treatments (e.g., bony and soft tissue correction, ankle-foot-orthoses) on gait in children with CP, have the potential to improve clinical decision-making. To this end, an important challenge is to accurately estimate patient-specific neuromusculoskeletal models.
+Physics-based computer simulations, that can predict the effect of treatments (e.g., bony and soft tissue correction, ankle-foot-orthoses) on gait in children with CP, have the potential to improve clinical decision-making. To this end, an important challenge is to accurately estimate patient-specific model parameters.
 
-In this tutorial you will (I.) personalize for a child with CP. Next, (II.) you will model the effect of surgery and (III.) run simulations and evaluate the predicted data. The workflow you will apply in this tutorial has been published in [Van Den Bosch et al. (2025)](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-025-01767-w)
+In this tutorial you will (I.) personalize a neuromusculoskeletal model for a child with CP. Next, (II.) you will model the effect of surgery and (III.) run simulations to evaluate the predicted gait pattern. The workflow you will apply in this tutorial has been published in [Van Den Bosch et al. (2025)](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-025-01767-w)
 
 ## Step 0: run a reference simulation with the 2D model
 If you have not already done so, you need to run a reference simulation of healthy walking with the 2D model. Please follow the steps explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-esmac-2026?tab=readme-ov-file#running-a-reference-2d-simulation-with-predsim).
@@ -28,7 +28,7 @@ In this part you will personalize a model for a child with CP based on a clinica
 
 <img src="https://github.com/KULeuvenNeuromechanics/PredSim/blob/master/Documentation/FiguresForDocumentation/fig_muscle_tendon_properties_scaling.png" width="1200">
 
-In example 1. you will use (I.1) manual muscle testing strength scores to personalize optimal muscle force (FMo) and (I.2) passive Range of Motion (ROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
+In example 1. you will use (I.1) manual muscle testing strength scores to personalize muscle strength (I.2) passive Range of Motion (pROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
 
 In this tutorial you will change the model inputs in a default settings file. This file can later be used to run personalized simulations in PredSim.
 
@@ -105,7 +105,7 @@ S.settings.muscle_strength = {{'hamstrings_r' 'bifemsh_r'},0.3}
 
 ## I.2 Personalizing passive range of motion (pROM) 
 ### **Background:**   
-During the standardized clinical examination, goniometry is used to measure the passive range of motion (ROM). The ROM represents the maximum amplitude of the joint motion and is therefore an indication for muscle length. Therefore, when the pROM is smaller than normative values, there is a clinical indication for a contracture. Contractures are modelled by reducing optimal fiber length. When optimal fiber length is reduced, muscle fibers will be stretched more at the same muscle-tendon length resulting in higher passive forces. 
+During the standardized clinical examination, goniometry is used to measure the passive range of motion (pROM). The pROM represents the maximum amplitude of the joint motion and is therefore an indication for muscle length. Therefore, when the pROM is smaller than normative values, there is a clinical indication for a contracture. Contractures are modelled by reducing optimal fiber length. When optimal fiber length is reduced, muscle fibers will be stretched more at the same muscle-tendon length resulting in higher passive forces. 
 
 The model is positioned according to the clinical pROM assessment, after which optimal fiber length is adjusted until the simulated passive joint torque matches the clinically applied resistance. The optimal fiber length will then be adjusted so that the modeled net joint torque reaches 15 Nm at the end of the range of motion, matching the clinician’s resistance.
 
@@ -215,7 +215,7 @@ Select the scaling factor at which the CE angle intersects the **−15 Nm torque
 
 **Summary:**
 
-Iliopsoas contractures cannot be directly estimated from the popliteal angle, as hip position affects hamstring length. Therefore, we first estimate the difference in hip angle between the unilateral and bilateral popliteal angle tests, using the hamstring moment-arm ratio. This hip angle difference is then used to estimate the iliopsoas contracture.
+Iliopsoas contractures cannot be directly estimated from the popliteal angle, as hip position affects hamstring length.We therefore first estimate how much the hip position differs between the unilateral and bilateral tests, based on how the hamstrings act around the knee and hip. We then use this hip angle difference to estimate the iliopsoas contracture.
 
 #### Background
 
@@ -357,11 +357,11 @@ Now that you have personalized your model, it is time to run a simulation with y
 
 Scroll down to III. Running PredSim with personalized settings to start the simulation.
 
-While the optimization is running, take a well-deserved break from the coding and reading. ☕️ 
+The optimization will take approximately 5–10 minutes. While it is running, take a well-deserved break from the coding and reading☕️. Or, if you are feeling productive, you can already continue reading through the next steps!
 
 # II. Simulate the effect of a surgical intervention
 ### **Background:**   
-This patient underwent a bilateral distal femur extension osteotomy, a surgical procedure performed on both thighs to correct a knee extension deficit. The procedure reduces the knee flexion deformity by rotating the distal femoral segment into a more extended alignment, thereby improving the patient's ability to achieve knee extension during stance. During this procedure, the surgeon removes a wedge-shaped piece of bone from the lower (distal) part of the femur (thigh bone). The wedge is taken from the anterior part of the distal femur. When the remaining bone ends are stabilised, the femur straightens, allowing the knee to move from a bent position toward a more normal extended position.    
+This patient underwent a bilateral distal femur extension osteotomy, a surgical procedure performed on both thighs to correct a knee extension deficit. The procedure reduces the knee flexion deformity by rotating the distal femoral segment into a more extended alignment, thereby improving the patient's ability to achieve knee extension during stance. During this procedure, the surgeon removes a wedge-shaped piece of bone from the lower (distal) part of the femur (thigh bone). The wedge is taken from the anterior part of the distal femur. When the remaining bone ends are brought together and stabilized, the distal femoral segment is rotated into a more extended position. This changes the alignment of the femur relative to the knee, allowing the knee to achieve greater extension.
 In the model, this surgical correction shifts the knee geometry, this means that passive extension torques will begin to act at a more extended (= less negative) knee angle.
 
 **Requirements:** Matlab.   
@@ -441,7 +441,7 @@ Once your simulations are done, the results are stored in PredSimResults\gait101
    
 ### To visualize the kinematics of your simulations and compare it to the experimental data of the patient:
 
-1. Open the script [run_this_file_to_plot_figures_CP_ESMAC.m](Code/PlotFigures/run_this_file_to_plot_figures_CP_ESMAC.m).
+1. Open the script [run_this_file_to_plot_figures_CP_ESMAC.m](Code/PlotFigures/run_this_file_to_plot_figures_CP_ESMAC.m) in the `Code/PlotFigures` folder.
 2. Edit the section marked `% ------- start edit -------` to `% ------- stop edit -------` (lines 14–29) to point to your own simulation results and configure which comparisons you want to see.
 
 #### What to edit
@@ -471,7 +471,7 @@ By default, this is generated automatically from the field names in `results_pat
 **`figure_folder`** and **`figure_savename`**
 Control where figures are saved and the common prefix used in the filenames. By default, `figure_folder` points to the `IK` results folder and doesn't need to be changed unless you want figures saved elsewhere.
 
-**⚠️ Be aware** that the simulations are based on a simplified 2D musculoskeletal model, while the experimental data represent full 3D kinematics. Consequently, differences between simulated and experimental curves may partly arise from model simplifications rather than true biomechanical discrepancies. The goal of predictive simulation is not to perfectly reproduce every experimental detail, but to evaluate whether the personalized model captures clinically relevant gait characteristics and predicts the key changes after intervention.
+**⚠️ Be aware** *that the simulations only include the main musculoskeletal deficits identified in the clinical assessment. Other factors, such as deficits in motor control  are not explicitly included in the model. These factors may therefore contribute to differences between the simulated and experimental gait. The aim is not to reproduce every detail of the experimental gait, but to evaluate whether the personalized model captures the main clinically relevant features and predicts the key changes following the intervention.*
 
 ## Switching to another case
 

@@ -9,10 +9,10 @@ In this case study, you are going to investigate the effects of an ankle-foot or
 2. Adding a passive ankle dorsiflexion ankle-foot orthosis to the model. After adding the ankle-foot orhosis, you will predict the resulting gait pattern. You will compare the predicted gait both with a healthy gait pattern, and with an abnormal gait pattern due to weakness of the tibialis anterior (obtained in Step 1). 
 
 ## Step 0: run a reference simulation with the 2D model
-If you have not already done so, you need to run a reference simulation of healthy walking with the 2D model. Please follow the steps explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-smalll-2025?tab=readme-ov-file#running-a-reference-2d-simulation-with-predsim).
+If you have not already done so, you need to run a reference simulation of healthy walking with the 2D model. Please follow the steps explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#running-a-reference-2D-simulation-with-PredSim).
 
 ## Step 1.1: inducing weakness to the tibialis anterior
-Next, you will induce weakness to the model's tibialis anterior. To do so, edit the function `PredSim-workshop-smalll-2025/code/update_settings.m` to update the settings. In this function, add the following lines of code:
+Next, you will induce weakness to the model's tibialis anterior. To do so, edit the function `PredSim-workshop-ESMAC-2026/code/update_settings.m` to update the settings. In this function, add the following lines of code:
 
 ```matlab
 strength_level = .05; % specify the strength level (0-1)

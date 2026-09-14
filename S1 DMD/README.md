@@ -64,15 +64,16 @@ Muscle stiffness was evaluated through passive ROM and clinical stiffness scale.
 
 2. Run `Personalize_passive_muscle_stiffness_based_on_CE.m` by clicking the green 'Run' button. This script computes the start of the passive muscle force–length curve based on clinical examination data. It returns the normalized muscle length at which passive force begins, personalized using (1) ROM values and (2) the clinical stiffness scale. After running the script, matlab prints a table showing the shift calculated from ROM data, the shift from the clinical stiffness scale, and the average of the two.
 
-3. Go back to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and change the setting `S.settings.muscle_pass_stiff_shift` to shift the passive force–length curves based on the clinical exam. Specifically, comment this line `S.subject.muscle_pass_stiff_shift = {{'iliopsoas_l', 'iliopsoas_r'}, 0.9};` by putting your cursor on this line and do Ctrl+R and add the code below instead into `update_settings.m`. We have already provided the shifts for the hip and knee muscles. You only need to update the shifts for `gastroc` and `soleus` using the average shift printed after running `Personalize_passive_muscle_stiffness_based_on_CE.m` (outcome from 2.) :
+3. Go back to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and add the setting `S.settings.muscle_pass_stiff_shift` to shift the passive force–length curves based on the clinical exam. Specifically, copy and paste the code below into `update_settings.m`. We have already provided the shifts for the hip and knee muscles. You only need to update the shifts for `gastroc` and `soleus` using the average shift printed after running `Personalize_passive_muscle_stiffness_based_on_CE.m` (outcome from 2.) :
 
-		% S.subject.muscle_pass_stiff_shift = {{'iliopsoas_l', 'iliopsoas_r'}, 0.9};
-	 	S.subject.muscle_pass_stiff_shift = {{'tib_'},0.9,...							% ankle_df (provided)
-     		{'gastroc_r','gastroc_l'},0.9,...											% gastroc (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
-     		{'soleus_l', 'soleus_r'}, 0.9,...											% soleus (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
-     		{'bifemsh_r',  'bifemsh_l', 'hamstrings_r', 'hamstrings_l'},0.90839,...		% knee_flex (provided)
-     		{'iliopsoas_r', 'iliopsoas_l'},0.76948,...									% hip_flex (provided)
-     		}; 	 	 
+		S.subject.scale_MT_params = merge_PredSim_settings(...
+			S.subject.scale_MT_params,...
+   			{{'tib_'},0.9,...															% ankle_df (provided)
+   			{'gastroc_r','gastroc_l'},0.9,...											% gastroc (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
+   			{'soleus_l', 'soleus_r'}, 0.9,...											% soleus (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
+   			{'bifemsh_r',  'bifemsh_l', 'hamstrings_r', 'hamstrings_l'},0.90839,...		% knee_flex (provided)
+   			{'iliopsoas_r', 'iliopsoas_l'},0.76948,...									% hip_flex (provided)
+   			}); 	 	 
 
 **Background:** In DMD, contractile tissue is not only lost but also replaced by fat and fibrotic tissue, resulting in increased muscle stiffness and eventually leading to contractures. We modeled this by shifting the passive muscle force-length relationship to shorter fiber lengths through a reduction in the fiber length at which passive muscle force begins to develop. We use the ROM measurements and clinical stiffness scale to estimate this shift. For the ROM measurements, we estimate the difference in fiber length at which the muscle starts to develop passive force between TD and DMD from the difference in joint angle at the end of ROM. The joint angle at the end of ROM of TD children was based on age-related reference data reported by Mudge et al. To estimate the corresponding difference in fiber length, we multiply the difference in measured joint angle at end ROM between TD and DMD (in radians) with the moment arm of the muscles in the anatomical position. This difference in fiber length was normalized to optimal fiber length to compute the shift of the passive force-length relationship. 
 For the clinical stiffness scale, the normalized fiber length at which passive force starts to develop was assumed 1 when the clinical stiffness score was 0 (no increased resistance), 0.83 when the score was 1 (minimal increased resistance), 0.67 when the score was 2 (increased resistance), and 0.5 when the score was 3 (highly pronounced resistance) corresponding to a shift of respectively 0, 0.17, 0.33, and 0.5. These values were tested and used in [Vandekerckhove et al.(2025)](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-025-01631-x). 
@@ -140,10 +141,11 @@ This treatment was often performed in patients with DMD who walk on their toes (
 
 ### Step 5. Simulate an Achilles tendon lengthening surgery
 
-1. Go to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and change the setting `S.subject.scale_MT_params` to scale the tendon slack length (lTs) in order to simulate a Achilles tendon lengthening. Specifically, comment this line `S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5};` by putting your cursor on this line and do Ctrl+R  and add this line instead `S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5, {'soleus_l', 'soleus_r', 'gastroc_r', 'gastroc_l'}, 'lTs', 1.3};` in `update_settings.m`. This line will scale the tendon slack length (lTs) of both muscles (left and right) by 1.3 :
+1. Go to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and add the setting `S.subject.scale_MT_params` to scale the tendon slack length (lTs) in order to simulate a Achilles tendon lengthening. Specifically, copy and paste the code below into `update_settings.m`. This line will scale the tendon slack length (lTs) of both muscles (left and right) by 1.3 :
 		
-		% S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5};
-   		S.subject.scale_MT_params = {{'tib_ant_l','tib_ant_r'},'lMo',0.85,{'tib_ant_l','tib_ant_r'},'FMo',0.5, {'soleus_l', 'soleus_r', 'gastroc_r', 'gastroc_l'}, 'lTs', 1.3};	 	 
+   		S.subject.scale_MT_params = merge_PredSim_settings(...
+   			S.subject.scale_MT_params,...
+   			{'soleus_l', 'soleus_r', 'gastroc_r', 'gastroc_l'}, 'lTs', 1.3});	 	 
 
 Important: Do not change the other settings in `update_settings.m`. This way, you will simulate an Achilles tendon lengthening on a model that has DMD-specific muscle weakness and stiffness. 
 
