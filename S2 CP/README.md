@@ -148,7 +148,7 @@ S.subject.scale_MT_params = merge_PredSim_settings(...
                              {'gastroc_r'},'lMo',1,...      % pROM_Ankledf0_R
                              {'gastroc_l'},'lMo',1,...      % pROM_Ankledf0_L
                              {'soleus_r'},'lMo',1,...       % pROM_Ankledf90_R
-                             {'soleus_l'},'lMo',1};         % pROM_Ankledf90_L
+                             {'soleus_l'},'lMo',1});         % pROM_Ankledf90_L
 ```
 
 #### Calculate the hamstring scaling factors
