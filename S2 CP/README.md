@@ -139,14 +139,16 @@ The scores indicate no contracture of the soleus or gastrocs. Therefore, their o
 * The hamstring scaling factors will be determined using `main_scale_lMo.m` below (in Folder Code/.
 
 ```matlab
-S.subject.scale_MT_params = {{'hamstrings_r'},'lMo',1,...   % pROM_Poplbi_R %% to edit
+S.subject.scale_MT_params = merge_PredSim_settings(...
+							 S.subject.scale_MT_params, ...
+							 {{'hamstrings_r'},'lMo',1,...  % pROM_Poplbi_R %% to edit
                              {'hamstrings_l'},'lMo',1,...   % pROM_Poplbi_L %% to edit
                              {'iliopsoas_r'},'lMo',1,...    % explained in Step 4
                              {'iliopsoas_l'},'lMo',1,...    % explained in Step 4
                              {'gastroc_r'},'lMo',1,...      % pROM_Ankledf0_R
                              {'gastroc_l'},'lMo',1,...      % pROM_Ankledf0_L
                              {'soleus_r'},'lMo',1,...       % pROM_Ankledf90_R
-                             {'soleus_l'},'lMo',1};          % pROM_Ankledf90_L
+                             {'soleus_l'},'lMo',1});         % pROM_Ankledf90_L
 ```
 
 #### Calculate the hamstring scaling factors
