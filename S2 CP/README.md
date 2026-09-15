@@ -9,7 +9,7 @@
 
 Want to quickly go through this example? Simply follow the step instructions and skip the Background and Additional information sections.
 
-### **Background:** 
+**Background:**   
 Cerebral palsy (CP) is caused by a non-progressive lesion of the developing brain, resulting in impaired motor control and secondary musculoskeletal impairments. These impairments can lead to pathological gait patterns. Treatment decisions aim to improve gait function but their effect can be difficult to predict. 
 
 Physics-based computer simulations, that can predict the effect of treatments (e.g., bony and soft tissue correction, ankle-foot-orthoses) on gait in children with CP, have the potential to improve clinical decision-making. To this end, an important challenge is to accurately estimate patient-specific model parameters.
@@ -23,7 +23,7 @@ If you have not already done so, you need to run a reference simulation of healt
 ### Summary
 In this step, you will personalize the maximal active muscle force of the muscles based on the strength scores obtained during the Clinical Exam (CE).
 
-### **Background:**   
+**Background:**     
 In this part you will personalize a model for a child with CP based on a clinical exam. The clinical exam is part of children's usual clinical care and is a comprehensive assessment of musculoskeletal functioning. The personalization process modifies different muscle-tendon properties to represent patient-specific impairments. These modifications affect the active and passive force–length relationships of the muscles, as illustrated below.
 
 <img width="1774" height="575" alt="fig_muscle_tendon_properties_scaling" src="https://github.com/user-attachments/assets/0cfed741-a472-4051-993d-3efbb9ab882a" />
@@ -32,7 +32,7 @@ In example 1. you will use (I.1) manual muscle testing strength scores to person
 In this tutorial you will change the model inputs in a default settings file. This file can later be used to run personalized simulations in PredSim.
 
 ## I.1 Personalizing muscle strength
-### **Background:**   
+**Background:**     
 The strength is evaluated for the full active range of motion by manual muscle testing (MMT). You will scale the maximal (active) muscle force based on the strength scores (MMT scores) in the Clinical Exam. A lower MMT score refers to decreased strenght, to represent this in the model, maximal active fiber force of the muscles has to be scaled.
 
 **Requirements:** Matlab.   
@@ -103,7 +103,7 @@ S.settings.muscle_strength = {{'hamstrings_r' 'bifemsh_r'},0.3}
 ```
 
 ## I.2 Personalizing passive range of motion (pROM) 
-### **Background:**   
+**Background:**     
 During the standardized clinical examination, goniometry is used to measure the passive range of motion (pROM). The pROM represents the maximum amplitude of the joint motion and is therefore an indication for muscle length. Therefore, when the pROM is smaller than normative values, there is a clinical indication for a contracture. Contractures are modelled by reducing optimal fiber length. When optimal fiber length is reduced, muscle fibers will be stretched more at the same muscle-tendon length resulting in higher passive forces. 
 
 The model is positioned according to the clinical pROM assessment, after which optimal fiber length is adjusted until the simulated passive joint torque matches the clinically applied resistance. The optimal fiber length will then be adjusted so that the modeled net joint torque reaches 15 Nm at the end of the range of motion, matching the clinician’s resistance.
@@ -360,7 +360,7 @@ Scroll down to III. Running PredSim with personalized settings to start the simu
 The optimization will take approximately 5–10 minutes. While it is running, take a well-deserved break from the coding and reading☕️. Or, if you are feeling productive, you can already continue reading through the next steps!
 
 # II. Simulate the effect of a surgical intervention
-### **Background:**   
+**Background:**     
 This patient underwent a bilateral distal femur extension osteotomy, a surgical procedure performed on both thighs to correct a knee extension deficit. The procedure reduces the knee flexion deformity by rotating the distal femoral segment into a more extended alignment, thereby improving the patient's ability to achieve knee extension during stance. During this procedure, the surgeon removes a wedge-shaped piece of bone from the lower (distal) part of the femur (thigh bone). The wedge is taken from the anterior part of the distal femur. When the remaining bone ends are brought together and stabilized, the distal femoral segment is rotated into a more extended position. This changes the alignment of the femur relative to the knee, allowing the knee to achieve greater extension.
 In the model, this surgical correction shifts the knee geometry, this means that passive extension torques will begin to act at a more extended (= less negative) knee angle.
 
