@@ -392,10 +392,8 @@ sf_lMo = flip([0.7:0.1:1]);
 
    You'll be prompted to enter scaling factors for the soleus, gastrocnemius, and hamstring muscles. These could influence the scaling of the iliopsoas. Use the scaling factors determined in the previous steps.
 
-* Use the **unilateral and bilateral popliteal angles of the right leg** to calculate the scaling factor for the **left iliopsoas**.
-* Add the computed scaling factors to `S.subject.scale_MT_params`.
+6.  Add the computed scaling factors to `S.subject.scale_MT_params`.
 
-> **⚠️ Note:** A difference between the unilateral and bilateral popliteal angles indicates a contracture in the **contralateral iliopsoas**. For example, use the unilateral and bilateral popliteal angles of the **right leg** to calculate the scaling factor of the **left iliopsoas**.
 
 <details>
 <summary>Click to reveal the correct scaling factors</summary>
