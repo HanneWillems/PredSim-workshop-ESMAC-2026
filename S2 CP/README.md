@@ -27,8 +27,7 @@ In this step, you will personalize the maximal active muscle force of the muscle
 **Background:**
 In this part you will personalize a model for a child with CP based on a clinical exam. The clinical exam is part of children's usual clinical care and is a comprehensive assessment of musculoskeletal functioning. The personalization process modifies different muscle-tendon properties to represent patient-specific impairments. These modifications affect the active and passive force–length relationships of the muscles, as illustrated below.
 
-<img width="1774" height="575" alt="652163511-0cfed741-a472-4051-993d-3efbb9ab882a" src="https://github.com/user-attachments/assets/fe29be6d-51d7-475c-90ee-8d5f4ef63c0f" />
-
+<img width="1775" height="575" alt="fig_muscle_tendon_properties_scaling" src="https://github.com/user-attachments/assets/0493d65a-5cd9-4611-be6f-7cbc4226f16c" />
 
 In example 1. you will use (I.1) manual muscle testing strength scores to personalize muscle strength and (I.2) passive Range of Motion (pROM) scores to personalize optimal muscle fiber length (lMo) and coordinate limit torques.
 
