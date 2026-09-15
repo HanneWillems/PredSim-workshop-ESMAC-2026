@@ -25,11 +25,11 @@ clc; clear; close all
 
 % -------   start edit   -------
 PredSim_path = 'C:\GBW_MyPrograms\PredSim'; % path to PredSim
-casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to Casadi
 % -------   stop edit    -------
 
 addpath(genpath(PredSim_path));
-addpath(genpath(casadi_path));
+
+
 %% 2. Initialize settings
 subject_name = 'gait1018_esmac'; 
 
@@ -39,18 +39,21 @@ osim_path = fullfile(PredSim_path,'Subjects',subject_name,[subject_name,'.osim']
 %% -------    start edit  -------
 muscle_toScale = 'gastroc'; % Options: 'soleus', 'gastroc','hamstrings','iliopsoas'
 
-side = 'l'; % side evaluated in clinical exam
+side = 'r'; % side evaluated in clinical exam
 
 % Step 3. scaling muscle fiber length of the hamstrings
 if ismember(muscle_toScale, {'soleus','gastroc','hamstrings'})
 
-    CE_angle = 20;
+    CE_angle = 20; %  clinical exam angle
+                    % pROM_Ankledf0 value for gastroc
+                    % pROM_Ankledf90 value for soleus
+                    % pROM_Poplbi value for hamstrings
 
 % Step 4. Scaling optimal muscle fiber length of iliopsoas
 elseif strcmp(muscle_toScale, 'iliopsoas')
 
-    CE_angle_bi  = -70;
-    CE_angle_uni = -80;
+    CE_angle_bi  = -50; % pROM_Poplbi
+    CE_angle_uni = -60; % pROM_Poplbi
 
 end
 
@@ -124,7 +127,7 @@ end
 
 %% 5. evaluate scaling factor
 %% Background:
-% Assume the eximator applies a torque of 15 Nm. 
+% Assume the examinator applies a torque of 15 Nm. 
 % Then the passive torque around the joint should be 15 Nm at the end of
 % the ROM observed during the clinical exam 
 

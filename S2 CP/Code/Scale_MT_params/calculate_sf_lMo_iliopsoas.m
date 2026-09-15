@@ -95,6 +95,7 @@ close all % close previous figs
 n = length(Qs);
 S.subject.St = 1;
 
+colors = hsv(length(sf_lMo));
 
 if strcmp(side,'r')
     other_side = 'l';
@@ -213,7 +214,9 @@ for j = 1:length(sf_lMo)
     
     f1 = gcf;
     figure(f1)
-    plot(Qs(:,idx_joint)*180/pi,M_tot,'DisplayName',['sf lMo at ' num2str(sf_lMo(j)*100) '%']); 
+    plot(Qs(:,idx_joint)*180/pi,M_tot,'LineWidth',2,...
+        'Color', colors(j,:), ...
+        'DisplayName',['sf lMo at ' num2str(sf_lMo(j)*100) '%']); 
     hold on;
 end
 
