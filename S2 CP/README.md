@@ -230,7 +230,7 @@ if ismember(muscle_toScale, {'soleus','gastroc','hamstrings'})
 end
 ```
 
-**3. Line 151:** Define the range of scaling factors to be explored. Here you have to experiment with different ranges, see the comments in the script for further instructions.
+**3. line 154:** Define the range of scaling factors to be explored. Here you have to experiment with different ranges, see the comments in the script for further instructions.
 
 ```matlab
 %% -------    start edit  -------
@@ -332,7 +332,11 @@ The contracture of the contralateral iliopsoas is determined by finding the scal
 | Right            | Yes             |
 | Left             | No              |
 
-A shift is only present for the **right popliteal angle**, indicating a contracture in the **contralateral (left) iliopsoas**. Since there is no shift on the left side, the **right iliopsoas** scaling factor remains **1**.
+A shift is only present for the **right popliteal angle**. 
+
+Since `side` in the code refers to the leg whose clinical exam angles you enter (here: `side = 'r'`), this shift is used to estimate the contracture in the **contralateral (left) iliopsoas**.
+
+Since there is no shift on the left side, entering the left popliteal angles (`side = 'l'`) would not indicate a contralateral (right) iliopsoas contracture. So the **right iliopsoas** scaling factor remains **1**.
 
 </details>
 
@@ -354,7 +358,7 @@ PredSim_path = 'C:\GBW_MyPrograms\PredSim'; % path to PredSim
 casadi_path = 'C:\GBW_MyPrograms\casadi_3_5_5'; % path to CasADi
 ```
 
-**2. Lines 40, 42 and 52–53:** Specify the muscle, side, and the unilateral and bilateral clinical exam angles.
+**2. Lines 40, 42 and 55–56:** Specify the muscle, side, and the unilateral and bilateral clinical exam angles.
 
 ```matlab
 muscle_toScale = 'iliopsoas'; % Options: 'soleus', 'gastroc', 'hamstrings', 'iliopsoas'
@@ -373,7 +377,7 @@ end
 
 > **⚠️ Note:** For `iliopsoas`, fill in **both** `CE_angle_uni` and `CE_angle_bi` — the unilateral and bilateral popliteal angles from the Clinical Exam (see Background above). Unlike `soleus`, `gastroc`, and `hamstrings`, a single `CE_angle` is not used here.
 
-**3. Line 151:** Define the range of scaling factors to be explored. Here you have to experiment with different ranges, see the comments in the script for further instructions.
+**3. line 154:** Define the range of scaling factors to be explored. Here you have to experiment with different ranges, see the comments in the script for further instructions.
 
 ```matlab
 %% -------    start edit  -------
@@ -390,10 +394,8 @@ sf_lMo = flip([0.7:0.1:1]);
 
    You'll be prompted to enter scaling factors for the soleus, gastrocnemius, and hamstring muscles. These could influence the scaling of the iliopsoas. Use the scaling factors determined in the previous steps.
 
-* Use the **unilateral and bilateral popliteal angles of the right leg** to calculate the scaling factor for the **left iliopsoas**.
-* Add the computed scaling factors to `S.subject.scale_MT_params`.
+6.  Add the computed scaling factors to `S.subject.scale_MT_params`.
 
-> **⚠️ Note:** A difference between the unilateral and bilateral popliteal angles indicates a contracture in the **contralateral iliopsoas**. For example, use the unilateral and bilateral popliteal angles of the **right leg** to calculate the scaling factor of the **left iliopsoas**.
 
 <details>
 <summary>Click to reveal the correct scaling factors</summary>
