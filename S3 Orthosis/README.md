@@ -46,11 +46,11 @@ After inducing weakness in Step 1, you are now ready to try and normalize the ga
 exo1.ankle_stiffness = 2; % ankle stiffness in Nm/deg
 exo1.left_right = 'r'; % 'l' for left or 'r' for right
 exo1.function_name = 'ankleExoDorsi';
-exo1.ankle_offset = 15; % neutral ankle angle in deg
+exo1.ankle_offset = 10; % neutral ankle angle in deg
 S.orthosis.settings{1} = exo1;
 ```
 
-This adds an ankle-foot orthosis with a stiffness of 2 Nm/deg and a neutral ankle angle of 15 deg dorsiflexion to the right foot. The mass of the ankle-foot orthosis is ignored for simplicity. 
+This adds an ankle-foot orthosis with a stiffness of 2 Nm/deg and a neutral ankle angle of 10 deg dorsiflexion to the right foot. The mass of the ankle-foot orthosis is ignored for simplicity. 
 
 ## Step 2.2: simulate the effects of an ankle-foot orthosis on gaits in individuals with tibialis anterior muscle weakness
 You can now run a simulation by running the `Predsim/main.m` script. This should take about 10-15 minutes. Once your simulation is done, the results are stored in `PredSimResults\gait1018_esmac`. If this is the third time you ran a simulation, the results are stored in files starting with `gait1018_esmac_v3`. If all went well, you can visualize the resulting gait pattern in MATLAB and/or OpenSim (see **Step 1.2** above). Add data on dropfoot to the MATLAB figure created by `plot_results.m` by running the `Plotting/plot_dropfoot_data.m` script. 
@@ -69,10 +69,10 @@ If you want, you can change the weakness level, ankle-foot orthosis stiffness an
 ```matlab
 strength_level = .05; % specify the strength level (0-1)
 exo1.ankle_stiffness = 2; % ankle stiffness in Nm/deg
-exo1.ankle_offset = 15; % neutral ankle angle in deg
+exo1.ankle_offset = 10; % neutral ankle angle in deg
 ```
 
-Replace (one of) the numbers `.05`, `2` and `15` with (a) number(s) of your choosing. Repeat **Step 2.2** to simulate the resulting gait pattern. 
+Replace (one of) the numbers `.05`, `2` and `10` with (a) number(s) of your choosing. Repeat **Step 2.2** to simulate the resulting gait pattern. 
 
 ## Switching to another case
 Once you have completed this case, you may want to switch to another. In that case, please remove any edits you made to the update_settings.m file. Before starting a new case, it should look like this:
