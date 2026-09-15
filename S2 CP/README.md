@@ -332,9 +332,11 @@ The contracture of the contralateral iliopsoas is determined by finding the scal
 | Right            | Yes             |
 | Left             | No              |
 
-A shift is only present for the **right popliteal angle**. Since `side` in the code refers to the leg whose clinical exam angles you enter (here: `side = 'r'`), this shift is used to estimate the contracture in the **contralateral (left) iliopsoas**.
+A shift is only present for the **right popliteal angle**. 
 
-Since there is no shift on the left side, entering the left popliteal angles (`side = 'l'`) would not indicate a contralateral (right) iliopsoas contracture — so the **right iliopsoas** scaling factor remains **1**.
+Since `side` in the code refers to the leg whose clinical exam angles you enter (here: `side = 'r'`), this shift is used to estimate the contracture in the **contralateral (left) iliopsoas**.
+
+Since there is no shift on the left side, entering the left popliteal angles (`side = 'l'`) would not indicate a contralateral (right) iliopsoas contracture. So the **right iliopsoas** scaling factor remains **1**.
 
 </details>
 
