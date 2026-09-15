@@ -53,7 +53,7 @@ Once your simulation is done, the results are stored in `PredSimResults\gait1018
 
 ### Visualization in MATLAB
 To visualize the results in MATLAB, run the script `plot_results.m`. You can find this script in the ESMAC workshop repository (see [plot_results](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026/tree/main/plot_results.m)). 
-When running this script, you are prompted to specify the folder containing the simulation results. This folder's name should end with `PredSimResults\gait1018_esmac`, as explained above.
+When running this script, you are prompted to specify the files containing the simulation results. These files should be in a folder which name should end with `PredSimResults\gait1018_esmac`, as explained above.
 If the script ran succesfully, you should see the figure shown below:
 
 ![picture](Fig1.png)
