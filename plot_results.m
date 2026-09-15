@@ -2,30 +2,33 @@
 if ishandle(1), close(1); end
 plot_data()
 
-% load simulataion results
-% PredSimResultsRepo = uigetdir('Select the folder that contains the simulation output');
-cd(PredSimResultsRepo);
-files = dir('*.mat');
+% select the simulation files that you want to display
+[files, path] = uigetfile('*.mat', 'Select Files', 'MultiSelect', 'on');
 
 % select a few outputs
 ylabels = {'Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)','Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)'};
 is = [8 6 4 9 7 5];
 
-% loop over versions
-for k = 1:length(files)
+%% plot
+for k = 1:length(files) % loop over files
     
-    load(files(k).name,'R','model_info');
+    clear R
+    load(fullfile(path, files{k}),'R','model_info');
      
-    figure(1)
-    
-    for i = 1:6
-        subplot(2,3,i)
-        plot(R.kinematics.Qs(:,is(i)),'DisplayName',['Simulation ', files(k).name(17:end-4)], 'linewidth', 1.5); hold on
-        title(strrep(R.colheaders.coordinates{is(i)}, '_', '-')); hold on
-        ylim([-70 70])
-        box off
-        ylabel(ylabels{i})
-        xlabel('Gait cycle (%)')
+    if exist('R', 'var')
+        figure(1)
+
+        for i = 1:6
+            subplot(2,3,i)
+            plot(R.kinematics.Qs(:,is(i)),'DisplayName',['Simulation ', files{k}(17:end-4)], 'linewidth', 1.5); hold on
+            title(strrep(R.colheaders.coordinates{is(i)}, '_', '-')); hold on
+            ylim([-70 70])
+            box off
+            ylabel(ylabels{i})
+            xlabel('Gait cycle (%)')
+        end
+    else
+        disp('Can`t plot these results. If you`re trying to display outputs from cases 1 or 2, use the case-specific plot script')
     end
     
     legend show
@@ -34,7 +37,7 @@ for k = 1:length(files)
     
 end
 
-%%
+%% optional: store figure as PNG file
 % figure(1)
 % set(gcf, 'units', 'centimeters', 'position', [10 10 20 15])
 % cd(pathRepo);
