@@ -47,6 +47,8 @@ Open [update_settings_pre.m](Code/update_settings_pre.m) in your Code folder (e.
 
 This file is a copy of the [default settings file](../code/update_settings.m) that is used to define custom user settings.
 
+---
+
 ### Step 2. Scaling muscle strength
 In this step you will scale muscle strength for the **muscles around the knee**. The scaling factors represent the remaining percentage of maximal muscle force (FMo) in the model. As shown in the "Scaling muscle strength" panel of the figure above, reducing this parameter decreases the maximum force-generating capacity of the muscle and represents muscle weakness.
 
@@ -132,6 +134,8 @@ S.settings.muscle_strength = {...
 ```
 
 </details>
+
+---
 
 ## I.2 Personalizing passive range of motion (pROM)
 
@@ -252,8 +256,6 @@ sf_lMo = flip([0.7:0.1:1]);
 
 	<img alt="example_hamstrings_scaling" src="https://github.com/user-attachments/assets/72040245-ecc4-4f6a-bf4d-b6560126a415" width="600" />
 
-> **⚠️ Note:** A pop-up will appear to remind you that contractures in distal muscles can also affect joint posture during the clinical exam and, consequently, the measured popliteal angle. Therefore, the `CE_angle` should represent the posture resulting from the (possibly scaled) muscle-tendon lengths of all relevant muscles in the model.
-
 > **⚠️ Note:** Run the file separately for the **right and left hamstrings**.
 
 * Add the computed scaling factors to `S.subject.scale_MT_params`.
@@ -276,7 +278,7 @@ S.subject.scale_MT_params = merge_PredSim_settings(...
 
 </details>
 
-
+---
 ### Step 4. Scaling muscle fiber length of iliopsoas
 
 **Summary:**
@@ -393,6 +395,24 @@ sf_lMo = flip([0.7:0.1:1]);
 
 > **⚠️ Note:** A difference between the unilateral and bilateral popliteal angles indicates a contracture in the **contralateral iliopsoas**. For example, use the unilateral and bilateral popliteal angles of the **right leg** to calculate the scaling factor of the **left iliopsoas**.
 
+<details>
+<summary>Click to reveal the correct scaling factors</summary>
+
+```matlab
+S.subject.scale_MT_params = merge_PredSim_settings(...
+							 S.subject.scale_MT_params, ...
+							 {{'hamstrings_r'},'lMo',0.88,...  % pROM_Poplbi_R
+                             {'hamstrings_l'},'lMo',0.91,...   % pROM_Poplbi_L
+                             {'iliopsoas_r'},'lMo',1,...       % explained in Step 4
+                             {'iliopsoas_l'},'lMo',0.92,...       % explained in Step 4
+                             {'gastroc_r'},'lMo',1,...         % pROM_Ankledf0_R
+                             {'gastroc_l'},'lMo',1,...         % pROM_Ankledf0_L
+                             {'soleus_r'},'lMo',1,...          % pROM_Ankledf90_R
+                             {'soleus_l'},'lMo',1});           % pROM_Ankledf90_L
+```
+
+</details>
+
 ---
 
 ### Step 5. Adjusting coordinate limit torques
@@ -443,6 +463,22 @@ For the knee, the relevant line is:
 
 `0.5236 rad × 180 / π = 30°`
 
+<details>
+<summary>Click to reveal the correct coordinate limit torques</summary>
+
+
+```matlab
+S.subject.set_limit_torque_coefficients_selected_dofs =...
+        {{'lumbar_extension'},[-0.7644,11.2154,1.2788,-7.2704],[-0.3716,0.1068],...
+         {'hip_flexion_r','hip_flexion_l'},[-2.44,5.05,1.51,-21.88],[-0.6981,1.81],...
+         {'knee_angle_r','knee_angle_l'},[-6.09,33.94,11.03,-11.33],[-2.4,-0.1745],... 
+         {'ankle_angle_r','ankle_angle_l'},[-2.03,38.11,0.18,-12.12],[-0.4363,0.6109]};
+```
+
+</details>
+
+---
+
 ### 🎉 Congratulations, you have personalized your model!
 
 Now that you have personalized your model, it is time to run a simulation with your personalized settings.
@@ -450,6 +486,10 @@ Now that you have personalized your model, it is time to run a simulation with y
 Scroll down to III. Running PredSim with personalized settings to start the simulation.
 
 The optimization will take approximately 5–10 minutes. While it is running, take a well-deserved break from the coding and reading ☕. Or, if you are feeling productive, you can already continue reading through the next steps!
+
+💡 Simulation finished and curious to see the result? Go [here](#visualizing-and-plotting-the-results) to see how to plot results and/or compare them to experimental data.
+
+---
 
 # II. Simulate the effect of a surgical intervention
 
@@ -468,25 +508,39 @@ Open [`update_settings_post.m`](Code/update_settings_post.m) in your **Code** fo
 
 The post-intervention model starts from the personalized pre-intervention model. Therefore:
 
-* Open your `update_settings_pre.m` file.
-* Copy all the settings you previously defined.
-* Paste them into `update_settings_post.m`.
-* Keep these settings unchanged; only the surgical modifications will be updated in the following steps.
+1. Open your `update_settings_pre.m` file.
+2. Copy all the settings you previously defined.
+3. Paste them into `update_settings_post.m`.
+	* Keep these settings unchanged; only the surgical modifications will be updated in the following steps.
 
 ### Step 2. Adapt the knee extension deficit
 
 **To do:**
 
-* (If not already open) Open [`CE_CP_ESMAC_T0_T1.xlsx`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) in **Excel** for the best viewing experience:
+1. (If not already open) Open [`CE_CP_ESMAC_T0_T1.xlsx`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) in **Excel** for the best viewing experience:
     * Navigate to the `ClinicalExam` folder on your PC, **or**
     * In MATLAB's **Files** panel, right-click the file and select **Open Outside MATLAB**
 
 > **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 
-* Evaluate the **knee extension deficit** in the post-intervention Clinical Exam.
-* Compare it with the knee extension deficit used in your pre-intervention model.
-* Update the corresponding knee extension limit in `update_settings_post.m` to reflect the **post-intervention** clinical exam.
+2. Evaluate the **knee extension deficit** in the post-intervention Clinical Exam.
+3. Compare it with the knee extension deficit used in your pre-intervention model.
+4. Update the corresponding knee extension limit in `update_settings_post.m` to reflect the **post-intervention** clinical exam.
 
+<details>
+<summary>Click to reveal the correct coordinate limit torques</summary>
+
+
+```matlab
+S.subject.set_limit_torque_coefficients_selected_dofs =...
+        {{'lumbar_extension'},[-0.7644,11.2154,1.2788,-7.2704],[-0.3716,0.1068],...
+         {'hip_flexion_r','hip_flexion_l'},[-2.44,5.05,1.51,-21.88],[-0.6981,1.81],...
+         {'knee_angle_r','knee_angle_l'},[-6.09,33.94,11.03,-11.33],[-2.4,0],... 
+         {'ankle_angle_r','ankle_angle_l'},[-2.03,38.11,0.18,-12.12],[-0.4363,0.6109]};
+```
+
+</details>   
+---
 # III. Running PredSim with personalized settings
 
 ### Step 1. Open `main.m`
@@ -571,6 +625,25 @@ By default, this is generated automatically from the field names in `results_pat
 Control where figures are saved and the common prefix used in the filenames. By default, `figure_folder` points to the `IK` results folder and doesn't need to be changed unless you want figures saved elsewhere.
 
 **⚠️ Be aware** that the simulations only include the main musculoskeletal deficits identified in the clinical assessment. Other factors, such as deficits in motor control, are not explicitly included in the model. These factors may therefore contribute to differences between the simulated and experimental gait. The aim is not to reproduce every detail of the experimental gait, but to evaluate whether the personalized model captures the main clinically relevant features and predicts the key changes following the intervention.
+
+<details>
+<summary>Click to reveal what the pre-surgery figure should look like</summary>
+
+**Pre-surgery:**
+
+<img width="700" height="525" alt="pre_surgery_simulation_vs_experimental_kinematics" src="https://github.com/user-attachments/assets/ded14d9f-623a-4c83-b9fa-217590683c9b" />
+
+</details>
+
+<details>
+<summary>Click to reveal what the post-surgery figure should look like</summary>
+
+**Post-surgery:**
+
+<img width="700" height="525" alt="post_surgery_simulation_vs_experimental_kinematics" src="https://github.com/user-attachments/assets/2f22758c-c38c-4eb0-b7eb-808b552017bf" />
+
+</details>
+
 
 ## Switching to another case
 
