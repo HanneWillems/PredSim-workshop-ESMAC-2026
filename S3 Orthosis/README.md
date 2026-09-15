@@ -37,6 +37,13 @@ You can now run a simulation with induced weakness of the tibialis anterior, sim
 Red line: healthy simulation.<br>
 Yellow line: simulation with imposed weakness of the tibialis anterior. 
 
+You may notice differences between the simulated drop foot (yellow) and corresponding data (dashed black line). There may be several reasons for these differences:
+- General imperfections in the simple 2D model used for these simulations
+- Differences between assumed TA weakness level (currently 0.05) and actual weakness level in these individuals
+- Differences between other model (muscle) properties (e.g. weakness/strength other muscles) and actual (muscle) properties in these individuals
+
+Although not part of this workshop, all of the above could in principle be tested through simulations. 
+
 **bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `set_up_paths.m`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#getting-started-with-one-of-the-cases) for more details.
 
 ## Step 2.1: add an ankle-foot orthosis to the model
@@ -62,6 +69,8 @@ You can now run a simulation by running the `Predsim/main.m` script. This should
 Red line: healthy simulation.<br>
 Yellow line: simulation with imposed weakness of the tibialis anterior. <br>
 Purple line: simulation with imposed weakness of the tibialis anterior and assistance from an ankle-foot orthosis.
+
+While the ankle-foot orthosis helped normalize the gait pattern (note: purple line is closer to red line than yellow line), there remain differences with the healthy gait (purple versus red line). In the next step, you can try to gain further improvements through adjusting the ankle-foot orthosis settings. 
 
 ## Optional Step 2.3: test different stiffnesses and/or neutral angles of the ankle-foot orthosis
 If you want, you can change the weakness level, ankle-foot orthosis stiffness and/or neutral angle to gain more insight into the effect of weakness and/or assistive devices. To do so, adjust the following lines of code in `PredSim-workshop-ESMAC-2026/code/update_settings.m`
