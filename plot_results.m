@@ -5,6 +5,11 @@ plot_data()
 % select the simulation files that you want to display
 [files, path] = uigetfile('*.mat', 'Select Files', 'MultiSelect', 'on');
 
+% if just one file, make it a struct
+if ischar(files)
+    files = {files};
+end
+
 % select a few outputs
 ylabels = {'Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)','Dorsiflexion (deg)', 'Knee extension (deg)', 'Hip flexion (deg)'};
 is = [8 6 4 9 7 5];
