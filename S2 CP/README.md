@@ -252,8 +252,6 @@ sf_lMo = flip([0.7:0.1:1]);
 
 	<img alt="example_hamstrings_scaling" src="https://github.com/user-attachments/assets/72040245-ecc4-4f6a-bf4d-b6560126a415" width="600" />
 
-> **⚠️ Note:** A pop-up will appear to remind you that contractures in distal muscles can also affect joint posture during the clinical exam and, consequently, the measured popliteal angle. Therefore, the `CE_angle` should represent the posture resulting from the (possibly scaled) muscle-tendon lengths of all relevant muscles in the model.
-
 > **⚠️ Note:** Run the file separately for the **right and left hamstrings**.
 
 * Add the computed scaling factors to `S.subject.scale_MT_params`.
@@ -468,24 +466,24 @@ Open [`update_settings_post.m`](Code/update_settings_post.m) in your **Code** fo
 
 The post-intervention model starts from the personalized pre-intervention model. Therefore:
 
-* Open your `update_settings_pre.m` file.
-* Copy all the settings you previously defined.
-* Paste them into `update_settings_post.m`.
-* Keep these settings unchanged; only the surgical modifications will be updated in the following steps.
+1. Open your `update_settings_pre.m` file.
+2. Copy all the settings you previously defined.
+3. Paste them into `update_settings_post.m`.
+	* Keep these settings unchanged; only the surgical modifications will be updated in the following steps.
 
 ### Step 2. Adapt the knee extension deficit
 
 **To do:**
 
-* (If not already open) Open [`CE_CP_ESMAC_T0_T1.xlsx`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) in **Excel** for the best viewing experience:
+1. (If not already open) Open [`CE_CP_ESMAC_T0_T1.xlsx`](ClinicalExam/CE_CP_ESMAC_T0_T1.xlsx) in **Excel** for the best viewing experience:
     * Navigate to the `ClinicalExam` folder on your PC, **or**
     * In MATLAB's **Files** panel, right-click the file and select **Open Outside MATLAB**
 
 > **⚠️ Note:** `T0` refers to the pre-intervention assessment and `T1` refers to the post-intervention assessment.
 
-* Evaluate the **knee extension deficit** in the post-intervention Clinical Exam.
-* Compare it with the knee extension deficit used in your pre-intervention model.
-* Update the corresponding knee extension limit in `update_settings_post.m` to reflect the **post-intervention** clinical exam.
+2. Evaluate the **knee extension deficit** in the post-intervention Clinical Exam.
+3. Compare it with the knee extension deficit used in your pre-intervention model.
+4. Update the corresponding knee extension limit in `update_settings_post.m` to reflect the **post-intervention** clinical exam.
 
 # III. Running PredSim with personalized settings
 
@@ -571,6 +569,25 @@ By default, this is generated automatically from the field names in `results_pat
 Control where figures are saved and the common prefix used in the filenames. By default, `figure_folder` points to the `IK` results folder and doesn't need to be changed unless you want figures saved elsewhere.
 
 **⚠️ Be aware** that the simulations only include the main musculoskeletal deficits identified in the clinical assessment. Other factors, such as deficits in motor control, are not explicitly included in the model. These factors may therefore contribute to differences between the simulated and experimental gait. The aim is not to reproduce every detail of the experimental gait, but to evaluate whether the personalized model captures the main clinically relevant features and predicts the key changes following the intervention.
+
+<details>
+<summary>Click to reveal what the pre-surgery figure should look like</summary>
+
+**Pre-surgery:**
+
+<img width="700" height="525" alt="pre_surgery_simulation_vs_experimental_kinematics" src="https://github.com/user-attachments/assets/ded14d9f-623a-4c83-b9fa-217590683c9b" />
+
+</details>
+
+<details>
+<summary>Click to reveal what the post-surgery figure should look like</summary>
+
+**Post-surgery:**
+
+<img width="700" height="525" alt="post_surgery_simulation_vs_experimental_kinematics" src="https://github.com/user-attachments/assets/2f22758c-c38c-4eb0-b7eb-808b552017bf" />
+
+</details>
+
 
 ## Switching to another case
 
