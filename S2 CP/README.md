@@ -47,6 +47,8 @@ Open [update_settings_pre.m](Code/update_settings_pre.m) in your Code folder (e.
 
 This file is a copy of the [default settings file](../code/update_settings.m) that is used to define custom user settings.
 
+---
+
 ### Step 2. Scaling muscle strength
 In this step you will scale muscle strength for the **muscles around the knee**. The scaling factors represent the remaining percentage of maximal muscle force (FMo) in the model. As shown in the "Scaling muscle strength" panel of the figure above, reducing this parameter decreases the maximum force-generating capacity of the muscle and represents muscle weakness.
 
@@ -132,6 +134,8 @@ S.settings.muscle_strength = {...
 ```
 
 </details>
+
+---
 
 ## I.2 Personalizing passive range of motion (pROM)
 
@@ -274,7 +278,7 @@ S.subject.scale_MT_params = merge_PredSim_settings(...
 
 </details>
 
-
+---
 ### Step 4. Scaling muscle fiber length of iliopsoas
 
 **Summary:**
@@ -391,6 +395,24 @@ sf_lMo = flip([0.7:0.1:1]);
 
 > **⚠️ Note:** A difference between the unilateral and bilateral popliteal angles indicates a contracture in the **contralateral iliopsoas**. For example, use the unilateral and bilateral popliteal angles of the **right leg** to calculate the scaling factor of the **left iliopsoas**.
 
+<details>
+<summary>Click to reveal the correct scaling factors</summary>
+
+```matlab
+S.subject.scale_MT_params = merge_PredSim_settings(...
+							 S.subject.scale_MT_params, ...
+							 {{'hamstrings_r'},'lMo',0.88,...  % pROM_Poplbi_R
+                             {'hamstrings_l'},'lMo',0.91,...   % pROM_Poplbi_L
+                             {'iliopsoas_r'},'lMo',1,...       % explained in Step 4
+                             {'iliopsoas_l'},'lMo',0.92,...       % explained in Step 4
+                             {'gastroc_r'},'lMo',1,...         % pROM_Ankledf0_R
+                             {'gastroc_l'},'lMo',1,...         % pROM_Ankledf0_L
+                             {'soleus_r'},'lMo',1,...          % pROM_Ankledf90_R
+                             {'soleus_l'},'lMo',1});           % pROM_Ankledf90_L
+```
+
+</details>
+
 ---
 
 ### Step 5. Adjusting coordinate limit torques
@@ -441,6 +463,22 @@ For the knee, the relevant line is:
 
 `0.5236 rad × 180 / π = 30°`
 
+<details>
+<summary>Click to reveal the correct coordinate limit torques</summary>
+
+
+```matlab
+S.subject.set_limit_torque_coefficients_selected_dofs =...
+        {{'lumbar_extension'},[-0.7644,11.2154,1.2788,-7.2704],[-0.3716,0.1068],...
+         {'hip_flexion_r','hip_flexion_l'},[-2.44,5.05,1.51,-21.88],[-0.6981,1.81],...
+         {'knee_angle_r','knee_angle_l'},[-6.09,33.94,11.03,-11.33],[-2.4,-0.1745],... %% to edit
+         {'ankle_angle_r','ankle_angle_l'},[-2.03,38.11,0.18,-12.12],[-0.4363,0.6109]};
+```
+
+</details>
+
+---
+
 ### 🎉 Congratulations, you have personalized your model!
 
 Now that you have personalized your model, it is time to run a simulation with your personalized settings.
@@ -448,6 +486,10 @@ Now that you have personalized your model, it is time to run a simulation with y
 Scroll down to III. Running PredSim with personalized settings to start the simulation.
 
 The optimization will take approximately 5–10 minutes. While it is running, take a well-deserved break from the coding and reading ☕. Or, if you are feeling productive, you can already continue reading through the next steps!
+
+💡 Simulation finished and curious to see the result? Go [here](#visualizing-and-plotting-the-results) to see how to plot results and/or compare them to experimental data.
+
+---
 
 # II. Simulate the effect of a surgical intervention
 
@@ -485,6 +527,20 @@ The post-intervention model starts from the personalized pre-intervention model.
 3. Compare it with the knee extension deficit used in your pre-intervention model.
 4. Update the corresponding knee extension limit in `update_settings_post.m` to reflect the **post-intervention** clinical exam.
 
+<details>
+<summary>Click to reveal the correct coordinate limit torques</summary>
+
+
+```matlab
+S.subject.set_limit_torque_coefficients_selected_dofs =...
+        {{'lumbar_extension'},[-0.7644,11.2154,1.2788,-7.2704],[-0.3716,0.1068],...
+         {'hip_flexion_r','hip_flexion_l'},[-2.44,5.05,1.51,-21.88],[-0.6981,1.81],...
+         {'knee_angle_r','knee_angle_l'},[-6.09,33.94,11.03,-11.33],[-2.4,0],... 
+         {'ankle_angle_r','ankle_angle_l'},[-2.03,38.11,0.18,-12.12],[-0.4363,0.6109]};
+```
+
+</details>   
+---
 # III. Running PredSim with personalized settings
 
 ### Step 1. Open `main.m`
