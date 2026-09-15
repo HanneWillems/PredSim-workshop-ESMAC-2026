@@ -30,7 +30,7 @@ S = update_settings(S);
 This is required to make sure that `Predsim` uses the updated settings.
 
 ## Step 1.2: simulate effect of tibialis anterior muscle weakness on walking
-You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018_esmac` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_esmac_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). Add data on dropfoot to the figure by running the `Plotting/plot_dropfoot_data.m` script. This data corresponds to the data shown in Fig. 1 of [Wiszomirska et al. (2017)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5405572/). You should see the figure below: 
+You can now run a simulation with induced weakness of the tibialis anterior, simply by running the `Predsim/main.m` script. This should take about 5-10 minutes. Once your simulation is done, the results are stored in `PredSimResults\gait1018_esmac` (as explained [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#predsimresults)). If this is the second time you ran a simulation, the results are stored in files starting with `gait1018_esmac_v2`. If all went well, you can now evaluate visualize the resulting gait pattern in MATLAB and/or OpenSim. Follow the instructions mentioned [here](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#visualizing-your-simulation-results). You can add data on dropfoot to the figure created by `plot_results.m` by running the `Plotting/plot_dropfoot_data.m` script. This data corresponds to the data shown in Fig. 1 of [Wiszomirska et al. (2017)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5405572/). You should see the figure below: 
 
 ![picture](Plotting/Fig1.png)
 
@@ -50,10 +50,12 @@ exo1.ankle_offset = 15; % neutral ankle angle in deg
 S.orthosis.settings{1} = exo1;
 ```
 
-This adds an exoskeleton with a stiffness of 2 Nm/deg and a neutral ankle angle of 15 deg dorsiflexion to the right foot. The mass of the exoskeleton is ignored for simplicity. 
+This adds an ankle-foot orthosis with a stiffness of 2 Nm/deg and a neutral ankle angle of 15 deg dorsiflexion to the right foot. The mass of the ankle-foot orthosis is ignored for simplicity. 
 
 ## Step 2.2: simulate the effects of an ankle-foot orthosis on gaits in individuals with tibialis anterior muscle weakness
-You can now run a simulation by running the `Predsim/main.m` script. Once your simulation is done, the results are stored in `PredSimResults\gait1018_esmac`. If this is the third time you ran a simulation, the results are stored in files starting with `gait1018_esmac_v3`. If all went well, you can visualize the resulting gait pattern in MATLAB and/or OpenSim (see **Step 1.2** above). Add data on dropfoot to the MATLAB figure by running the `Plotting/plot_dropfoot_data.m` script. **Invisible ankle-foot orthosis**: at the moment, it is not possible yet to visualize the ankle-foot orthosis itself in OpenSim, only its effects on gait. You should see the figure below:
+You can now run a simulation by running the `Predsim/main.m` script. This should take about 10-15 minutes. Once your simulation is done, the results are stored in `PredSimResults\gait1018_esmac`. If this is the third time you ran a simulation, the results are stored in files starting with `gait1018_esmac_v3`. If all went well, you can visualize the resulting gait pattern in MATLAB and/or OpenSim (see **Step 1.2** above). Add data on dropfoot to the MATLAB figure created by `plot_results.m` by running the `Plotting/plot_dropfoot_data.m` script. 
+
+**Invisible ankle-foot orthosis**: at the moment, it is not possible yet to visualize the ankle-foot orthosis itself in OpenSim, only its effects on gait. You should see the figure below:
 
 ![picture](Plotting/Fig2.png)
 
