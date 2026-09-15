@@ -197,6 +197,7 @@ sf_lMo = flip([0.7:0.1:1]);
 
 %% -------    stop edit   -------
 ```
+**bug fixing**: if you get an error saying `'update_settings' is not found in the current folder or on the MATLAB path`, run the script called `set_up_paths.m`. See [explanation](https://github.com/KULeuvenNeuromechanics/PredSim-workshop-ESMAC-2026#getting-started-with-one-of-the-cases) for more details.
 
 **Example:**
 Select the scaling factor at which the CE angle intersects the **−15 Nm torque** applied by the experimenter, red line in figure. A scaling factor of 60% is entered as `0.6` in the code.
