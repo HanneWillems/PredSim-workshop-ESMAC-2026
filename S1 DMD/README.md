@@ -64,10 +64,10 @@ Muscle stiffness was evaluated through passive ROM and clinical stiffness scale.
 
 2. Run `Personalize_passive_muscle_stiffness_based_on_CE.m` by clicking the green 'Run' button. This script computes the start of the passive muscle force–length curve based on clinical examination data. It returns the normalized muscle length at which passive force begins, personalized using (1) ROM values and (2) the clinical stiffness scale. After running the script, matlab prints a table showing the shift calculated from ROM data, the shift from the clinical stiffness scale, and the average of the two.
 
-3. Go back to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and add the setting `S.settings.muscle_pass_stiff_shift` to shift the passive force–length curves based on the clinical exam. Specifically, copy and paste the code below into `update_settings.m`. We have already provided the shifts for the hip and knee muscles. You only need to update the shifts for `gastroc` and `soleus` using the average shift printed after running `Personalize_passive_muscle_stiffness_based_on_CE.m` (outcome from 2.) :
+3. Go back to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and add the setting `S.subject.settings.muscle_pass_stiff_shift` to shift the passive force–length curves based on the clinical exam. Specifically, copy and paste the code below into `update_settings.m`. We have already provided the shifts for the hip and knee muscles. You only need to update the shifts for `gastroc` and `soleus` using the average shift printed after running `Personalize_passive_muscle_stiffness_based_on_CE.m` (outcome from 2.) :
 
-		S.subject.scale_MT_params = merge_PredSim_settings(...
-			S.subject.scale_MT_params,...
+		S.subject.settings.muscle_pass_stiff_shift = merge_PredSim_settings(...
+			S.subject.settings.muscle_pass_stiff_shift,...
    			{{'tib_'},0.9,...															% ankle_df (provided)
    			{'gastroc_r','gastroc_l'},0.9,...											% gastroc (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
    			{'soleus_l', 'soleus_r'}, 0.9,...											% soleus (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
