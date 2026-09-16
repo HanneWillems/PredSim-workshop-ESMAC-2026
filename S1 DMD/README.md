@@ -34,9 +34,9 @@ The strength was assessed with fixed dynamometry. The user will scale the maxima
  - The web app will automatically plot the subject-specific torques on the TD percentile curves and compute z-scores as well as percentages relative to the median of the percentile curves (indicated via the red rectangle on the image below). You will use these percentages to scale the muscle strength of the model (in 4.)
 <img width="4123" height="2071" alt="Screenshot_app_3" src="https://github.com/user-attachments/assets/1b742f52-eeff-413b-8f81-34579b370783" />
 
-4. Open matlab and navigate to `PredSim-workshop-ESMAC-2026/code` in matlab. Open the function `update_settings.m`. You will add the setting `S.settings.muscle_strength` to this function to scale the model’s muscle strengths using the percentage values calculated in the web app. Specifically, copy and paste the code below into `update_settings.m`. We have already provided scaling factors for the hip and knee muscles (e.g., the strength of glut_max is scaled to 22% of its original value (i.e., multiplied by 0.22)). You only need to update the scaling factors for `tib_ant`, `gastroc`, and `soleus` using the percentages you calculated in the web app (remember: a strength value of 100% means the scaling factor should be 1 (not 100)) :
+4. Open matlab and navigate to `PredSim-workshop-ESMAC-2026/code` in matlab. Open the function `update_settings.m`. You will add the setting `S.subject.muscle_strength` to this function to scale the model’s muscle strengths using the percentage values calculated in the web app. Specifically, copy and paste the code below into `update_settings.m`. We have already provided scaling factors for the hip and knee muscles (e.g., the strength of glut_max is scaled to 22% of its original value (i.e., multiplied by 0.22)). You only need to update the scaling factors for `tib_ant`, `gastroc`, and `soleus` using the percentages you calculated in the web app (remember: a strength value of 100% means the scaling factor should be 1 (not 100)) :
 
-	 	S.settings.muscle_strength = {... 
+	 	S.subject.muscle_strength = {... 
 			{'iliopsoas_r', 'iliopsoas_l'}, 0.435, ...									% hip_flex (provided)
 			{'glut_max_r', 'glut_max_l'}, 0.22, ...										% hip_ext (provided) 
 			{'rect_fem_r', 'vasti_r', 'rect_fem_l', 'vasti_l'}, 0.317, ...				% knee_ext (provided)
@@ -66,8 +66,8 @@ Muscle stiffness was evaluated through passive ROM and clinical stiffness scale.
 
 3. Go back to `update_settings.m` in matlab (located in `PredSim-workshop-ESMAC-2026/code`) and add the setting `S.subject.settings.muscle_pass_stiff_shift` to shift the passive force–length curves based on the clinical exam. Specifically, copy and paste the code below into `update_settings.m`. We have already provided the shifts for the hip and knee muscles. You only need to update the shifts for `gastroc` and `soleus` using the average shift printed after running `Personalize_passive_muscle_stiffness_based_on_CE.m` (outcome from 2.) :
 
-		S.subject.settings.muscle_pass_stiff_shift = merge_PredSim_settings(...
-			S.subject.settings.muscle_pass_stiff_shift,...
+		S.subject.muscle_pass_stiff_shift = merge_PredSim_settings(...
+			S.subject.muscle_pass_stiff_shift,...
    			{{'tib_'},0.9,...															% ankle_df (provided)
    			{'gastroc_r','gastroc_l'},0.9,...											% gastroc (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
    			{'soleus_l', 'soleus_r'}, 0.9,...											% soleus (REPLACE THE '0.9' VALUES ON THIS LINE WITH YOUR OWN AVERAGE SHIFTS (Use the average shifts printed in the Matlab command window after running the script.))
